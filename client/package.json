@@ -8,9 +8,9 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
-    "@types/react": "^18.0.28",
     "braintree-web-drop-in-react": "^1.1.1",
     "config": "^3.3.1",
+    "conversational-form": "^1.0.2",
     "fontsource-roboto": "^3.0.3",
     "moment": "^2.27.0",
     "query-string": "^6.13.1",
@@ -20,8 +20,8 @@
     "react-scripts": "3.4.1"
   },
   "scripts": ***REMOVED***
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "export SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
+    "build": "export SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -39,8 +39,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": ***REMOVED***
-    "react-bootstrap": "^2.7.2"
   }
 }

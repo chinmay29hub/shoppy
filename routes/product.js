@@ -14,18 +14,11 @@ const ***REMOVED***
   photo,
   listSearch
 ***REMOVED***= require('../controllers/product');
-const ***REMOVED*** requireSignin, isAuth, isAdmin ***REMOVED***= require('../controllers/auth');
 const ***REMOVED*** userById ***REMOVED***= require('../controllers/user');
+const ***REMOVED*** requireSignin, isAuth, isAdmin ***REMOVED***= require('../controllers/auth');
 
-router.get('/product/:productId', read);
 router.post('/product/create/:userId', requireSignin, isAuth, isAdmin, create);
-router.delete(
-  '/product/:productId/:userId',
-  requireSignin,
-  isAuth,
-  isAdmin,
-  remove
-);
+router.get('/product/:productId', read);
 
 router.put(
   '/product/:productId/:userId',
@@ -35,14 +28,22 @@ router.put(
   update
 );
 
-router.get('/products', list);
+router.delete(
+  '/product/:productId/:userId',
+  requireSignin,
+  isAuth,
+  isAdmin,
+  remove
+);
+
+router.get('/product/photo/:productId', photo);
+router.post('/products/by/search', listBySearch);
 router.get('/products/search', listSearch);
 router.get('/products/related/:productId', listRelated);
+router.get('/products', list);
 router.get('/products/categories', listCategories);
-router.post('/products/by/search', listBySearch);
-router.get('/product/photo/:productId', photo);
 
-router.param('userId', userById);
 router.param('productId', productById);
+router.param('userId', userById);
 
 module.exports = router;

@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-const ***REMOVED*** requireSignin, isAuth, isAdmin ***REMOVED***= require('../controllers/auth');
 const ***REMOVED*** userById, addOrderToUserHistory ***REMOVED***= require('../controllers/user');
+const ***REMOVED*** requireSignin, isAuth, isAdmin ***REMOVED***= require('../controllers/auth');
 const ***REMOVED***
   create,
   listOrders,
@@ -10,8 +10,9 @@ const ***REMOVED***
   orderById,
   updateOrderStatus,
 ***REMOVED***= require('../controllers/order');
-
 const ***REMOVED*** decreaseQuantity ***REMOVED***= require('../controllers/product');
+
+router.get('/order/list/:userId', requireSignin, isAuth, isAdmin, listOrders);
 
 router.post(
   '/order/create/:userId',
@@ -22,7 +23,13 @@ router.post(
   create
 );
 
-router.get('/order/list/:userId', requireSignin, isAuth, isAdmin, listOrders);
+router.put(
+  '/order/:orderId/status/:userId',
+  requireSignin,
+  isAuth,
+  isAdmin,
+  updateOrderStatus
+);
 
 router.get(
   '/order/status-values/:userId',
@@ -32,15 +39,7 @@ router.get(
   getStatusValues
 );
 
-router.put(
-  '/order/:orderId/status/:userId',
-  requireSignin,
-  isAuth,
-  isAdmin,
-  updateOrderStatus
-);
-
-router.param('userId', userById);
 router.param('orderId', orderById);
+router.param('userId', userById);
 
 module.exports = router;

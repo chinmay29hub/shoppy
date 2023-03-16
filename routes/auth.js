@@ -9,8 +9,8 @@ const ***REMOVED***
 ***REMOVED***= require('../controllers/auth');
 const ***REMOVED*** userSignupValidator ***REMOVED***= require('../validator');
 
-router.post('/signup', userSignupValidator, signup);
-router.post('/signin', signin);
 router.get('/signout', signout);
+router.post('/signin', signin);
+router.post('/signup', userSignupValidator, signup);
 
 module.exports = router;

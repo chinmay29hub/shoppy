@@ -15,10 +15,8 @@ const productRoutes = require('./routes/product');
 const braintreeRoutes = require('./routes/braintree');
 const orderRoutes = require('./routes/order');
 
-// app
 const app = express();
 
-// db connection
 const connectDB = async () => ***REMOVED***
   try ***REMOVED***
     await mongoose.connect(
@@ -39,24 +37,20 @@ const connectDB = async () => ***REMOVED***
 };
 connectDB();
 
-// middlewares
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(expressValidator());
 app.use(cors());
 
-// routes middleware
-app.use('/api', authRoutes);
-app.use('/api', userRoutes);
-app.use('/api', categoryRoutes);
-app.use('/api', productRoutes);
-app.use('/api', braintreeRoutes);
 app.use('/api', orderRoutes);
+app.use('/api', userRoutes);
+app.use('/api', productRoutes);
+app.use('/api', categoryRoutes);
+app.use('/api', braintreeRoutes);
+app.use('/api', authRoutes);
 
-// Server static assets if in production
 if (process.env.NODE_ENV === 'production') ***REMOVED***
-  // Set static folder
   app.use(express.static('client/build'));
 
   app.get('*', (req, res) => ***REMOVED***
@@ -65,7 +59,6 @@ if (process.env.NODE_ENV === 'production') ***REMOVED***
 }
 
 const PORT = process.env.PORT || 5000;
-
 app.listen(PORT, () => ***REMOVED***
   console.log(`Server is running on port $***REMOVED***PORT}`);
 });

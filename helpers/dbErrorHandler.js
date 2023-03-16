@@ -1,8 +1,4 @@
 'use strict';
-
-/**
- * Get unique error field name
- */
 const uniqueMessage = (error) => ***REMOVED***
   let output;
   try ***REMOVED***
@@ -13,17 +9,14 @@ const uniqueMessage = (error) => ***REMOVED***
     output =
       fieldName.charAt(0).toUpperCase() +
       fieldName.slice(1) +
-      ' already exists';
+      ' Already exists';
   ***REMOVED***catch (ex) ***REMOVED***
-    output = 'Unique field already exists';
+    output = 'Unique field already existss';
   }
 
   return output;
 };
 
-/**
- * Get the erroror message from error object
- */
 exports.errorHandler = (error) => ***REMOVED***
   let message = '';
 
@@ -34,7 +27,7 @@ exports.errorHandler = (error) => ***REMOVED***
         message = uniqueMessage(error);
         break;
       default:
-        message = 'Something went wrong';
+        message = 'Something really went wrong';
     }
   ***REMOVED***else ***REMOVED***
     for (let errorName in error.errorors) ***REMOVED***

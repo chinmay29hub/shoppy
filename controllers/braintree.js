@@ -10,16 +10,6 @@ const gateway = braintree.connect(***REMOVED***
     process.env.BRAINTREE_PRIVATE_KEY,
 });
 
-exports.generateToken = (req, res) => ***REMOVED***
-  gateway.clientToken.generate(***REMOVED***}, function (err, response) ***REMOVED***
-    if (err) ***REMOVED***
-      res.status(500).send(err);
-    ***REMOVED***else ***REMOVED***
-      res.send(response);
-    }
-  });
-};
-
 exports.processPayment = (req, res) => ***REMOVED***
   let nonceFromTheClient = req.body.paymentMethodNonce;
   let amountFromTheClient = req.body.amount;
@@ -41,3 +31,14 @@ exports.processPayment = (req, res) => ***REMOVED***
     }
   );
 };
+
+exports.generateToken = (req, res) => ***REMOVED***
+  gateway.clientToken.generate(***REMOVED***}, function (err, response) ***REMOVED***
+    if (err) ***REMOVED***
+      res.status(500).send(err);
+    ***REMOVED***else ***REMOVED***
+      res.send(response);
+    }
+  });
+};
+
