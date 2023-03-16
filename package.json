@@ -19,7 +19,6 @@
     "url": "git+https://github.com/ashraf-kabir/mern-ecommerce.git"
   },
   "keywords": [],
-  "author": "Ashraf Kabir",
   "license": "MIT",
   "dependencies": ***REMOVED***
     "axios": "^0.19.2",

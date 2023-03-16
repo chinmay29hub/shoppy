@@ -52,7 +52,8 @@ const useStyles = makeStyles((theme) => (***REMOVED***
     flexGrow: 1,
   },
   productDescription: ***REMOVED***
-    height: '100px',
+    height: 'max-content',
+    margin: "0.6rem 0rem 1rem 0rem"
   },
   footer: ***REMOVED***
     backgroundColor: theme.palette.background.paper,
@@ -75,8 +76,18 @@ const Card = (***REMOVED***
   const showViewButton = (showViewProductButton) => ***REMOVED***
     return (
       showViewProductButton && (
-        <Link href=***REMOVED***`/product/$***REMOVED***product._id}`***REMOVED***className='mr-2'>
-          <Button variant='contained' color='primary'>
+        <Link href=***REMOVED***`/product/$***REMOVED***product._id}`***REMOVED***className='mr-2' style=***REMOVED******REMOVED***
+          textDecoration: 'none',
+        }}>
+          <Button style=***REMOVED******REMOVED***
+            backgroundColor: "#3579bd",
+            color: "white",
+            borderRadius: "0.5rem",
+            padding: "0.6rem 1.2rem",
+            border: "none",
+            outline: "none",
+            boxShadow: "none",
+          }}>
             View Product
           </Button>
         </Link>
@@ -98,7 +109,18 @@ const Card = (***REMOVED***
   const showAddToCartBtn = (showAddToCartButton) => ***REMOVED***
     return (
       showAddToCartButton && (
-        <Button onClick=***REMOVED***addToCart***REMOVED***variant='outlined' color='secondary'>
+        <Button onClick=***REMOVED***addToCart***REMOVED***style=***REMOVED******REMOVED***
+          position: "absolute",
+          right: "0",
+          border: "0.1rem solid #3579bd",
+          backgroundColor: "white",
+          color: "#3579bd",
+          borderRadius: "0.5rem",
+          padding: "0.4rem 0.8rem",
+          outline: "none",
+          boxShadow: "none",
+          margin: "0rem 3.5rem 0rem 0rem"
+        }}>
           Add to cart
         </Button>
       )
@@ -107,10 +129,35 @@ const Card = (***REMOVED***
 
   const showStock = (quantity) => ***REMOVED***
     return quantity > 0 ? (
-      <span className='badge badge-primary badge-pill'>In Stock </span>
+      <Button style=***REMOVED******REMOVED***
+        position: "absolute",
+        right: "0",
+        backgroundColor: "#b6eee7",
+        color: "#14534c",
+        margin: "0rem 3.5rem 0.5rem 0.5rem",
+        textTransform: "none",
+        fontWeight: "500",
+        borderRadius: "0.5rem",
+        padding: "0.3rem 0.9rem",
+        fontSize: "1rem",
+        outline: "none",
+        hover: "none"
+      }}>In Stock </Button>
     ) : (
-      <span className='badge badge-primary badge-pill'>Out of Stock </span>
-    );
+      <Button style=***REMOVED******REMOVED***
+        position: "absolute",
+        right: "0",
+        backgroundColor: "#ffb5b5",
+        color: "#4d0909",
+        margin: "0rem 3.5rem 0.5rem 0.5rem",
+        textTransform: "none",
+        fontWeight: "500",
+        borderRadius: "0.5rem",
+        padding: "0.3rem 0.9rem",
+        fontSize: "1rem",
+        outline: "none",
+        hover: "none"
+      }}>Out of Stock </Button>);
   };
 
   const handleChange = (productId) => (event) => ***REMOVED***
@@ -126,14 +173,24 @@ const Card = (***REMOVED***
       cartUpdate && (
         <div className='mt-2'>
           <div className='input-group mb-3'>
-            <div className='input-group-prepend'>
-              <span className='input-group-text'>Adjust Quantity</span>
+            <div className='input-group-prepend' style=***REMOVED******REMOVED***
+              margin: "0.5rem 0rem 0rem 0rem",
+              borderRight: "none"
+            }}>
+              <span className='input-group-text' style=***REMOVED******REMOVED***
+                borderRadius: "0.4rem 0rem 0rem 0.4rem ",
+              }}>Adjust Quantity</span>
             </div>
             <input
               type='number'
               className='form-control'
               value=***REMOVED***count}
               onChange=***REMOVED***handleChange(product._id)}
+              style=***REMOVED******REMOVED***
+                borderLeft: "none",
+                borderRadius: "0rem 0.4rem 0.4rem 0rem ",
+                margin: "0.5rem 0rem 0rem 0rem"
+              }}
             />
           </div>
         </div>
@@ -153,6 +210,18 @@ const Card = (***REMOVED***
           color='secondary'
           className=***REMOVED***classes.button}
           startIcon=***REMOVED***<DeleteIcon />}
+          style=***REMOVED******REMOVED***
+            position: "absolute",
+            right: "0",
+            marginRight: "3.5rem",
+            // backgroundColor: "#3579bd",
+            // color: "white",
+            padding: "0.6rem 1.2rem",
+            borderRadius: "0.5rem",
+            border: "none",
+            outline: "none",
+            boxShadow: "none",
+          }}
         >
           Remove Product
         </Button>
@@ -190,7 +259,7 @@ const Card = (***REMOVED***
     //   </div>
     // </div>
 
-    <Container className=***REMOVED***classes.cardGrid***REMOVED***maxWidth='md' >
+    <Container className=***REMOVED***classes.cardGrid***REMOVED***maxWidth='md'>
       <CssBaseline />
       <Grid container spacing=***REMOVED***2}>
         <Grid item xs=***REMOVED***12***REMOVED***sm=***REMOVED***12***REMOVED***md=***REMOVED***12}>
@@ -203,33 +272,35 @@ const Card = (***REMOVED***
                 padding: 0
               }}>
                 <Row style=***REMOVED******REMOVED***
-                  backgroundColor: "red",
                   width: "100%",
                   margin: 0,
                   display: "flex",
                   alignItems: "center"
                 }}>
                   <Col style=***REMOVED******REMOVED***
-                    backgroundColor: "green",
                     flex: 1
                   }}>
                     <Typography gutterBottom variant='h5' component='h2' style=***REMOVED******REMOVED***
                       fontFamily: "Qanelas-Medium",
                       fontWeight: "700",
-                      margin: "0.25rem 0rem 0.3rem 0rem",
+                      margin: "0.6rem 0rem 0.6rem -.75rem",
                     }}>
                       ***REMOVED***product.name}
                     </Typography>
                   </Col>
-                  <Col style=***REMOVED******REMOVED***
-                    width: "max-content",
-                    backgroundColor: "yellow"
+                  <Col className="col-3" style=***REMOVED******REMOVED***
+                    display: "flex",
+                    alignItems: "flex-end",
+                    justifyContent: "flex-end",
+                    width: "auto",
                   }}>
                     <p style=***REMOVED******REMOVED***
+                      justifyContent: "flex-end",
                       width: "max-content",
                       fontFamily: "Qanelas-Black",
-                      fontSize: "1.8rem",
-                      margin: "0"
+                      fontSize: "1.6rem",
+                      margin: "0",
+                      padding: "0",
                     }}>₹***REMOVED***product.price}</p>
                   </Col>
                 </Row>
@@ -265,24 +336,33 @@ const Card = (***REMOVED***
                   </Col>
                 </Row> */}
               </div>
-              <Button className='prod-categ' style=***REMOVED******REMOVED***
-                backgroundColor: "#b6eee7",
-                marginBottom: "0.5rem",
-                textTransform: "none",
-                color: "#14534c",
-                fontWeight: "500",
-                borderRadius: "0.5rem",
-                padding: "0.1rem 0.6rem",
-                outline: "none",
-                hover: "none"
+              <div style=***REMOVED******REMOVED***
+                display: "flex"
               }}>
-                ***REMOVED***product.category && product.category.name}***REMOVED***' '}
-              </Button>
+                <Button className='prod-categ' style=***REMOVED******REMOVED***
+                  backgroundColor: "#b5d5ff",
+                  marginBottom: "0.5rem",
+                  textTransform: "none",
+                  color: "#09264d",
+                  fontWeight: "500",
+                  borderRadius: "0.5rem",
+                  padding: "0.3rem 0.9rem",
+                  fontSize: "1rem",
+                  outline: "none",
+                  hover: "none"
+                }}>
+                  ***REMOVED***product.category && product.category.name}***REMOVED***' '}
+                </Button>
+                ***REMOVED***showStock(product.quantity)}
+              </div>
               <Typography className=***REMOVED***classes.productDescription}>***REMOVED***product.description.substring(0, 100)}</Typography>
-              <p className='black-8'>
-                Added on ***REMOVED***moment(product.createdAt).fromNow()}***REMOVED***' '}
+
+              <p style=***REMOVED******REMOVED***
+                fontSize: "1rem",
+                margin: "0rem 0rem -0.2rem 0rem"
+              }}>
+                Added ***REMOVED***moment(product.createdAt).fromNow()}***REMOVED***'.'}
               </p>
-              ***REMOVED***showStock(product.quantity)}
               <br></br>
               <span>
                 ***REMOVED***showViewButton(showViewProductButton)}
@@ -290,11 +370,11 @@ const Card = (***REMOVED***
                 ***REMOVED***showRemoveButton(showRemoveProductButton)}
               </span>
               ***REMOVED***showCartUpdateOptions(cartUpdate)}
-            </CardContent >
-          </CardM >
-        </Grid >
-      </Grid >
-    </Container >
+            </CardContent>
+          </CardM>
+        </Grid>
+      </Grid>
+    </Container>
 
 
     // <Container className=***REMOVED***classes.cardGrid***REMOVED***maxWidth='md'>

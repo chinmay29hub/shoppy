@@ -127,10 +127,24 @@ const Shop = () => ***REMOVED***
       className='container-fluid'
     >
       <Search />
+      <h2 className='mb-2'>Products</h2>
       <div className='row'>
-        <div className='col-md-3'>
-          <h4>Filter by categories</h4>
-          <ul>
+        <div className='col-md-3' style=***REMOVED******REMOVED***
+          backgroundColor: "white",
+          margin: "2rem",
+          height: "fit-content",
+          padding: "1.4rem",
+          borderRadius: "1rem",
+          border: "0.01rem solid lightgray"
+        }}>
+          <p style=***REMOVED******REMOVED***
+            color: "#4A5263",
+            fontSize: "1.3rem"
+          }}>Filter by categories</p>
+          <span/>
+          <ul style=***REMOVED******REMOVED***
+            margin: "0"
+          }}>
             <Checkbox
               categories=***REMOVED***categories}
               handleFilters=***REMOVED***(filters) => handleFilters(filters, 'category')}
@@ -145,12 +159,10 @@ const Shop = () => ***REMOVED***
             />
           </div>
         </div>
-
-        <div className='col-md-9'>
-          <h2 className='mb-2'>Products</h2>
+        <div className='col-md-8'>
           <div className='row'>
             ***REMOVED***filteredResults.map((product, i) => (
-              <div key=***REMOVED***i***REMOVED***className='col-xl-4 col-lg-6 col-md-12 col-sm-12'>
+              <div key=***REMOVED***i***REMOVED***className='col-xl-6 col-lg-8 col-md-12 col-sm-12'>
                 <Card product=***REMOVED***product***REMOVED***/>
               </div>
             ))}

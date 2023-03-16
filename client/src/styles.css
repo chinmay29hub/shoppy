@@ -27,9 +27,11 @@
   src: url('./fonts/Qanelas/QanelasUltraLight.woff') format('woff');
 }
 
-html ***REMOVED***
-  width: 100vw;
-  height: 100vh;
+html,
+body ***REMOVED***
+  width: 100%;
+  height: 100%;
+  background-color: #e6e8eb;
   overflow-x: hidden;
 }
 
