@@ -5,21 +5,13 @@ const ***REMOVED*** errorHandler ***REMOVED***= require('../helpers/dbErrorHandl
 
 require('dotenv').config();
 
-exports.signup = (req, res) => ***REMOVED***
-  // console.log('req.body', req.body);
-  const user = new User(req.body);
-  user.save((err, user) => ***REMOVED***
-    if (err) ***REMOVED***
-      return res.status(400).json(***REMOVED***
-        err: errorHandler(err),
-      });
-    }
-    user.salt = undefined;
-    user.hashed_password = undefined;
-    res.json(***REMOVED***
-      user,
+exports.isAdmin = (req, res, next) => ***REMOVED***
+  if (req.profile.role === 0) ***REMOVED***
+    return res.status(403).json(***REMOVED***
+      error: 'Admin resource! Access denied',
     });
-  });
+  }
+  next();
 };
 
 exports.signin = (req, res) => ***REMOVED***
@@ -51,6 +43,23 @@ exports.signin = (req, res) => ***REMOVED***
   });
 };
 
+exports.signup = (req, res) => ***REMOVED***
+  // console.log('req.body', req.body);
+  const user = new User(req.body);
+  user.save((err, user) => ***REMOVED***
+    if (err) ***REMOVED***
+      return res.status(400).json(***REMOVED***
+        err: errorHandler(err),
+      });
+    }
+    user.salt = undefined;
+    user.hashed_password = undefined;
+    res.json(***REMOVED***
+      user,
+    });
+  });
+};
+
 exports.signout = (req, res) => ***REMOVED***
   res.clearCookie('t');
   res.json(***REMOVED*** message: 'Signout success' });
@@ -67,15 +76,6 @@ exports.isAuth = (req, res, next) => ***REMOVED***
   if (!user) ***REMOVED***
     return res.status(403).json(***REMOVED***
       error: 'Access denied',
-    });
-  }
-  next();
-};
-
-exports.isAdmin = (req, res, next) => ***REMOVED***
-  if (req.profile.role === 0) ***REMOVED***
-    return res.status(403).json(***REMOVED***
-      error: 'Admin resource! Access denied',
     });
   }
   next();

@@ -21,8 +21,6 @@ exports.read = (req, res) => ***REMOVED***
 };
 
 exports.update = (req, res) => ***REMOVED***
-  // console.log('user update', req.body);
-  // req.body.role = 0; // role will always be 0
   User.findOneAndUpdate(
     ***REMOVED*** _id: req.profile._id },
     ***REMOVED*** $set: req.body },
@@ -39,48 +37,6 @@ exports.update = (req, res) => ***REMOVED***
     }
   );
 };
-
-// exports.update = (req, res) => ***REMOVED***
-//   // console.log('UPDATE USER - req.user', req.user, 'UPDATE DATA', req.body);
-//   const ***REMOVED*** name, password ***REMOVED***= req.body;
-
-//   User.findOne(***REMOVED*** _id: req.profile._id }, (err, user) => ***REMOVED***
-//     if (err || !user) ***REMOVED***
-//       return res.status(400).json(***REMOVED***
-//         error: 'User not found',
-//       });
-//     }
-//     if (!name) ***REMOVED***
-//       return res.status(400).json(***REMOVED***
-//         error: 'Name is required',
-//       });
-//     ***REMOVED***else ***REMOVED***
-//       user.name = name;
-//     }
-
-//     if (password) ***REMOVED***
-//       if (password.length < 6) ***REMOVED***
-//         return res.status(400).json(***REMOVED***
-//           error: 'Password should be min 6 characters long',
-//         });
-//       ***REMOVED***else ***REMOVED***
-//         user.password = password;
-//       }
-//     }
-
-//     user.save((err, updatedUser) => ***REMOVED***
-//       if (err) ***REMOVED***
-//         console.log('USER UPDATE ERROR', err);
-//         return res.status(400).json(***REMOVED***
-//           error: 'User update failed',
-//         });
-//       }
-//       updatedUser.hashed_password = undefined;
-//       updatedUser.salt = undefined;
-//       res.json(updatedUser);
-//     });
-//   });
-// };
 
 exports.addOrderToUserHistory = (req, res, next) => ***REMOVED***
   let history = [];

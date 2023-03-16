@@ -37,7 +37,6 @@ const userSchema = new mongoose.Schema(
   ***REMOVED*** timestamps: true }
 );
 
-// virtual field
 userSchema
   .virtual('password')
   .set(function (password) ***REMOVED***
@@ -53,7 +52,6 @@ userSchema.methods = ***REMOVED***
   authenticate: function(plainText) ***REMOVED***
     return this.encryptPassword(plainText) === this.hashed_password;
   },
-
   encryptPassword: function (password) ***REMOVED***
     if (!password) return '';
     try ***REMOVED***
@@ -66,5 +64,4 @@ userSchema.methods = ***REMOVED***
     }
   },
 };
-
 module.exports = mongoose.model('User', userSchema);

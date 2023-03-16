@@ -9,18 +9,11 @@ const ***REMOVED***
   remove,
   list
 ***REMOVED***= require('../controllers/category');
-const ***REMOVED*** requireSignin, isAuth, isAdmin ***REMOVED***= require('../controllers/auth');
 const ***REMOVED*** userById ***REMOVED***= require('../controllers/user');
+const ***REMOVED*** requireSignin, isAuth, isAdmin ***REMOVED***= require('../controllers/auth');
 
-router.get('/category/:categoryId', read);
 router.post('/category/create/:userId', requireSignin, isAuth, isAdmin, create);
-router.put(
-  '/category/:categoryId/:userId',
-  requireSignin,
-  isAuth,
-  isAdmin,
-  update
-);
+router.get('/category/:categoryId', read);
 router.delete(
   '/category/:categoryId/:userId',
   requireSignin,
@@ -28,9 +21,16 @@ router.delete(
   isAdmin,
   remove
 );
+router.put(
+  '/category/:categoryId/:userId',
+  requireSignin,
+  isAuth,
+  isAdmin,
+  update
+);
 router.get('/categories', list);
 
-router.param('categoryId', categoryById);
 router.param('userId', userById);
+router.param('categoryId', categoryById);
 
 module.exports = router;
