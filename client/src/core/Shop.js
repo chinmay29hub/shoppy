@@ -127,7 +127,9 @@ const Shop = () => ***REMOVED***
       className='container-fluid'
     >
       <Search />
-      <h2 className='mb-2'>Products</h2>
+      <div style=***REMOVED******REMOVED***}}>
+        <h2 className='mb-2'>Products</h2>
+      </div>
       <div className='row'>
         <div className='col-md-3' style=***REMOVED******REMOVED***
           backgroundColor: "white",
@@ -139,21 +141,45 @@ const Shop = () => ***REMOVED***
         }}>
           <p style=***REMOVED******REMOVED***
             color: "#4A5263",
-            fontSize: "1.3rem"
+            fontSize: "1.2rem",
+            marginBottom: "0.7rem"
           }}>Filter by categories</p>
-          <span/>
+          <p style=***REMOVED******REMOVED***
+            marginBottom: "0.6rem",
+            padding: 0,
+            backgroundColor: "lightgray",
+            height: "0.01rem",
+            border: "0.01rem"
+          }***REMOVED***/>
           <ul style=***REMOVED******REMOVED***
-            margin: "0"
+            margin: "0rem 0rem 0rem -0.65rem",
+            padding: "0rem 0rem 0rem 0rem"
           }}>
             <Checkbox
               categories=***REMOVED***categories}
               handleFilters=***REMOVED***(filters) => handleFilters(filters, 'category')}
             />
           </ul>
+          <p style=***REMOVED******REMOVED***
+            margin: "0.6rem 0rem 0.8rem 0rem",
+            padding: 0,
+            backgroundColor: "lightgray",
+            height: "0.01rem",
+            border: "0.01rem"
+          }***REMOVED***/>
 
-          <h4>Filter by price range</h4>
-          <div>
-            <RadioBox
+          <p style=***REMOVED******REMOVED***
+            color: "#4A5263",
+            fontSize: "1.2rem",
+            marginBottom: "0.7rem"
+          }}>Filter by Price Range</p>
+
+          <div style=***REMOVED******REMOVED***
+            margin: "0rem 0rem 0rem -3.7rem"
+          }}>
+            <RadioBox style=***REMOVED******REMOVED***
+              marginLeft: "15rem"
+            }}
               prices=***REMOVED***prices}
               handleFilters=***REMOVED***(filters) => handleFilters(filters, 'price')}
             />
