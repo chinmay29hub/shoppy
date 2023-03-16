@@ -2,6 +2,41 @@
  * border radius
  */
 
+@font-face ***REMOVED***
+  font-family: 'Qanelas-Black';
+  src: url('./fonts/Qanelas/QanelasBlack.woff') format('woff');
+}
+
+@font-face ***REMOVED***
+  font-family: 'Qanelas-Bold';
+  src: url('./fonts/Qanelas/QanelasBlack.woff') format('woff');
+}
+
+@font-face ***REMOVED***
+  font-family: 'Qanelas-Light';
+  src: url('./fonts/Qanelas/QanelasLight.woff') format('woff');
+}
+
+@font-face ***REMOVED***
+  font-family: 'Qanelas-Medium';
+  src: url('./fonts/Qanelas/QanelasMedium.woff') format('woff');
+}
+
+@font-face ***REMOVED***
+  font-family: 'Qanelas-Ultra-Light';
+  src: url('./fonts/Qanelas/QanelasUltraLight.woff') format('woff');
+}
+
+html ***REMOVED***
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+* ***REMOVED***
+  font-family: 'Qanelas-Medium';
+}
+
 .btn,
 .jumbotron,
 .nav :hover ***REMOVED***
@@ -18,6 +53,7 @@
   font-style: italic;
   background: #000;
 }
+
 /**
   * single product page - product name
   */
@@ -32,18 +68,23 @@
 .black-10 ***REMOVED***
   background: #f2f2f2;
 }
+
 .black-9 ***REMOVED***
   background: #e6e6e6;
 }
+
 .black-8 ***REMOVED***
   background: #d9d9d9;
 }
+
 .black-7 ***REMOVED***
   background: #cccccc;
 }
+
 .black-6 ***REMOVED***
   background: #bfbfbf;
 }
+
 .black-5 ***REMOVED***
   background: #b3b3b3;
 }
@@ -84,9 +125,11 @@
   0% ***REMOVED***
     background-position: 0% 50%;
   }
+
   50% ***REMOVED***
     background-position: 100% 50%;
   }
+
   100% ***REMOVED***
     background-position: 0% 50%;
   }
@@ -96,9 +139,11 @@
   0% ***REMOVED***
     background-position: 0% 50%;
   }
+
   50% ***REMOVED***
     background-position: 100% 50%;
   }
+
   100% ***REMOVED***
     background-position: 0% 50%;
   }
@@ -108,9 +153,11 @@
   0% ***REMOVED***
     background-position: 0% 50%;
   }
+
   50% ***REMOVED***
     background-position: 100% 50%;
   }
+
   100% ***REMOVED***
     background-position: 0% 50%;
   }

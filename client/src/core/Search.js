@@ -1,17 +1,20 @@
 import React, ***REMOVED*** useState, useEffect ***REMOVED***from 'react';
-import ***REMOVED*** makeStyles ***REMOVED***from '@material-ui/core/styles';
+import ***REMOVED*** makeStyles, responsiveFontSizes ***REMOVED***from '@material-ui/core/styles';
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Dropdown from 'react-bootstrap/Dropdown';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import ***REMOVED*** Form, FormLabel ***REMOVED***from 'react-bootstrap'
 import FormControl from '@material-ui/core/FormControl';
-// import FormControl from 'react-bootstrap/FormControl';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
-
 import ***REMOVED*** getCategories, list ***REMOVED***from './apiCore';
 import Card from './Card';
+import './Search.css'
 
 const useStyles = makeStyles((theme) => (***REMOVED***
   formControl: ***REMOVED***
@@ -112,49 +115,80 @@ const Search = () => ***REMOVED***
   const classes = useStyles();
 
   const searchForm = () => (
-    <form onSubmit=***REMOVED***searchSubmit***REMOVED***className=***REMOVED***classes.root}>
-      <span className='input-group-text'>
-        <div className='input-group input-group-lg'>
-          <div className='input-group-prepend'>
-            <FormControl className=***REMOVED***classes.formControl}>
-              <InputLabel id='demo-simple-select-helper-label'>
-                Select
-              </InputLabel>
-              <Select
-                labelId='demo-simple-select-placeholder-label-label'
-                id='demo-simple-select-placeholder-label'
-                value=***REMOVED***data.name}
-                onChange=***REMOVED***handleChange('category')}
-                displayEmpty
-                className=***REMOVED***classes.selectEmpty}>
-                <MenuItem value='All'>
-                  <em>All</em>
-                </MenuItem>
-                ***REMOVED***categories.map((c, i) => (
-                  <MenuItem key=***REMOVED***i***REMOVED***value=***REMOVED***c._id}>
-                    ***REMOVED***c.name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </div>
-          <TextField
+    <Form onSubmit=***REMOVED***searchSubmit***REMOVED***className=***REMOVED***classes.root***REMOVED***style=***REMOVED******REMOVED***
+      border: "0.01rem solid lightgray",
+      backgroundColor: "white",
+      borderRadius: "0.8rem",
+      width: "max-content",
+      padding: "0rem"
+    }}>
+      <FormControl className=***REMOVED***classes.formControl***REMOVED***style=***REMOVED******REMOVED***
+        margin: 0,
+        padding: "1rem 1.2rem"
+      }}>
+        <Row style=***REMOVED******REMOVED***
+          margin: 0,
+          padding: 0
+        }}>
+          <Dropdown style=***REMOVED******REMOVED***
+            width: "max-content",
+            margin: "0rem 1rem 0rem 0rem"
+          }}>
+            <Dropdown.Toggle id="dropdown-basic" style=***REMOVED******REMOVED***
+              backgroundColor: "white",
+              color: "#6D7487",
+              border: "0.01rem solid lightgray",
+              borderRadius: "0.5rem",
+              height: "3rem",
+            }}>
+              <img src=***REMOVED***require('../assets/filter.png')***REMOVED***style=***REMOVED******REMOVED***
+                width: "1.5rem"
+              }}></img>
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item disabled="true">Select Category</Dropdown.Item>
+              ***REMOVED***categories.map((c, i) => ***REMOVED***
+                return <Dropdown.Item key=***REMOVED***i***REMOVED***value=***REMOVED***c.id***REMOVED***/>
+              })}
+            </Dropdown.Menu>
+          </Dropdown>
+          <input
+            type="input"
             onChange=***REMOVED***handleChange('search')}
             id='outlined-basic'
-            label=***REMOVED***<span><SearchIcon />Search by name</span>}
             variant='outlined'
             className=***REMOVED***classes.tField}
             autoComplete='off'
+            placeholder="Search product"
+            style=***REMOVED******REMOVED***
+              border: "0.01rem solid lightgray",
+              width: "22rem",
+              height: "3rem",
+              fontSize: "1rem",
+              borderRadius: "0.6rem",
+              padding: "0rem 1rem",
+              outline: "none",
+              margin: "0rem 1rem 0rem 0rem"
+            }}
           />
-
-          <div className='ml-3 mt-2' style=***REMOVED******REMOVED*** border: 'none' }}>
-            <Button ml=***REMOVED***2***REMOVED***variant='contained' color='primary' type='submit'>
-              Search
-            </Button>
-          </div>
-        </div>
-      </span>
-    </form>
+          <Button ml=***REMOVED***2***REMOVED***variant='contained' color='primary' type='submit' style=***REMOVED******REMOVED***
+            backgroundColor: "white",
+            color: "#6D7487",
+            border: "0.01rem solid lightgray",
+            borderRadius: "0.5rem",
+            boxShadow: "none",
+            height: "3rem",
+            outline: "none",
+            textTransform: "none",
+            padding: "0.6rem 0rem",
+            marginRight: "0",
+            fontSize: "1rem"
+          }}>
+            <SearchIcon />
+          </Button>
+        </Row>
+      </FormControl>
+    </Form>
   );
 
   return (

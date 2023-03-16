@@ -89,6 +89,7 @@ const useStyles = makeStyles((theme) => (***REMOVED***
   },
   sectionMobile: ***REMOVED***
     display: 'flex',
+    color: "white",
     [theme.breakpoints.up('md')]: ***REMOVED***
       display: 'none',
     },
@@ -249,130 +250,130 @@ const MaterialAppBar = (***REMOVED*** history }) => ***REMOVED***
   );
 
   return (
-      <div className=***REMOVED***classes.grow}>
-        <div position='fixed' style=***REMOVED******REMOVED***
-          backgroundColor: "#153462",
-          margin: "1.2rem 1.2rem",
-          borderRadius: "1rem"
-        }}>
-          <Toolbar>
-            <a href='/' style=***REMOVED******REMOVED*** color: '#ffffff' }}>
-              <IconButton
-                edge='start'
-                className=***REMOVED***classes.menuButton}
-                color='inherit'
-                aria-label='brand'>
-                <StoreIcon />
+    <div className=***REMOVED***classes.grow}>
+      <div position='fixed' style=***REMOVED******REMOVED***
+        backgroundColor: "#153462",
+        margin: "1.2rem 1.2rem",
+        borderRadius: "1rem"
+      }}>
+        <Toolbar>
+          <a href='/' style=***REMOVED******REMOVED*** color: '#ffffff' }}>
+            <IconButton
+              edge='start'
+              className=***REMOVED***classes.menuButton}
+              color='inherit'
+              aria-label='brand'>
+              <StoreIcon />
+            </IconButton>
+          </a>
+          <a href='/' style=***REMOVED******REMOVED***
+            color: '#ffffff',
+            textDecoration: 'none'
+          }}>
+            <Typography className=***REMOVED***classes.title***REMOVED***variant='h6' noWrap>
+              Shoppy
+            </Typography>
+          </a>
+
+          <div className=***REMOVED***classes.grow***REMOVED***/>
+          <div className=***REMOVED***classes.sectionDesktop}>
+            <Link style=***REMOVED***isActive(history, '/')***REMOVED***to='/'>
+              <IconButton aria-label='Home' color='inherit'>
+                <HomeIcon />
+                <Typography noWrap>Home</Typography>
               </IconButton>
-            </a>
-            <a href='/' style=***REMOVED******REMOVED***
-              color: '#ffffff',
-              textDecoration: 'none'
-            }}>
-              <Typography className=***REMOVED***classes.title***REMOVED***variant='h6' noWrap>
-                Shoppy
-              </Typography>
-            </a>
+            </Link>
 
-            <div className=***REMOVED***classes.grow***REMOVED***/>
-            <div className=***REMOVED***classes.sectionDesktop}>
-              <Link style=***REMOVED***isActive(history, '/')***REMOVED***to='/'>
-                <IconButton aria-label='Home' color='inherit'>
-                  <HomeIcon />
-                  <Typography noWrap>Home</Typography>
-                </IconButton>
-              </Link>
+            <Link style=***REMOVED***isActive(history, '/shop')***REMOVED***to='/shop'>
+              <IconButton aria-label='Shop' color='inherit'>
+                <StorefrontIcon />
+                <Typography noWrap>Shop</Typography>
+              </IconButton>
+            </Link>
 
-              <Link style=***REMOVED***isActive(history, '/shop')***REMOVED***to='/shop'>
-                <IconButton aria-label='Shop' color='inherit'>
-                  <StorefrontIcon />
-                  <Typography noWrap>Shop</Typography>
-                </IconButton>
-              </Link>
+            <Link style=***REMOVED***isActive(history, '/cart')***REMOVED***to='/cart'>
+              <IconButton aria-label='Cart' color='inherit'>
+                <Badge badgeContent=***REMOVED***itemTotal()***REMOVED***color='secondary'>
+                  <ShoppingCartIcon />
+                </Badge>
+                <Typography noWrap>Cart</Typography>
+              </IconButton>
+            </Link>
 
-              <Link style=***REMOVED***isActive(history, '/cart')***REMOVED***to='/cart'>
-                <IconButton aria-label='Cart' color='inherit'>
-                  <Badge badgeContent=***REMOVED***itemTotal()***REMOVED***color='secondary'>
-                    <ShoppingCartIcon />
-                  </Badge>
-                  <Typography noWrap>Cart</Typography>
-                </IconButton>
-              </Link>
-
-              ***REMOVED***isAuthenticated() && isAuthenticated().user.role === 0 && (
-                <Link
-                  style=***REMOVED***isActive(history, '/user/dashboard')}
-                  to='/user/dashboard'
-                >
-                  <IconButton aria-label='Dashboard' color='inherit'>
-                    <DashboardIcon />
-                    <Typography noWrap>Dashboard</Typography>
-                  </IconButton>
-                </Link>
-              )}
-
-              ***REMOVED***isAuthenticated() && isAuthenticated().user.role === 1 && (
-                <Link
-                  style=***REMOVED***isActive(history, '/admin/dashboard')}
-                  to='/admin/dashboard'
-                >
-                  <IconButton aria-label='Dashboard' color='inherit'>
-                    <DashboardIcon />
-                    <Typography noWrap>Dashboard</Typography>
-                  </IconButton>
-                </Link>
-              )}
-
-              ***REMOVED***!isAuthenticated() && (
-                <Fragment>
-                  <Link style=***REMOVED***isActive(history, '/signin')***REMOVED***to='/signin'>
-                    <IconButton aria-label='Signin' color='inherit'>
-                      <AccountCircleIcon />
-                      <Typography noWrap>Signin</Typography>
-                    </IconButton>
-                  </Link>
-
-                  <Link style=***REMOVED***isActive(history, '/signup')***REMOVED***to='/signup'>
-                    <IconButton aria-label='Signup' color='inherit'>
-                      <PersonAddIcon />
-                      <Typography noWrap>Signup</Typography>
-                    </IconButton>
-                  </Link>
-                </Fragment>
-              )}
-
-              ***REMOVED***isAuthenticated() && (
-                <span
-                  style=***REMOVED******REMOVED*** cursor: 'pointer', color: '#ffffff' }}
-                  onClick=***REMOVED***() =>
-                    signout(() => ***REMOVED***
-                      history.push('/');
-                    })
-                  }
-                >
-                  <IconButton aria-label='Signout' color='inherit'>
-                    <ExitToAppIcon />
-                    <Typography noWrap>Signout</Typography>
-                  </IconButton>
-                </span>
-              )}
-            </div>
-            <div className=***REMOVED***classes.sectionMobile}>
-              <IconButton
-                aria-label='show more'
-                aria-controls=***REMOVED***mobileMenuId}
-                aria-haspopup='true'
-                onClick=***REMOVED***handleMobileMenuOpen}
-                color='inherit'
+            ***REMOVED***isAuthenticated() && isAuthenticated().user.role === 0 && (
+              <Link
+                style=***REMOVED***isActive(history, '/user/dashboard')}
+                to='/user/dashboard'
               >
-                <MoreIcon />
-              </IconButton>
-            </div>
-          </Toolbar>
-        </div>
-        ***REMOVED***renderMobileMenu}
-        ***REMOVED***renderMenu}
+                <IconButton aria-label='Dashboard' color='inherit'>
+                  <DashboardIcon />
+                  <Typography noWrap>Dashboard</Typography>
+                </IconButton>
+              </Link>
+            )}
+
+            ***REMOVED***isAuthenticated() && isAuthenticated().user.role === 1 && (
+              <Link
+                style=***REMOVED***isActive(history, '/admin/dashboard')}
+                to='/admin/dashboard'
+              >
+                <IconButton aria-label='Dashboard' color='inherit'>
+                  <DashboardIcon />
+                  <Typography noWrap>Dashboard</Typography>
+                </IconButton>
+              </Link>
+            )}
+
+            ***REMOVED***!isAuthenticated() && (
+              <Fragment>
+                <Link style=***REMOVED***isActive(history, '/signin')***REMOVED***to='/signin'>
+                  <IconButton aria-label='Signin' color='inherit'>
+                    <AccountCircleIcon />
+                    <Typography noWrap>Signin</Typography>
+                  </IconButton>
+                </Link>
+
+                <Link style=***REMOVED***isActive(history, '/signup')***REMOVED***to='/signup'>
+                  <IconButton aria-label='Signup' color='inherit'>
+                    <PersonAddIcon />
+                    <Typography noWrap>Signup</Typography>
+                  </IconButton>
+                </Link>
+              </Fragment>
+            )}
+
+            ***REMOVED***isAuthenticated() && (
+              <span
+                style=***REMOVED******REMOVED*** cursor: 'pointer', color: '#ffffff' }}
+                onClick=***REMOVED***() =>
+                  signout(() => ***REMOVED***
+                    history.push('/');
+                  })
+                }
+              >
+                <IconButton aria-label='Signout' color='inherit'>
+                  <ExitToAppIcon />
+                  <Typography noWrap>Signout</Typography>
+                </IconButton>
+              </span>
+            )}
+          </div>
+          <div className=***REMOVED***classes.sectionMobile}>
+            <IconButton
+              aria-label='show more'
+              aria-controls=***REMOVED***mobileMenuId}
+              aria-haspopup='true'
+              onClick=***REMOVED***handleMobileMenuOpen}
+              color='inherit'
+            >
+              <MoreIcon />
+            </IconButton>
+          </div>
+        </Toolbar>
       </div>
+      ***REMOVED***renderMobileMenu}
+      ***REMOVED***renderMenu}
+    </div>
   );
 };
 

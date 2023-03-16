@@ -41,7 +41,11 @@ const Home = () => ***REMOVED***
       description='MERN E-commerce App'
       className='container-fluid'
     >
-      <Search />
+      <div style=***REMOVED******REMOVED***
+        width: "100vw",
+      }}>
+        <Search />
+      </div>
       <div className='row'>
         <div className='col-md-1'></div>
         <div className='col-md-10'>

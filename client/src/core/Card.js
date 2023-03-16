@@ -37,6 +37,9 @@ const useStyles = makeStyles((theme) => (***REMOVED***
     paddingBottom: theme.spacing(4),
   },
   card: ***REMOVED***
+    borderRadius: "1rem",
+    boxShadow: "none",
+    border: "0.05rem solid lightgray",
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
