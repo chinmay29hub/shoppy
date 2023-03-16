@@ -1,10 +1,10 @@
 import React, ***REMOVED*** useState, useEffect ***REMOVED***from 'react';
-
 import ***REMOVED*** makeStyles ***REMOVED***from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
+// import FormControl from 'react-bootstrap/FormControl';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -126,8 +126,7 @@ const Search = () => ***REMOVED***
                 value=***REMOVED***data.name}
                 onChange=***REMOVED***handleChange('category')}
                 displayEmpty
-                className=***REMOVED***classes.selectEmpty}
-              >
+                className=***REMOVED***classes.selectEmpty}>
                 <MenuItem value='All'>
                   <em>All</em>
                 </MenuItem>
@@ -139,11 +138,10 @@ const Search = () => ***REMOVED***
               </Select>
             </FormControl>
           </div>
-
           <TextField
             onChange=***REMOVED***handleChange('search')}
             id='outlined-basic'
-            label=***REMOVED***<span><SearchIcon/>Search by name</span>}
+            label=***REMOVED***<span><SearchIcon />Search by name</span>}
             variant='outlined'
             className=***REMOVED***classes.tField}
             autoComplete='off'

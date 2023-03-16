@@ -5,7 +5,6 @@ import ***REMOVED*** getCart ***REMOVED***from './cartHelpers';
 import Card from './Card';
 import Checkout from './Checkout';
 
-import Copyright from './Copyright';
 
 const Cart = () => ***REMOVED***
   const [items, setItems] = useState([]);
@@ -59,7 +58,6 @@ const Cart = () => ***REMOVED***
         </div>
         <div className='col-md-2'></div>
       </div>
-      <Copyright />
     </Layout>
   );
 };

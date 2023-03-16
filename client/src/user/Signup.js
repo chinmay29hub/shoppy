@@ -14,8 +14,6 @@ import Typography from '@material-ui/core/Typography';
 import ***REMOVED*** makeStyles ***REMOVED***from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-import Copyright from '../core/Copyright';
-
 import Layout from '../core/Layout';
 import ***REMOVED*** signup ***REMOVED***from '../auth';
 
@@ -143,9 +141,8 @@ export default function Signup() ***REMOVED***
                 fullWidth
                 name='password'
                 label='Password'
-                type='password'
                 id='password'
-                onChange=***REMOVED***handleChange('password')}
+                onChange=***REMOVED***() => handleChange('password')}
                 type='password'
                 value=***REMOVED***password}
                 autoComplete='current-password'
@@ -181,7 +178,6 @@ export default function Signup() ***REMOVED***
       className='container col-md-8 offset-md-2'
     >
       ***REMOVED***signUpForm()}
-      <Copyright />
     </Layout>
   );
 }

@@ -4,7 +4,6 @@ import ***REMOVED*** getProducts ***REMOVED***from './apiCore';
 import Card from './Card';
 import Search from './Search';
 import 'fontsource-roboto';
-import Copyright from './Copyright';
 
 const Home = () => ***REMOVED***
   const [productsBySell, setProductsBySell] = useState([]);
@@ -66,8 +65,6 @@ const Home = () => ***REMOVED***
         </div>
         <div className='col-md-1'></div>
       </div>
-
-      <Copyright />
     </Layout>
   );
 };

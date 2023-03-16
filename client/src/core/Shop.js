@@ -12,7 +12,6 @@ import ***REMOVED*** makeStyles ***REMOVED***from '@material-ui/core/styles';
 
 import Search from './Search';
 import ***REMOVED*** prices ***REMOVED***from './fixedPrices';
-import Copyright from './Copyright';
 
 const Shop = () => ***REMOVED***
   const [myFilters, setMyFilters] = useState(***REMOVED***
@@ -160,7 +159,6 @@ const Shop = () => ***REMOVED***
           ***REMOVED***loadMoreButton()}
         </div>
       </div>
-      <Copyright />
     </Layout>
   );
 };

@@ -14,7 +14,6 @@ import Typography from '@material-ui/core/Typography';
 import ***REMOVED*** makeStyles ***REMOVED***from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-import Copyright from '../core/Copyright';
 import ***REMOVED*** signin, authenticate, isAuthenticated ***REMOVED***from '../auth';
 
 const useStyles = makeStyles((theme) => (***REMOVED***
@@ -181,7 +180,6 @@ export default function Signin() ***REMOVED***
       className='container col-md-8 offset-md-2'
     >
       ***REMOVED***signInForm()}
-      <Copyright />
     </Layout>
   );
 }
