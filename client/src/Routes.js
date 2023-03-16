@@ -18,6 +18,7 @@ import ManageProducts from './admin/ManageProducts';
 import UpdateProduct from './admin/UpdateProduct';
 import NotFound from './core/NotFound';
 import Chatbot from './core/Chatbot';
+import Map from './core/Map';
 
 const Routes = () => ***REMOVED***
   return (
@@ -28,6 +29,7 @@ const Routes = () => ***REMOVED***
         <Route path='/signin' component=***REMOVED***Signin***REMOVED***exact />
         <Route path='/signup' component=***REMOVED***Signup***REMOVED***exact />
         <Route path='/chat' component=***REMOVED***Chatbot***REMOVED***exact />
+        <Route path='/map' component=***REMOVED***Map***REMOVED***exact />
         <PrivateRoute path='/user/dashboard' component=***REMOVED***Dashboard***REMOVED***exact />
         <AdminRoute path='/admin/dashboard' component=***REMOVED***AdminDashboard***REMOVED***exact />
         <AdminRoute path='/create/category' component=***REMOVED***AddCategory***REMOVED***exact />
