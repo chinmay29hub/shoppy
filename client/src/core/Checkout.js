@@ -67,71 +67,56 @@ const Checkout = (***REMOVED*** products, setRun = (f) => f, run = undefined }) 
 
   const buy = () => ***REMOVED***
     setData(***REMOVED*** loading: true });
-    // send the nonce to your server
-    // nonce = data.instance.requestPaymentMethod()
     let nonce;
-    let getNonce = data.instance
-      .requestPaymentMethod()
-      .then((data) => ***REMOVED***
-        // console.log(data);
-        nonce = data.nonce;
-        // once you have nonce (card type, card number) send nonce as 'paymentMethodNonce'
-        // and also total to be charged
-        // console.log(
-        //     "send nonce and total to process: ",
-        //     nonce,
-        //     getTotal(products)
-        // );
-        const paymentData = ***REMOVED***
-          paymentMethodNonce: nonce,
-          amount: getTotal(products),
-        };
-
-        processPayment(userId, token, paymentData)
-          .then((response) => ***REMOVED***
-            console.log(response);
-            // empty cart
-            // create order
-
-            const createOrderData = ***REMOVED***
-              products: products,
-              transaction_id: response.transaction.id,
-              amount: response.transaction.amount,
-              address: deliveryAddress,
-            };
-
-            createOrder(userId, token, createOrderData)
-              .then((response) => ***REMOVED***
-                emptyCart(() => ***REMOVED***
-                  setRun(!run); // run useEffect in parent Cart
-                  console.log('payment success and empty cart');
-                  setData(***REMOVED***
-                    loading: false,
-                    success: true,
+    let getNonce = data.instance &&
+      data.instance
+        .requestPaymentMethod()
+        .then((data) => ***REMOVED***
+          nonce = data.nonce;
+          const paymentData = ***REMOVED***
+            paymentMethodNonce: nonce,
+            amount: getTotal(products),
+          };
+          processPayment(userId, token, paymentData)
+            .then((response) => ***REMOVED***
+              console.log(response)
+              const createOrderData = ***REMOVED***
+                products: products,
+                transaction_id: response.transaction.id,
+                amount: response.transaction.amount,
+                address: deliveryAddress,
+              };
+              createOrder(userId, token, createOrderData)
+                .then((response) => ***REMOVED***
+                  emptyCart(() => ***REMOVED***
+                    setRun(!run);
+                    setData(***REMOVED***
+                      loading: false,
+                      success: true,
+                    });
                   });
+                })
+                .catch((error) => ***REMOVED***
+                  console.log(error);
+                  setData(***REMOVED*** loading: false });
                 });
-              })
-              .catch((error) => ***REMOVED***
-                console.log(error);
-                setData(***REMOVED*** loading: false });
-              });
-          })
-          .catch((error) => ***REMOVED***
-            console.log(error);
-            setData(***REMOVED*** loading: false });
-          });
-      })
-      .catch((error) => ***REMOVED***
-        // console.log("dropin error: ", error);
-        setData(***REMOVED*** ...data, error: error.message });
-      });
+            })
+            .catch((error) => ***REMOVED***
+              console.log(error);
+              setData(***REMOVED*** loading: false });
+            });
+        })
+        .catch((error) => ***REMOVED***
+          setData(***REMOVED*** ...data, error: error.message });
+        });
   };
+  
 
   const showDropIn = () => (
     <div onBlur=***REMOVED***() => setData(***REMOVED*** ...data, error: '' })}>
       ***REMOVED***data.clientToken !== null && products.length > 0 ? (
         <div>
-          <div className='gorm-group mb-3'>
+          <div className='form-group mb-3'>
             <label className='text-muted'>Delivery address:</label>
             <textarea
               onChange=***REMOVED***handleAddress}
