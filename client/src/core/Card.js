@@ -2,7 +2,8 @@ import React, ***REMOVED*** useState ***REMOVED***from 'react';
 import ***REMOVED*** Redirect ***REMOVED***from 'react-router-dom';
 import ShowImage from './ShowImage';
 import moment from 'moment';
-
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import CameraIcon from '@material-ui/icons/PhotoCamera';
@@ -189,7 +190,7 @@ const Card = (***REMOVED***
     //   </div>
     // </div>
 
-    <Container className=***REMOVED***classes.cardGrid***REMOVED***maxWidth='md'>
+    <Container className=***REMOVED***classes.cardGrid***REMOVED***maxWidth='md' >
       <CssBaseline />
       <Grid container spacing=***REMOVED***2}>
         <Grid item xs=***REMOVED***12***REMOVED***sm=***REMOVED***12***REMOVED***md=***REMOVED***12}>
@@ -197,14 +198,87 @@ const Card = (***REMOVED***
             ***REMOVED***shouldRedirect(redirect)}
             <ShowImage item=***REMOVED***product***REMOVED***url='product' />
             <CardContent className=***REMOVED***classes.cardContent}>
-              <Typography gutterBottom variant='h5' component='h2'>
-                ***REMOVED***product.name}
-              </Typography>
+              <div style=***REMOVED******REMOVED***
+                display: "flex",
+                padding: 0
+              }}>
+                <Row style=***REMOVED******REMOVED***
+                  backgroundColor: "red",
+                  width: "100%",
+                  margin: 0,
+                  display: "flex",
+                  alignItems: "center"
+                }}>
+                  <Col style=***REMOVED******REMOVED***
+                    backgroundColor: "green",
+                    flex: 1
+                  }}>
+                    <Typography gutterBottom variant='h5' component='h2' style=***REMOVED******REMOVED***
+                      fontFamily: "Qanelas-Medium",
+                      fontWeight: "700",
+                      margin: "0.25rem 0rem 0.3rem 0rem",
+                    }}>
+                      ***REMOVED***product.name}
+                    </Typography>
+                  </Col>
+                  <Col style=***REMOVED******REMOVED***
+                    width: "max-content",
+                    backgroundColor: "yellow"
+                  }}>
+                    <p style=***REMOVED******REMOVED***
+                      width: "max-content",
+                      fontFamily: "Qanelas-Black",
+                      fontSize: "1.8rem",
+                      margin: "0"
+                    }}>₹***REMOVED***product.price}</p>
+                  </Col>
+                </Row>
+
+                ***REMOVED***/* <Row style=***REMOVED******REMOVED***
+                  backgroundColor: "red",
+                  width: "100%",
+                  margin: 0
+                }}>
+                  <Col style=***REMOVED******REMOVED***
+                    backgroundColor: "green",
+                    width: "100%"
+                  }}>
+                    <Typography gutterBottom variant='h5' component='h2' style=***REMOVED******REMOVED***
+                      fontFamily: "Qanelas-Medium",
+                      fontWeight: "700",
+                      width: "100%",
+                      margin: "0.25rem 0rem 0.3rem 0rem",
+                    }}>
+                      ***REMOVED***product.name}
+                    </Typography>
+                  </Col>
+                  <Col style=***REMOVED******REMOVED***
+                    width: "max-content",
+                    backgroundColor: "yellow"
+                  }}>
+                    <p style=***REMOVED******REMOVED***
+                      width: "max-content",
+                      fontFamily: "Qanelas-Black",
+                      fontSize: "1.8rem",
+                      margin: "0"
+                    }}>₹***REMOVED***product.price}</p>
+                  </Col>
+                </Row> */}
+              </div>
+              <Button className='prod-categ' style=***REMOVED******REMOVED***
+                backgroundColor: "#b6eee7",
+                marginBottom: "0.5rem",
+                textTransform: "none",
+                color: "#14534c",
+                fontWeight: "500",
+                borderRadius: "0.5rem",
+                padding: "0.1rem 0.6rem",
+                outline: "none",
+                hover: "none"
+              }}>
+                ***REMOVED***product.category && product.category.name}***REMOVED***' '}
+              </Button>
               <Typography className=***REMOVED***classes.productDescription}>***REMOVED***product.description.substring(0, 100)}</Typography>
-              <p className='black-10'>Price: $***REMOVED***product.price}</p>
-              <p className='black-9'>
-                Category: ***REMOVED***product.category && product.category.name}***REMOVED***' '}
-              </p>***REMOVED***' '}
               <p className='black-8'>
                 Added on ***REMOVED***moment(product.createdAt).fromNow()}***REMOVED***' '}
               </p>
@@ -216,11 +290,45 @@ const Card = (***REMOVED***
                 ***REMOVED***showRemoveButton(showRemoveProductButton)}
               </span>
               ***REMOVED***showCartUpdateOptions(cartUpdate)}
-            </CardContent>
-          </CardM>
-        </Grid>
-      </Grid>
-    </Container>
+            </CardContent >
+          </CardM >
+        </Grid >
+      </Grid >
+    </Container >
+
+
+    // <Container className=***REMOVED***classes.cardGrid***REMOVED***maxWidth='md'>
+    //   <CssBaseline />
+    //   <Grid container spacing=***REMOVED***2}>
+    //     <Grid item xs=***REMOVED***12***REMOVED***sm=***REMOVED***12***REMOVED***md=***REMOVED***12}>
+    //       <CardM className=***REMOVED***classes.card}>
+    //         ***REMOVED***shouldRedirect(redirect)}
+    //         <ShowImage item=***REMOVED***product***REMOVED***url='product' />
+    //         <CardContent className=***REMOVED***classes.cardContent}>
+    //           <Typography gutterBottom variant='h5' component='h2'>
+    //             ***REMOVED***product.name}
+    //           </Typography>
+    //           <Typography className=***REMOVED***classes.productDescription}>***REMOVED***product.description.substring(0, 100)}</Typography>
+    //           <p className='black-10'>Price: $***REMOVED***product.price}</p>
+    //           <p className='black-9'>
+    //             Category: ***REMOVED***product.category && product.category.name}***REMOVED***' '}
+    //           </p>***REMOVED***' '}
+    //           <p className='black-8'>
+    //             Added on ***REMOVED***moment(product.createdAt).fromNow()}***REMOVED***' '}
+    //           </p>
+    //           ***REMOVED***showStock(product.quantity)}
+    //           <br></br>
+    //           <span>
+    //             ***REMOVED***showViewButton(showViewProductButton)}
+    //             ***REMOVED***showAddToCartBtn(showAddToCartButton)}
+    //             ***REMOVED***showRemoveButton(showRemoveProductButton)}
+    //           </span>
+    //           ***REMOVED***showCartUpdateOptions(cartUpdate)}
+    //         </CardContent>
+    //       </CardM>
+    //     </Grid>
+    //   </Grid>
+    // </Container>
   );
 };
 

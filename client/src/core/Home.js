@@ -4,6 +4,8 @@ import ***REMOVED*** getProducts ***REMOVED***from './apiCore';
 import Card from './Card';
 import Search from './Search';
 import 'fontsource-roboto';
+import Box from "@material-ui/core/Box";
+
 
 const Home = () => ***REMOVED***
   const [productsBySell, setProductsBySell] = useState([]);
@@ -41,11 +43,15 @@ const Home = () => ***REMOVED***
       description='MERN E-commerce App'
       className='container-fluid'
     >
-      <div style=***REMOVED******REMOVED***
-        width: "100vw",
-      }}>
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        height="max-content"
+      >
         <Search />
-      </div>
+      </Box>
+
       <div className='row'>
         <div className='col-md-1'></div>
         <div className='col-md-10'>

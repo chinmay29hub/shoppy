@@ -162,7 +162,7 @@ const Search = () => ***REMOVED***
             placeholder="Search product"
             style=***REMOVED******REMOVED***
               border: "0.01rem solid lightgray",
-              width: "22rem",
+              width: "15rem",
               height: "3rem",
               fontSize: "1rem",
               borderRadius: "0.6rem",
