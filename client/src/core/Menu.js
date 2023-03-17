@@ -23,6 +23,8 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import StoreIcon from '@material-ui/icons/Store';
+import CameraAltIcon from '@material-ui/icons/CameraAlt';
+import ChatIcon from '@material-ui/icons/Chat';
 
 const isActive = (history, path) => ***REMOVED***
   if (history.location.pathname === path) ***REMOVED***
@@ -177,6 +179,26 @@ const MaterialAppBar = (***REMOVED*** history }) => ***REMOVED***
             Cart
           </Link>
         </MenuItem>
+        <MenuItem>
+          <Link style=***REMOVED***isActive(history, '/chat')***REMOVED***to='/chat'>
+            <IconButton aria-label='Chat' color='inherit'>
+              <Badge badgeContent=***REMOVED***itemTotal()***REMOVED***color='secondary'>
+                <ChatIcon />
+              </Badge>
+            </IconButton>
+            Chat
+          </Link>
+        </MenuItem>
+        <MenuItem>
+          <Link style=***REMOVED***isActive(history, '/camera')***REMOVED***to='/camera'>
+            <IconButton aria-label='Camera' color='inherit'>
+              <Badge badgeContent=***REMOVED***itemTotal()***REMOVED***color='secondary'>
+                <CameraAltIcon />
+              </Badge>
+            </IconButton>
+            Camera
+          </Link>
+        </MenuItem>
 
         ***REMOVED***isAuthenticated() && isAuthenticated().user.role === 0 && (
           <MenuItem>
@@ -300,6 +322,19 @@ const MaterialAppBar = (***REMOVED*** history }) => ***REMOVED***
               </IconButton>
             </Link>
 
+            <Link style=***REMOVED***isActive(history, '/chat')***REMOVED***to='/chat'>
+              <IconButton aria-label='Chat' color='inherit'>
+                <ChatIcon />
+                <Typography noWrap>Chat</Typography>
+              </IconButton>
+            </Link>
+            <Link style=***REMOVED***isActive(history, '/camera')***REMOVED***to='/camera'>
+              <IconButton aria-label='Camera' color='inherit'>
+                <CameraAltIcon />
+                <Typography noWrap>Camera</Typography>
+              </IconButton>
+            </Link>
+
             ***REMOVED***isAuthenticated() && isAuthenticated().user.role === 0 && (
               <Link
                 style=***REMOVED***isActive(history, '/user/dashboard')}
@@ -371,8 +406,21 @@ const MaterialAppBar = (***REMOVED*** history }) => ***REMOVED***
           </div>
         </Toolbar>
       </div>
+      
       ***REMOVED***renderMobileMenu}
       ***REMOVED***renderMenu}
+      <div style=***REMOVED******REMOVED*** zIndex: "1", backgroundColor: "white", position: "absolute", right: "1rem", width: "max-content", height: "max-content", padding: "1rem 1rem 0rem 1rem", margin: "0rem 1rem 1rem 1rem", border: "0.01rem solid lightgray", borderRadius: "0.6rem" }}>
+        Wallet:<p style=***REMOVED******REMOVED***
+          fontFamily: 'Qanelas-Bold'
+        }}>
+          ₹4000
+        </p>
+        Interest at 4%:<p style=***REMOVED******REMOVED***
+          fontFamily: 'Qanelas-Bold'
+        }}>
+          ₹160
+        </p>
+      </div>
     </div>
   );
 };

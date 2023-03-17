@@ -30,6 +30,14 @@ exports.updateOrderStatus = (req, res) => ***REMOVED***
   );
 };
 
+exports.getOrderStatus = (req, res) => ***REMOVED***
+  Order.find()
+    .then((data) => ***REMOVED***
+      console.log(data)
+      res.json(data)
+    })
+}
+
 exports.listOrders = (req, res) => ***REMOVED***
   Order.find()
     .populate('user', '_id name address')

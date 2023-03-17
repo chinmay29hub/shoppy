@@ -14,10 +14,7 @@ const ShowImage = (***REMOVED*** item, url }) => (
         margin: ".8rem",
         width: 'calc(100% - 1.6rem)',
         border: "0.01rem solid lightgray",
-        borderRadius: "0.6rem",
-        // width: '100%',
-        // border: "none",
-        // borderBottom: "0.01rem solid lightgray"
+        borderRadius: "0.6rem"
       }}
     />
   </div>

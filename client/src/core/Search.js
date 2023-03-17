@@ -101,7 +101,7 @@ const Search = () => ***REMOVED***
           <h2 className='mt-4 mb-4 text-center'>***REMOVED***searchMessage(searched, results)}</h2>
           <div className='row'>
             ***REMOVED***results.map((product, i) => (
-              <div className='col-md-4 mb-3'>
+              <div className='col-md-8 mb-3'>
                 <Card key=***REMOVED***i***REMOVED***product=***REMOVED***product***REMOVED***/>
               </div>
             ))}
@@ -120,7 +120,6 @@ const Search = () => ***REMOVED***
       backgroundColor: "white",
       borderRadius: "0.8rem",
       width: "max-content",
-      padding: "0rem"
     }}>
       <FormControl className=***REMOVED***classes.formControl***REMOVED***style=***REMOVED******REMOVED***
         margin: 0,
@@ -148,7 +147,13 @@ const Search = () => ***REMOVED***
             <Dropdown.Menu>
               <Dropdown.Item disabled="true">Select Category</Dropdown.Item>
               ***REMOVED***categories.map((c, i) => ***REMOVED***
-                return <Dropdown.Item key=***REMOVED***i***REMOVED***value=***REMOVED***c.id***REMOVED***/>
+                return (
+                  <Dropdown.Item key=***REMOVED***i***REMOVED***style=***REMOVED******REMOVED***
+                    height: "max-content",
+                    padding: "0.2rem 0rem -1rem 0rem"
+                  }}>
+                    <p>***REMOVED***c.name}</p>
+                  </Dropdown.Item>)
               })}
             </Dropdown.Menu>
           </Dropdown>
@@ -159,7 +164,7 @@ const Search = () => ***REMOVED***
             variant='outlined'
             className=***REMOVED***classes.tField}
             autoComplete='off'
-            placeholder="Search product"
+            placeholder="Search Product"
             style=***REMOVED******REMOVED***
               border: "0.01rem solid lightgray",
               width: "15rem",
@@ -190,7 +195,6 @@ const Search = () => ***REMOVED***
       </FormControl>
     </Form>
   );
-
   return (
     <div className='row'>
       <div className='container mb-3'>***REMOVED***searchForm()}</div>
