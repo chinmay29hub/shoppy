@@ -15,5 +15,8 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "multer": "^1.4.5-lts.1"
+  },
+  "engines": ***REMOVED***
+    "node": ">=14 <=18"
   }
 }
