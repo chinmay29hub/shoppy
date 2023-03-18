@@ -142,7 +142,7 @@ export default function Signup() ***REMOVED***
                 name='password'
                 label='Password'
                 id='password'
-                onChange=***REMOVED***() => handleChange('password')}
+                onChange=***REMOVED***handleChange('password')}
                 type='password'
                 value=***REMOVED***password}
                 autoComplete='current-password'
