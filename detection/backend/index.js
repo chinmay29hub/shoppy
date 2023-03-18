@@ -2,7 +2,7 @@ const express = require('express');
 const vision = require('@google-cloud/vision');
 const cors = require('cors');
 const multer = require('multer');
-const upload = multer(***REMOVED*** dest: 'uploads/' });
+const upload = multer();
 const app = express();
 
 app.use(cors()); // Allow cross-origin requests from any domain
@@ -20,7 +20,7 @@ const client = new vision.ImageAnnotatorClient(CONFIG);
 
 app.post('/logo-detection', upload.single('image'), async (req, res) => ***REMOVED***
   try ***REMOVED***
-    const [result] = await client.logoDetection(req.file.path);
+    const [result] = await client.logoDetection(req.file.buffer);
     const logos = result.logoAnnotations.map((annotation) => annotation.description);
     res.json(***REMOVED*** logos });
   ***REMOVED***catch (err) ***REMOVED***
