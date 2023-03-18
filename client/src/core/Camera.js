@@ -37,7 +37,7 @@ const Camera = () => ***REMOVED***
     const formData = new FormData();
     formData.append('image', blob, 'image.jpg');
     try ***REMOVED***
-      const res = await axios.post(`$***REMOVED***REACT_APP_LOGO_DETECTION_API}/logo-detection`, formData);
+      const res = await axios.post(`$***REMOVED***process.env.REACT_APP_LOGO_DETECTION_API}/logo-detection`, formData);
       setLogos(res.data.logos);
     ***REMOVED***catch (err) ***REMOVED***
       console.error(err);
