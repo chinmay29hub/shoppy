@@ -29,6 +29,8 @@ app.post('/logo-detection', upload.single('image'), async (req, res) => ***REMOV
   }
 });
 
-app.listen(3001, () => ***REMOVED***
+const port = process.env.PORT || 3001
+
+app.listen(port, () => ***REMOVED***
   console.log('Server listening on port 3001');
 });
