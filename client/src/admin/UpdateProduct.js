@@ -1,11 +1,11 @@
-import React, ***REMOVED*** useState, useEffect ***REMOVED***from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '../core/Layout';
-import ***REMOVED*** isAuthenticated ***REMOVED***from '../auth';
-import ***REMOVED*** Link, Redirect ***REMOVED***from 'react-router-dom';
-import ***REMOVED*** getProduct, getCategories, updateProduct ***REMOVED***from './apiAdmin';
+import { isAuthenticated } from '../auth';
+import { Link, Redirect } from 'react-router-dom';
+import { getProduct, getCategories, updateProduct } from './apiAdmin';
 
-const UpdateProduct = (***REMOVED*** match }) => ***REMOVED***
-  const [values, setValues] = useState(***REMOVED***
+const UpdateProduct = ({ match }) => {
+  const [values, setValues] = useState({
     name: '',
     description: '',
     price: '',
@@ -22,8 +22,8 @@ const UpdateProduct = (***REMOVED*** match }) => ***REMOVED***
   });
   const [categories, setCategories] = useState([]);
 
-  const ***REMOVED*** user, token ***REMOVED***= isAuthenticated();
-  const ***REMOVED***
+  const { user, token } = isAuthenticated();
+  const {
     name,
     description,
     price,
@@ -36,15 +36,15 @@ const UpdateProduct = (***REMOVED*** match }) => ***REMOVED***
     createdProduct,
     redirectToProfile,
     formData,
-  ***REMOVED***= values;
+  } = values;
 
-  const init = (productId) => ***REMOVED***
-    getProduct(productId).then((data) => ***REMOVED***
-      if (data.error) ***REMOVED***
-        setValues(***REMOVED*** ...values, error: data.error });
-      ***REMOVED***else ***REMOVED***
+  const init = (productId) => {
+    getProduct(productId).then((data) => {
+      if (data.error) {
+        setValues({ ...values, error: data.error });
+      } else {
         // populate the state
-        setValues(***REMOVED***
+        setValues({
           ...values,
           name: data.name,
           description: data.description,
@@ -61,36 +61,36 @@ const UpdateProduct = (***REMOVED*** match }) => ***REMOVED***
   };
 
   // load categories and set form data
-  const initCategories = () => ***REMOVED***
-    getCategories().then((data) => ***REMOVED***
-      if (data.error) ***REMOVED***
-        setValues(***REMOVED*** ...values, error: data.error });
-      ***REMOVED***else ***REMOVED***
+  const initCategories = () => {
+    getCategories().then((data) => {
+      if (data.error) {
+        setValues({ ...values, error: data.error });
+      } else {
         setCategories(data);
       }
     });
   };
 
-  useEffect(() => ***REMOVED***
+  useEffect(() => {
     init(match.params.productId);
   }, []);
 
-  const handleChange = (name) => (event) => ***REMOVED***
+  const handleChange = (name) => (event) => {
     const value = name === 'photo' ? event.target.files[0] : event.target.value;
     formData.set(name, value);
-    setValues(***REMOVED*** ...values, [name]: value });
+    setValues({ ...values, [name]: value });
   };
 
-  const clickSubmit = (event) => ***REMOVED***
+  const clickSubmit = (event) => {
     event.preventDefault();
-    setValues(***REMOVED*** ...values, error: '', loading: true });
+    setValues({ ...values, error: '', loading: true });
 
     updateProduct(match.params.productId, user._id, token, formData).then(
-      (data) => ***REMOVED***
-        if (data.error) ***REMOVED***
-          setValues(***REMOVED*** ...values, error: data.error });
-        ***REMOVED***else ***REMOVED***
-          setValues(***REMOVED***
+      (data) => {
+        if (data.error) {
+          setValues({ ...values, error: data.error });
+        } else {
+          setValues({
             ...values,
             name: '',
             description: '',
@@ -108,12 +108,12 @@ const UpdateProduct = (***REMOVED*** match }) => ***REMOVED***
   };
 
   const newPostForm = () => (
-    <form className='mb-3' onSubmit=***REMOVED***clickSubmit}>
+    <form className='mb-3' onSubmit={clickSubmit}>
       <h4>Post Photo</h4>
       <div className='form-group'>
         <label className='btn btn-secondary'>
           <input
-            onChange=***REMOVED***handleChange('photo')}
+            onChange={handleChange('photo')}
             type='file'
             name='photo'
             accept='image/*'
@@ -124,40 +124,40 @@ const UpdateProduct = (***REMOVED*** match }) => ***REMOVED***
       <div className='form-group'>
         <label className='text-muted'>Name</label>
         <input
-          onChange=***REMOVED***handleChange('name')}
+          onChange={handleChange('name')}
           type='text'
           className='form-control'
-          value=***REMOVED***name}
+          value={name}
         />
       </div>
 
       <div className='form-group'>
         <label className='text-muted'>Description</label>
         <textarea
-          onChange=***REMOVED***handleChange('description')}
+          onChange={handleChange('description')}
           className='form-control'
-          value=***REMOVED***description}
+          value={description}
         />
       </div>
 
       <div className='form-group'>
         <label className='text-muted'>Price</label>
         <input
-          onChange=***REMOVED***handleChange('price')}
+          onChange={handleChange('price')}
           type='number'
           className='form-control'
-          value=***REMOVED***price}
+          value={price}
         />
       </div>
 
       <div className='form-group'>
         <label className='text-muted'>Category</label>
-        <select onChange=***REMOVED***handleChange('category')***REMOVED***className='form-control'>
+        <select onChange={handleChange('category')} className='form-control'>
           <option>Please select</option>
-          ***REMOVED***categories &&
+          {categories &&
             categories.map((c, i) => (
-              <option key=***REMOVED***i***REMOVED***value=***REMOVED***c._id}>
-                ***REMOVED***c.name}
+              <option key={i} value={c._id}>
+                {c.name}
               </option>
             ))}
         </select>
@@ -165,7 +165,7 @@ const UpdateProduct = (***REMOVED*** match }) => ***REMOVED***
 
       <div className='form-group'>
         <label className='text-muted'>Shipping</label>
-        <select onChange=***REMOVED***handleChange('shipping')***REMOVED***className='form-control'>
+        <select onChange={handleChange('shipping')} className='form-control'>
           <option>Please select</option>
           <option value='0'>No</option>
           <option value='1'>Yes</option>
@@ -175,10 +175,10 @@ const UpdateProduct = (***REMOVED*** match }) => ***REMOVED***
       <div className='form-group'>
         <label className='text-muted'>Quantity</label>
         <input
-          onChange=***REMOVED***handleChange('quantity')}
+          onChange={handleChange('quantity')}
           type='number'
           className='form-control'
-          value=***REMOVED***quantity}
+          value={quantity}
         />
       </div>
 
@@ -189,18 +189,18 @@ const UpdateProduct = (***REMOVED*** match }) => ***REMOVED***
   const showError = () => (
     <div
       className='alert alert-danger'
-      style=***REMOVED******REMOVED*** display: error ? '' : 'none' }}
+      style={{ display: error ? '' : 'none' }}
     >
-      ***REMOVED***error}
+      {error}
     </div>
   );
 
   const showSuccess = () => (
     <div
       className='alert alert-info'
-      style=***REMOVED******REMOVED*** display: createdProduct ? '' : 'none' }}
+      style={{ display: createdProduct ? '' : 'none' }}
     >
-      <h2>***REMOVED***`$***REMOVED***createdProduct}`***REMOVED***is updated!</h2>
+      <h2>{`${createdProduct}`} is updated!</h2>
     </div>
   );
 
@@ -211,9 +211,9 @@ const UpdateProduct = (***REMOVED*** match }) => ***REMOVED***
       </div>
     );
 
-  const redirectUser = () => ***REMOVED***
-    if (redirectToProfile) ***REMOVED***
-      if (!error) ***REMOVED***
+  const redirectUser = () => {
+    if (redirectToProfile) {
+      if (!error) {
         return <Redirect to='/' />;
       }
     }
@@ -222,15 +222,15 @@ const UpdateProduct = (***REMOVED*** match }) => ***REMOVED***
   return (
     <Layout
       title='Add a new product'
-      description=***REMOVED***`G'day $***REMOVED***user.name}, ready to add a new product?`}
+      description={`G'day ${user.name}, ready to add a new product?`}
     >
       <div className='row'>
         <div className='col-md-8 offset-md-2'>
-          ***REMOVED***showLoading()}
-          ***REMOVED***showSuccess()}
-          ***REMOVED***showError()}
-          ***REMOVED***newPostForm()}
-          ***REMOVED***redirectUser()}
+          {showLoading()}
+          {showSuccess()}
+          {showError()}
+          {newPostForm()}
+          {redirectUser()}
         </div>
       </div>
     </Layout>

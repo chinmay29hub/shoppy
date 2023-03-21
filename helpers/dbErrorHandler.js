@@ -1,7 +1,7 @@
 'use strict';
-const uniqueMessage = (error) => ***REMOVED***
+const uniqueMessage = (error) => {
   let output;
-  try ***REMOVED***
+  try {
     let fieldName = error.message.substring(
       error.message.lastIndexOf('.$') + 2,
       error.message.lastIndexOf('_1')
@@ -10,18 +10,18 @@ const uniqueMessage = (error) => ***REMOVED***
       fieldName.charAt(0).toUpperCase() +
       fieldName.slice(1) +
       ' Already exists';
-  ***REMOVED***catch (ex) ***REMOVED***
+  } catch (ex) {
     output = 'Unique field already existss';
   }
 
   return output;
 };
 
-exports.errorHandler = (error) => ***REMOVED***
+exports.errorHandler = (error) => {
   let message = '';
 
-  if (error.code) ***REMOVED***
-    switch (error.code) ***REMOVED***
+  if (error.code) {
+    switch (error.code) {
       case 11000:
       case 11001:
         message = uniqueMessage(error);
@@ -29,8 +29,8 @@ exports.errorHandler = (error) => ***REMOVED***
       default:
         message = 'Something really went wrong';
     }
-  ***REMOVED***else ***REMOVED***
-    for (let errorName in error.errorors) ***REMOVED***
+  } else {
+    for (let errorName in error.errorors) {
       if (error.errorors[errorName].message)
         message = error.errorors[errorName].message;
     }

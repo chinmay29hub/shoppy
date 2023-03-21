@@ -1,31 +1,31 @@
-import React, ***REMOVED*** useState ***REMOVED***from 'react';
+import React, { useState } from 'react';
 import Layout from '../core/Layout';
-import ***REMOVED*** isAuthenticated ***REMOVED***from '../auth';
-import ***REMOVED*** Link ***REMOVED***from 'react-router-dom';
-import ***REMOVED*** createCategory ***REMOVED***from './apiAdmin';
+import { isAuthenticated } from '../auth';
+import { Link } from 'react-router-dom';
+import { createCategory } from './apiAdmin';
 
-const AddCategory = () => ***REMOVED***
+const AddCategory = () => {
   const [name, setName] = useState('');
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
 
   // destructure user and token from localstorage
-  const ***REMOVED*** user, token ***REMOVED***= isAuthenticated();
+  const { user, token } = isAuthenticated();
 
-  const handleChange = (e) => ***REMOVED***
+  const handleChange = (e) => {
     setError('');
     setName(e.target.value);
   };
 
-  const clickSubmit = (e) => ***REMOVED***
+  const clickSubmit = (e) => {
     e.preventDefault();
     setError('');
     setSuccess(false);
     // make request to api to create category
-    createCategory(user._id, token, ***REMOVED*** name }).then((data) => ***REMOVED***
-      if (data.error) ***REMOVED***
+    createCategory(user._id, token, { name }).then((data) => {
+      if (data.error) {
         setError(data.error);
-      ***REMOVED***else ***REMOVED***
+      } else {
         setError('');
         setSuccess(true);
       }
@@ -33,14 +33,14 @@ const AddCategory = () => ***REMOVED***
   };
 
   const newCategoryForm = () => (
-    <form onSubmit=***REMOVED***clickSubmit}>
+    <form onSubmit={clickSubmit}>
       <div className='form-group'>
         <label className='text-muted'>Name</label>
         <input
           type='text'
           className='form-control'
-          onChange=***REMOVED***handleChange}
-          value=***REMOVED***name}
+          onChange={handleChange}
+          value={name}
           autoFocus
           required
         />
@@ -49,14 +49,14 @@ const AddCategory = () => ***REMOVED***
     </form>
   );
 
-  const showSuccess = () => ***REMOVED***
-    if (success) ***REMOVED***
-      return <h3 className='text-success'>***REMOVED***name***REMOVED***is created</h3>;
+  const showSuccess = () => {
+    if (success) {
+      return <h3 className='text-success'>{name} is created</h3>;
     }
   };
 
-  const showError = () => ***REMOVED***
-    if (error) ***REMOVED***
+  const showError = () => {
+    if (error) {
       return <h3 className='text-danger'>Category should be unique</h3>;
     }
   };
@@ -72,14 +72,14 @@ const AddCategory = () => ***REMOVED***
   return (
     <Layout
       title='Add a new category'
-      description=***REMOVED***`Hey $***REMOVED***user.name}, ready to add a new category?`}
+      description={`Hey ${user.name}, ready to add a new category?`}
     >
       <div className='row'>
         <div className='col-md-8 offset-md-2'>
-          ***REMOVED***showSuccess()}
-          ***REMOVED***showError()}
-          ***REMOVED***newCategoryForm()}
-          ***REMOVED***goBack()}
+          {showSuccess()}
+          {showError()}
+          {newCategoryForm()}
+          {goBack()}
         </div>
       </div>
     </Layout>

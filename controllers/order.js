@@ -1,13 +1,13 @@
-const ***REMOVED*** Order, CartItem ***REMOVED***= require('../models/order');
-const ***REMOVED*** errorHandler ***REMOVED***= require('../helpers/dbErrorHandler');
+const { Order, CartItem } = require('../models/order');
+const { errorHandler } = require('../helpers/dbErrorHandler');
 
-exports.create = (req, res) => ***REMOVED***
+exports.create = (req, res) => {
   // console.log('CREATE ORDER: ', req.body);
   req.body.order.user = req.profile;
   const order = new Order(req.body.order);
-  order.save((error, data) => ***REMOVED***
-    if (error) ***REMOVED***
-      return res.status(400).json(***REMOVED***
+  order.save((error, data) => {
+    if (error) {
+      return res.status(400).json({
         error: errorHandler(error),
       });
     }
@@ -15,13 +15,13 @@ exports.create = (req, res) => ***REMOVED***
   });
 };
 
-exports.updateOrderStatus = (req, res) => ***REMOVED***
+exports.updateOrderStatus = (req, res) => {
   Order.update(
-    ***REMOVED*** _id: req.body.orderId },
-    ***REMOVED*** $set: ***REMOVED*** status: req.body.status ***REMOVED***},
-    (err, order) => ***REMOVED***
-      if (err) ***REMOVED***
-        return res.status(400).json(***REMOVED***
+    { _id: req.body.orderId },
+    { $set: { status: req.body.status } },
+    (err, order) => {
+      if (err) {
+        return res.status(400).json({
           error: errorHandler(err),
         });
       }
@@ -30,21 +30,21 @@ exports.updateOrderStatus = (req, res) => ***REMOVED***
   );
 };
 
-exports.getOrderStatus = (req, res) => ***REMOVED***
+exports.getOrderStatus = (req, res) => {
   Order.find()
-    .then((data) => ***REMOVED***
+    .then((data) => {
       console.log(data)
       res.json(data)
     })
 }
 
-exports.listOrders = (req, res) => ***REMOVED***
+exports.listOrders = (req, res) => {
   Order.find()
     .populate('user', '_id name address')
     .sort('-created')
-    .exec((err, orders) => ***REMOVED***
-      if (err) ***REMOVED***
-        return res.status(400).json(***REMOVED***
+    .exec((err, orders) => {
+      if (err) {
+        return res.status(400).json({
           error: errorHandler(error),
         });
       }
@@ -52,16 +52,16 @@ exports.listOrders = (req, res) => ***REMOVED***
     });
 };
 
-exports.getStatusValues = (req, res) => ***REMOVED***
+exports.getStatusValues = (req, res) => {
   res.json(Order.schema.path('status').enumValues);
 };
 
-exports.orderById = (req, res, next, id) => ***REMOVED***
+exports.orderById = (req, res, next, id) => {
   Order.findById(id)
     .populate('products.product', 'name price')
-    .exec((err, order) => ***REMOVED***
-      if (err || !order) ***REMOVED***
-        return res.status(400).json(***REMOVED***
+    .exec((err, order) => {
+      if (err || !order) {
+        return res.status(400).json({
           error: errorHandler(err),
         });
       }

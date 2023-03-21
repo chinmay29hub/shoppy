@@ -1,28 +1,28 @@
-import React, ***REMOVED*** useState, useRef ***REMOVED***from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
 
-const LogoDetection = () => ***REMOVED***
+const LogoDetection = () => {
   const [logos, setLogos] = useState([]);
   const videoRef = useRef();
   const canvasRef = useRef();
 
-  const startCamera = () => ***REMOVED***
-    navigator.mediaDevices.getUserMedia(***REMOVED*** video: true })
-      .then(stream => ***REMOVED***
+  const startCamera = () => {
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => {
         videoRef.current.srcObject = stream;
         videoRef.current.play();
       })
       .catch(err => console.error(err));
   };
 
-  const stopCamera = () => ***REMOVED***
+  const stopCamera = () => {
     const stream = videoRef.current.srcObject;
     const tracks = stream.getTracks();
     tracks.forEach(track => track.stop());
     videoRef.current.srcObject = null;
   };
 
-  const captureImage = () => ***REMOVED***
+  const captureImage = () => {
     const video = videoRef.current;
     const canvas = canvasRef.current;
     canvas.width = video.videoWidth;
@@ -31,27 +31,27 @@ const LogoDetection = () => ***REMOVED***
     canvas.toBlob(sendImage);
   };
 
-  const sendImage = async (blob) => ***REMOVED***
+  const sendImage = async (blob) => {
     const formData = new FormData();
     formData.append('image', blob, 'image.jpg');
-    try ***REMOVED***
-      const res = await axios.post(`$***REMOVED***process.env.REACT_APP_LOGO_DETECTION_API}/logo-detection`, formData);
+    try {
+      const res = await axios.post(`${process.env.REACT_APP_LOGO_DETECTION_API}/logo-detection`, formData);
       setLogos(res.data.logos);
-    ***REMOVED***catch (err) ***REMOVED***
+    } catch (err) {
       console.error(err);
     }
   };
 
   return (
     <div>
-      <button onClick=***REMOVED***startCamera}>Start Camera</button>
-      <button onClick=***REMOVED***stopCamera}>Stop Camera</button>
-      <button onClick=***REMOVED***captureImage}>Detect Logos</button>
-      <video ref=***REMOVED***videoRef***REMOVED***/>
-      <canvas ref=***REMOVED***canvasRef***REMOVED***style=***REMOVED******REMOVED*** display: 'none' }***REMOVED***/>
+      <button onClick={startCamera}>Start Camera</button>
+      <button onClick={stopCamera}>Stop Camera</button>
+      <button onClick={captureImage}>Detect Logos</button>
+      <video ref={videoRef} />
+      <canvas ref={canvasRef} style={{ display: 'none' }} />
       <ul>
-        ***REMOVED***logos.map((logo, index) => (
-          <li key=***REMOVED***index}>***REMOVED***logo}</li>
+        {logos.map((logo, index) => (
+          <li key={index}>{logo}</li>
         ))}
       </ul>
     </div>

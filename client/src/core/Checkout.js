@@ -1,59 +1,59 @@
-import React, ***REMOVED*** useState, useEffect ***REMOVED***from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
-import ***REMOVED***
+import {
   getProducts,
   getBraintreeClientToken,
   processPayment,
   createOrder,
-***REMOVED***from './apiCore';
-import ***REMOVED*** emptyCart ***REMOVED***from './cartHelpers';
+} from './apiCore';
+import { emptyCart } from './cartHelpers';
 import Card from './Card';
-import ***REMOVED*** isAuthenticated ***REMOVED***from '../auth';
-import ***REMOVED*** Link ***REMOVED***from 'react-router-dom';
+import { isAuthenticated } from '../auth';
+import { Link } from 'react-router-dom';
 import DropIn from 'braintree-web-drop-in-react';
 
-const Checkout = (***REMOVED*** products, setRun = (f) => f, run = undefined }) => ***REMOVED***
-  const [data, setData] = useState(***REMOVED***
+const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
+  const [data, setData] = useState({
     loading: false,
     success: false,
     clientToken: null,
     error: '',
-    instance: ***REMOVED***},
+    instance: {},
     address: '',
   });
 
   const userId = isAuthenticated() && isAuthenticated().user._id;
   const token = isAuthenticated() && isAuthenticated().token;
 
-  const getToken = (userId, token) => ***REMOVED***
-    getBraintreeClientToken(userId, token).then((data) => ***REMOVED***
-      if (data.error) ***REMOVED***
+  const getToken = (userId, token) => {
+    getBraintreeClientToken(userId, token).then((data) => {
+      if (data.error) {
         console.log(data.error);
-        setData(***REMOVED*** ...data, error: data.error });
-      ***REMOVED***else ***REMOVED***
+        setData({ ...data, error: data.error });
+      } else {
         console.log(data);
-        setData(***REMOVED*** clientToken: data.clientToken });
+        setData({ clientToken: data.clientToken });
       }
     });
   };
 
-  useEffect(() => ***REMOVED***
+  useEffect(() => {
     getToken(userId, token);
   }, []);
 
-  const handleAddress = (event) => ***REMOVED***
-    setData(***REMOVED*** ...data, address: event.target.value });
+  const handleAddress = (event) => {
+    setData({ ...data, address: event.target.value });
   };
 
-  const getTotal = () => ***REMOVED***
-    return products.reduce((currentValue, nextValue) => ***REMOVED***
+  const getTotal = () => {
+    return products.reduce((currentValue, nextValue) => {
       return currentValue + nextValue.count * nextValue.price;
     }, 0);
   };
 
-  const showCheckout = () => ***REMOVED***
+  const showCheckout = () => {
     return isAuthenticated() ? (
-      <div>***REMOVED***showDropIn()}</div>
+      <div>{showDropIn()}</div>
     ) : (
       <Link to='/signin'>
         <Button variant='contained' color='primary'>
@@ -65,77 +65,77 @@ const Checkout = (***REMOVED*** products, setRun = (f) => f, run = undefined }) 
 
   let deliveryAddress = data.address;
 
-  const buy = () => ***REMOVED***
-    setData(***REMOVED*** loading: true });
+  const buy = () => {
+    setData({ loading: true });
     let nonce;
     let getNonce = data.instance &&
       data.instance
         .requestPaymentMethod()
-        .then((data) => ***REMOVED***
+        .then((data) => {
           nonce = data.nonce;
-          const paymentData = ***REMOVED***
+          const paymentData = {
             paymentMethodNonce: nonce,
             amount: getTotal(products),
           };
           processPayment(userId, token, paymentData)
-            .then((response) => ***REMOVED***
+            .then((response) => {
               console.log(response)
-              const createOrderData = ***REMOVED***
+              const createOrderData = {
                 products: products,
                 transaction_id: response.transaction.id,
                 amount: response.transaction.amount,
                 address: deliveryAddress,
               };
               createOrder(userId, token, createOrderData)
-                .then((response) => ***REMOVED***
-                  emptyCart(() => ***REMOVED***
+                .then((response) => {
+                  emptyCart(() => {
                     setRun(!run);
-                    setData(***REMOVED***
+                    setData({
                       loading: false,
                       success: true,
                     });
                   });
                 })
-                .catch((error) => ***REMOVED***
+                .catch((error) => {
                   console.log(error);
-                  setData(***REMOVED*** loading: false });
+                  setData({ loading: false });
                 });
             })
-            .catch((error) => ***REMOVED***
+            .catch((error) => {
               console.log(error);
-              setData(***REMOVED*** loading: false });
+              setData({ loading: false });
             });
         })
-        .catch((error) => ***REMOVED***
-          setData(***REMOVED*** ...data, error: error.message });
+        .catch((error) => {
+          setData({ ...data, error: error.message });
         });
   };
   
 
   const showDropIn = () => (
-    <div onBlur=***REMOVED***() => setData(***REMOVED*** ...data, error: '' })}>
-      ***REMOVED***data.clientToken !== null && products.length > 0 ? (
+    <div onBlur={() => setData({ ...data, error: '' })}>
+      {data.clientToken !== null && products.length > 0 ? (
         <div>
           <div className='form-group mb-3'>
             <label className='text-muted'>Delivery address:</label>
             <textarea
-              onChange=***REMOVED***handleAddress}
+              onChange={handleAddress}
               className='form-control'
-              value=***REMOVED***data.address}
+              value={data.address}
               placeholder='Type your delivery address here...'
             />
           </div>
 
           <DropIn
-            options=***REMOVED******REMOVED***
+            options={{
               authorization: data.clientToken,
-              paypal: ***REMOVED***
+              paypal: {
                 flow: 'vault',
               },
             }}
-            onInstance=***REMOVED***(instance) => (data.instance = instance)}
+            onInstance={(instance) => (data.instance = instance)}
           />
-          <button onClick=***REMOVED***buy***REMOVED***className='btn btn-success btn-block'>
+          <button onClick={buy} className='btn btn-success btn-block'>
             Pay
           </button>
         </div>
@@ -146,16 +146,16 @@ const Checkout = (***REMOVED*** products, setRun = (f) => f, run = undefined }) 
   const showError = (error) => (
     <div
       className='alert alert-danger'
-      style=***REMOVED******REMOVED*** display: error ? '' : 'none' }}
+      style={{ display: error ? '' : 'none' }}
     >
-      ***REMOVED***error}
+      {error}
     </div>
   );
 
   const showSuccess = (success) => (
     <div
       className='alert alert-info'
-      style=***REMOVED******REMOVED*** display: success ? '' : 'none' }}
+      style={{ display: success ? '' : 'none' }}
     >
       Thanks! Your payment was successful!
     </div>
@@ -166,11 +166,11 @@ const Checkout = (***REMOVED*** products, setRun = (f) => f, run = undefined }) 
 
   return (
     <div>
-      <h2>Total: $***REMOVED***getTotal()}</h2>
-      ***REMOVED***showLoading(data.loading)}
-      ***REMOVED***showSuccess(data.success)}
-      ***REMOVED***showError(data.error)}
-      ***REMOVED***showCheckout()}
+      <h2>Total: ${getTotal()}</h2>
+      {showLoading(data.loading)}
+      {showSuccess(data.success)}
+      {showError(data.error)}
+      {showCheckout()}
     </div>
   );
 };

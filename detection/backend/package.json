@@ -1,15 +1,15 @@
-***REMOVED***
+{
   "name": "backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": ***REMOVED***
+  "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": ***REMOVED***
+  "dependencies": {
     "@google-cloud/vision": "^3.1.2",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",

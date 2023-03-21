@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const ***REMOVED***
+const {
   signup,
   signin,
   signout,
   requireSignin,
-***REMOVED***= require('../controllers/auth');
-const ***REMOVED*** userSignupValidator ***REMOVED***= require('../validator');
+} = require('../controllers/auth');
+const { userSignupValidator } = require('../validator');
 
 router.get('/signout', signout);
 router.post('/signin', signin);

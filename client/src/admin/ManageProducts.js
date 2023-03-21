@@ -1,35 +1,35 @@
-import React, ***REMOVED*** useState, useEffect ***REMOVED***from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '../core/Layout';
-import ***REMOVED*** isAuthenticated ***REMOVED***from '../auth';
-import ***REMOVED*** Link ***REMOVED***from 'react-router-dom';
-import ***REMOVED*** getProducts, deleteProduct ***REMOVED***from './apiAdmin';
+import { isAuthenticated } from '../auth';
+import { Link } from 'react-router-dom';
+import { getProducts, deleteProduct } from './apiAdmin';
 
-const ManageProducts = () => ***REMOVED***
+const ManageProducts = () => {
   const [products, setProducts] = useState([]);
 
-  const ***REMOVED*** user, token ***REMOVED***= isAuthenticated();
+  const { user, token } = isAuthenticated();
 
-  const loadProducts = () => ***REMOVED***
-    getProducts().then((data) => ***REMOVED***
-      if (data.error) ***REMOVED***
+  const loadProducts = () => {
+    getProducts().then((data) => {
+      if (data.error) {
         console.log(data.error);
-      ***REMOVED***else ***REMOVED***
+      } else {
         setProducts(data);
       }
     });
   };
 
-  const destroy = (productId) => ***REMOVED***
-    deleteProduct(productId, user._id, token).then((data) => ***REMOVED***
-      if (data.error) ***REMOVED***
+  const destroy = (productId) => {
+    deleteProduct(productId, user._id, token).then((data) => {
+      if (data.error) {
         console.log(data.error);
-      ***REMOVED***else ***REMOVED***
+      } else {
         loadProducts();
       }
     });
   };
 
-  useEffect(() => ***REMOVED***
+  useEffect(() => {
     loadProducts();
   }, []);
 
@@ -41,21 +41,21 @@ const ManageProducts = () => ***REMOVED***
     >
       <div className='row'>
         <div className='col-12'>
-          <h2 className='text-center'>Total ***REMOVED***products.length***REMOVED***products</h2>
+          <h2 className='text-center'>Total {products.length} products</h2>
           <hr />
           <ul className='list-group'>
-            ***REMOVED***products.map((p, i) => (
+            {products.map((p, i) => (
               <li
-                key=***REMOVED***i}
+                key={i}
                 className='list-group-item d-flex justify-content-between align-items-center'
               >
-                <strong>***REMOVED***p.name}</strong>
-                <Link to=***REMOVED***`/admin/product/update/$***REMOVED***p._id}`}>
+                <strong>{p.name}</strong>
+                <Link to={`/admin/product/update/${p._id}`}>
                   <span className='badge badge-warning badge-pill'>Update</span>
                 </Link>
                 <Link>
                   <span
-                    onClick=***REMOVED***() => destroy(p._id)}
+                    onClick={() => destroy(p._id)}
                     className='badge badge-danger badge-pill'
                   >
                     Delete

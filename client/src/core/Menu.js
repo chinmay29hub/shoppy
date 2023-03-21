@@ -1,9 +1,9 @@
-import React, ***REMOVED*** Fragment ***REMOVED***from 'react';
-import ***REMOVED*** Link, withRouter, forceUpdate ***REMOVED***from 'react-router-dom';
-import ***REMOVED*** signout, isAuthenticated ***REMOVED***from '../auth';
-import ***REMOVED*** itemTotal ***REMOVED***from './cartHelpers';
-import ***REMOVED*** createMuiTheme ***REMOVED***from '@material-ui/core/styles';
-import ***REMOVED*** fade, makeStyles, ThemeProvider ***REMOVED***from '@material-ui/core/styles';
+import React, { Fragment } from 'react';
+import { Link, withRouter, forceUpdate } from 'react-router-dom';
+import { signout, isAuthenticated } from '../auth';
+import { itemTotal } from './cartHelpers';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { fade, makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -26,42 +26,42 @@ import StoreIcon from '@material-ui/icons/Store';
 import CameraAltIcon from '@material-ui/icons/CameraAlt';
 import ChatIcon from '@material-ui/icons/Chat';
 
-const isActive = (history, path) => ***REMOVED***
-  if (history.location.pathname === path) ***REMOVED***
-    return ***REMOVED*** color: '#ff9900', textDecoration: 'none' };
-  ***REMOVED***else ***REMOVED***
-    return ***REMOVED*** color: '#ffffff', textDecoration: 'none' };
+const isActive = (history, path) => {
+  if (history.location.pathname === path) {
+    return { color: '#ff9900', textDecoration: 'none' };
+  } else {
+    return { color: '#ffffff', textDecoration: 'none' };
   }
 };
 
-const useStyles = makeStyles((theme) => (***REMOVED***
-  grow: ***REMOVED***
+const useStyles = makeStyles((theme) => ({
+  grow: {
     flexGrow: 1,
   },
-  menuButton: ***REMOVED***
+  menuButton: {
     marginRight: theme.spacing(2),
   },
-  title: ***REMOVED***
-    [theme.breakpoints.up('sm')]: ***REMOVED***
+  title: {
+    [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
   },
-  search: ***REMOVED***
+  search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
-    '&:hover': ***REMOVED***
+    '&:hover': {
       backgroundColor: fade(theme.palette.common.white, 0.25),
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
     width: '100%',
-    [theme.breakpoints.up('sm')]: ***REMOVED***
+    [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(3),
       width: 'auto',
     },
   },
-  searchIcon: ***REMOVED***
+  searchIcon: {
     padding: theme.spacing(0, 2),
     height: '100%',
     position: 'absolute',
@@ -70,35 +70,35 @@ const useStyles = makeStyles((theme) => (***REMOVED***
     alignItems: 'center',
     justifyContent: 'center',
   },
-  inputRoot: ***REMOVED***
+  inputRoot: {
     color: 'inherit',
   },
-  inputInput: ***REMOVED***
+  inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + $***REMOVED***theme.spacing(4)}px)`,
+    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create('width'),
     width: '100%',
-    [theme.breakpoints.up('md')]: ***REMOVED***
+    [theme.breakpoints.up('md')]: {
       width: '20ch',
     },
   },
-  sectionDesktop: ***REMOVED***
+  sectionDesktop: {
     display: 'none',
-    [theme.breakpoints.up('md')]: ***REMOVED***
+    [theme.breakpoints.up('md')]: {
       display: 'flex',
     },
   },
-  sectionMobile: ***REMOVED***
+  sectionMobile: {
     display: 'flex',
     color: "white",
-    [theme.breakpoints.up('md')]: ***REMOVED***
+    [theme.breakpoints.up('md')]: {
       display: 'none',
     },
   },
 }));
 
-const MaterialAppBar = (***REMOVED*** history }) => ***REMOVED***
+const MaterialAppBar = ({ history }) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -106,53 +106,53 @@ const MaterialAppBar = (***REMOVED*** history }) => ***REMOVED***
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  const handleProfileMenuOpen = (event) => ***REMOVED***
+  const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleMobileMenuClose = () => ***REMOVED***
+  const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
 
-  const handleMenuClose = () => ***REMOVED***
+  const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
   };
 
-  const handleMobileMenuOpen = (event) => ***REMOVED***
+  const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
-      anchorEl=***REMOVED***anchorEl}
-      anchorOrigin=***REMOVED******REMOVED*** vertical: 'top', horizontal: 'right' }}
-      id=***REMOVED***menuId}
+      anchorEl={anchorEl}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      id={menuId}
       keepMounted
-      transformOrigin=***REMOVED******REMOVED*** vertical: 'top', horizontal: 'right' }}
-      open=***REMOVED***isMenuOpen}
-      onClose=***REMOVED***handleMenuClose}
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+      open={isMenuOpen}
+      onClose={handleMenuClose}
     >
-      <MenuItem onClick=***REMOVED***handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick=***REMOVED***handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
     </Menu>
   );
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
     <Menu
-      anchorEl=***REMOVED***mobileMoreAnchorEl}
-      anchorOrigin=***REMOVED******REMOVED*** vertical: 'top', horizontal: 'right' }}
-      id=***REMOVED***mobileMenuId}
+      anchorEl={mobileMoreAnchorEl}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      id={mobileMenuId}
       keepMounted
-      transformOrigin=***REMOVED******REMOVED*** vertical: 'top', horizontal: 'right' }}
-      open=***REMOVED***isMobileMenuOpen}
-      onClose=***REMOVED***handleMobileMenuClose}
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+      open={isMobileMenuOpen}
+      onClose={handleMobileMenuClose}
     >
-      <div style=***REMOVED******REMOVED*** backgroundColor: '#404040' }}>
+      <div style={{ backgroundColor: '#404040' }}>
         <MenuItem>
-          <Link style=***REMOVED***isActive(history, '/')***REMOVED***to='/'>
+          <Link style={isActive(history, '/')} to='/'>
             <IconButton aria-label='Home' color='inherit'>
               <HomeIcon />
             </IconButton>
@@ -161,7 +161,7 @@ const MaterialAppBar = (***REMOVED*** history }) => ***REMOVED***
         </MenuItem>
 
         <MenuItem>
-          <Link style=***REMOVED***isActive(history, '/shop')***REMOVED***to='/shop'>
+          <Link style={isActive(history, '/shop')} to='/shop'>
             <IconButton aria-label='Shop' color='inherit'>
               <StorefrontIcon />
             </IconButton>
@@ -170,9 +170,9 @@ const MaterialAppBar = (***REMOVED*** history }) => ***REMOVED***
         </MenuItem>
 
         <MenuItem>
-          <Link style=***REMOVED***isActive(history, '/cart')***REMOVED***to='/cart'>
+          <Link style={isActive(history, '/cart')} to='/cart'>
             <IconButton aria-label='Cart' color='inherit'>
-              <Badge badgeContent=***REMOVED***itemTotal()***REMOVED***color='secondary'>
+              <Badge badgeContent={itemTotal()} color='secondary'>
                 <ShoppingCartIcon />
               </Badge>
             </IconButton>
@@ -180,9 +180,9 @@ const MaterialAppBar = (***REMOVED*** history }) => ***REMOVED***
           </Link>
         </MenuItem>
         <MenuItem>
-          <Link style=***REMOVED***isActive(history, '/chat')***REMOVED***to='/chat'>
+          <Link style={isActive(history, '/chat')} to='/chat'>
             <IconButton aria-label='Chat' color='inherit'>
-              <Badge badgeContent=***REMOVED***itemTotal()***REMOVED***color='secondary'>
+              <Badge badgeContent={itemTotal()} color='secondary'>
                 <ChatIcon />
               </Badge>
             </IconButton>
@@ -190,9 +190,9 @@ const MaterialAppBar = (***REMOVED*** history }) => ***REMOVED***
           </Link>
         </MenuItem>
         <MenuItem>
-          <Link style=***REMOVED***isActive(history, '/camera')***REMOVED***to='/camera'>
+          <Link style={isActive(history, '/camera')} to='/camera'>
             <IconButton aria-label='Camera' color='inherit'>
-              <Badge badgeContent=***REMOVED***itemTotal()***REMOVED***color='secondary'>
+              <Badge badgeContent={itemTotal()} color='secondary'>
                 <CameraAltIcon />
               </Badge>
             </IconButton>
@@ -200,10 +200,10 @@ const MaterialAppBar = (***REMOVED*** history }) => ***REMOVED***
           </Link>
         </MenuItem>
 
-        ***REMOVED***isAuthenticated() && isAuthenticated().user.role === 0 && (
+        {isAuthenticated() && isAuthenticated().user.role === 0 && (
           <MenuItem>
             <Link
-              style=***REMOVED***isActive(history, '/user/dashboard')}
+              style={isActive(history, '/user/dashboard')}
               to='/user/dashboard'
             >
               <IconButton aria-label='Dashboard' color='inherit'>
@@ -214,10 +214,10 @@ const MaterialAppBar = (***REMOVED*** history }) => ***REMOVED***
           </MenuItem>
         )}
 
-        ***REMOVED***isAuthenticated() && isAuthenticated().user.role === 1 && (
+        {isAuthenticated() && isAuthenticated().user.role === 1 && (
           <MenuItem>
             <Link
-              style=***REMOVED***isActive(history, '/admin/dashboard')}
+              style={isActive(history, '/admin/dashboard')}
               to='/admin/dashboard'
             >
               <IconButton aria-label='Dashboard' color='inherit'>
@@ -228,10 +228,10 @@ const MaterialAppBar = (***REMOVED*** history }) => ***REMOVED***
           </MenuItem>
         )}
 
-        ***REMOVED***!isAuthenticated() && (
+        {!isAuthenticated() && (
           <Fragment>
             <MenuItem>
-              <Link style=***REMOVED***isActive(history, '/signin')***REMOVED***to='/signin'>
+              <Link style={isActive(history, '/signin')} to='/signin'>
                 <IconButton aria-label='Signin' color='inherit'>
                   <AccountCircleIcon />
                 </IconButton>
@@ -240,7 +240,7 @@ const MaterialAppBar = (***REMOVED*** history }) => ***REMOVED***
             </MenuItem>
 
             <MenuItem>
-              <Link style=***REMOVED***isActive(history, '/signup')***REMOVED***to='/signup'>
+              <Link style={isActive(history, '/signup')} to='/signup'>
                 <IconButton aria-label='Signup' color='inherit'>
                   <PersonAddIcon />
                 </IconButton>
@@ -250,12 +250,12 @@ const MaterialAppBar = (***REMOVED*** history }) => ***REMOVED***
           </Fragment>
         )}
 
-        ***REMOVED***isAuthenticated() && (
+        {isAuthenticated() && (
           <MenuItem>
             <span
-              style=***REMOVED******REMOVED*** cursor: 'pointer', color: '#ffffff' }}
-              onClick=***REMOVED***() =>
-                signout(() => ***REMOVED***
+              style={{ cursor: 'pointer', color: '#ffffff' }}
+              onClick={() =>
+                signout(() => {
                   history.push('/');
                 })
               }
@@ -272,72 +272,72 @@ const MaterialAppBar = (***REMOVED*** history }) => ***REMOVED***
   );
 
   return (
-    <div className=***REMOVED***classes.grow}>
-      <div position='fixed' style=***REMOVED******REMOVED***
+    <div className={classes.grow}>
+      <div position='fixed' style={{
         backgroundColor: "#153462",
         margin: "1.2rem 1.2rem",
         borderRadius: "1rem"
       }}>
         <Toolbar>
-          <a href='/' style=***REMOVED******REMOVED*** color: '#ffffff' }}>
+          <a href='/' style={{ color: '#ffffff' }}>
             <IconButton
               edge='start'
-              className=***REMOVED***classes.menuButton}
+              className={classes.menuButton}
               color='inherit'
               aria-label='brand'>
               <StoreIcon />
             </IconButton>
           </a>
-          <a href='/' style=***REMOVED******REMOVED***
+          <a href='/' style={{
             color: '#ffffff',
             textDecoration: 'none'
           }}>
-            <Typography className=***REMOVED***classes.title***REMOVED***variant='h6' noWrap>
+            <Typography className={classes.title} variant='h6' noWrap>
               Shoppy
             </Typography>
           </a>
 
-          <div className=***REMOVED***classes.grow***REMOVED***/>
-          <div className=***REMOVED***classes.sectionDesktop}>
-            <Link style=***REMOVED***isActive(history, '/')***REMOVED***to='/'>
+          <div className={classes.grow} />
+          <div className={classes.sectionDesktop}>
+            <Link style={isActive(history, '/')} to='/'>
               <IconButton aria-label='Home' color='inherit'>
                 <HomeIcon />
                 <Typography noWrap>Home</Typography>
               </IconButton>
             </Link>
 
-            <Link style=***REMOVED***isActive(history, '/shop')***REMOVED***to='/shop'>
+            <Link style={isActive(history, '/shop')} to='/shop'>
               <IconButton aria-label='Shop' color='inherit'>
                 <StorefrontIcon />
                 <Typography noWrap>Shop</Typography>
               </IconButton>
             </Link>
 
-            <Link style=***REMOVED***isActive(history, '/cart')***REMOVED***to='/cart'>
+            <Link style={isActive(history, '/cart')} to='/cart'>
               <IconButton aria-label='Cart' color='inherit'>
-                <Badge badgeContent=***REMOVED***itemTotal()***REMOVED***color='secondary'>
+                <Badge badgeContent={itemTotal()} color='secondary'>
                   <ShoppingCartIcon />
                 </Badge>
                 <Typography noWrap>Cart</Typography>
               </IconButton>
             </Link>
 
-            <Link style=***REMOVED***isActive(history, '/chat')***REMOVED***to='/chat'>
+            <Link style={isActive(history, '/chat')} to='/chat'>
               <IconButton aria-label='Chat' color='inherit'>
                 <ChatIcon />
                 <Typography noWrap>Chat</Typography>
               </IconButton>
             </Link>
-            <Link style=***REMOVED***isActive(history, '/camera')***REMOVED***to='/camera'>
+            <Link style={isActive(history, '/camera')} to='/camera'>
               <IconButton aria-label='Camera' color='inherit'>
                 <CameraAltIcon />
                 <Typography noWrap>Camera</Typography>
               </IconButton>
             </Link>
 
-            ***REMOVED***isAuthenticated() && isAuthenticated().user.role === 0 && (
+            {isAuthenticated() && isAuthenticated().user.role === 0 && (
               <Link
-                style=***REMOVED***isActive(history, '/user/dashboard')}
+                style={isActive(history, '/user/dashboard')}
                 to='/user/dashboard'
               >
                 <IconButton aria-label='Dashboard' color='inherit'>
@@ -347,9 +347,9 @@ const MaterialAppBar = (***REMOVED*** history }) => ***REMOVED***
               </Link>
             )}
 
-            ***REMOVED***isAuthenticated() && isAuthenticated().user.role === 1 && (
+            {isAuthenticated() && isAuthenticated().user.role === 1 && (
               <Link
-                style=***REMOVED***isActive(history, '/admin/dashboard')}
+                style={isActive(history, '/admin/dashboard')}
                 to='/admin/dashboard'
               >
                 <IconButton aria-label='Dashboard' color='inherit'>
@@ -359,16 +359,16 @@ const MaterialAppBar = (***REMOVED*** history }) => ***REMOVED***
               </Link>
             )}
 
-            ***REMOVED***!isAuthenticated() && (
+            {!isAuthenticated() && (
               <Fragment>
-                <Link style=***REMOVED***isActive(history, '/signin')***REMOVED***to='/signin'>
+                <Link style={isActive(history, '/signin')} to='/signin'>
                   <IconButton aria-label='Signin' color='inherit'>
                     <AccountCircleIcon />
                     <Typography noWrap>Signin</Typography>
                   </IconButton>
                 </Link>
 
-                <Link style=***REMOVED***isActive(history, '/signup')***REMOVED***to='/signup'>
+                <Link style={isActive(history, '/signup')} to='/signup'>
                   <IconButton aria-label='Signup' color='inherit'>
                     <PersonAddIcon />
                     <Typography noWrap>Signup</Typography>
@@ -377,11 +377,11 @@ const MaterialAppBar = (***REMOVED*** history }) => ***REMOVED***
               </Fragment>
             )}
 
-            ***REMOVED***isAuthenticated() && (
+            {isAuthenticated() && (
               <span
-                style=***REMOVED******REMOVED*** cursor: 'pointer', color: '#ffffff' }}
-                onClick=***REMOVED***() =>
-                  signout(() => ***REMOVED***
+                style={{ cursor: 'pointer', color: '#ffffff' }}
+                onClick={() =>
+                  signout(() => {
                     history.push('/');
                   })
                 }
@@ -393,12 +393,12 @@ const MaterialAppBar = (***REMOVED*** history }) => ***REMOVED***
               </span>
             )}
           </div>
-          <div className=***REMOVED***classes.sectionMobile}>
+          <div className={classes.sectionMobile}>
             <IconButton
               aria-label='show more'
-              aria-controls=***REMOVED***mobileMenuId}
+              aria-controls={mobileMenuId}
               aria-haspopup='true'
-              onClick=***REMOVED***handleMobileMenuOpen}
+              onClick={handleMobileMenuOpen}
               color='inherit'
             >
               <MoreIcon />
@@ -407,15 +407,15 @@ const MaterialAppBar = (***REMOVED*** history }) => ***REMOVED***
         </Toolbar>
       </div>
       
-      ***REMOVED***renderMobileMenu}
-      ***REMOVED***renderMenu}
-      <div style=***REMOVED******REMOVED*** zIndex: "1", backgroundColor: "white", position: "absolute", right: "1rem", width: "max-content", height: "max-content", padding: "1rem 1rem 0rem 1rem", margin: "0rem 1rem 1rem 1rem", border: "0.01rem solid lightgray", borderRadius: "0.6rem" }}>
-        Wallet:<p style=***REMOVED******REMOVED***
+      {renderMobileMenu}
+      {renderMenu}
+      <div style={{ zIndex: "1", backgroundColor: "white", position: "absolute", right: "1rem", width: "max-content", height: "max-content", padding: "1rem 1rem 0rem 1rem", margin: "0rem 1rem 1rem 1rem", border: "0.01rem solid lightgray", borderRadius: "0.6rem" }}>
+        Wallet:<p style={{
           fontFamily: 'Qanelas-Bold'
         }}>
           ₹4000
         </p>
-        Interest at 4%:<p style=***REMOVED******REMOVED***
+        Interest at 4%:<p style={{
           fontFamily: 'Qanelas-Bold'
         }}>
           ₹160
