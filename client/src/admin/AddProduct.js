@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, ***REMOVED*** useState, useEffect ***REMOVED***from 'react';
 import Layout from '../core/Layout';
-import { isAuthenticated } from '../auth';
-import { Link } from 'react-router-dom';
-import { createProduct, getCategories } from './apiAdmin';
+import ***REMOVED*** isAuthenticated ***REMOVED***from '../auth';
+import ***REMOVED*** Link ***REMOVED***from 'react-router-dom';
+import ***REMOVED*** createProduct, getCategories ***REMOVED***from './apiAdmin';
 
-const AddProduct = () => {
-  const [values, setValues] = useState({
+const AddProduct = () => ***REMOVED***
+  const [values, setValues] = useState(***REMOVED***
     name: '',
     description: '',
     price: '',
@@ -21,9 +21,9 @@ const AddProduct = () => {
     formData: '',
   });
 
-  const { user, token } = isAuthenticated();
+  const ***REMOVED*** user, token ***REMOVED***= isAuthenticated();
 
-  const {
+  const ***REMOVED***
     name,
     description,
     price,
@@ -37,15 +37,15 @@ const AddProduct = () => {
     createdProduct,
     redirectToProfile,
     formData,
-  } = values;
+  ***REMOVED***= values;
 
   // load categories and set form data
-  const init = () => {
-    getCategories().then((data) => {
-      if (data.error) {
-        setValues({ ...values, error: data.error });
-      } else {
-        setValues({
+  const init = () => ***REMOVED***
+    getCategories().then((data) => ***REMOVED***
+      if (data.error) ***REMOVED***
+        setValues(***REMOVED*** ...values, error: data.error });
+      ***REMOVED***else ***REMOVED***
+        setValues(***REMOVED***
           ...values,
           categories: data,
           formData: new FormData(),
@@ -54,25 +54,25 @@ const AddProduct = () => {
     });
   };
 
-  useEffect(() => {
+  useEffect(() => ***REMOVED***
     init();
   }, []);
 
-  const handleChange = (name) => (event) => {
+  const handleChange = (name) => (event) => ***REMOVED***
     const value = name === 'photo' ? event.target.files[0] : event.target.value;
     formData.set(name, value);
-    setValues({ ...values, [name]: value });
+    setValues(***REMOVED*** ...values, [name]: value });
   };
 
-  const clickSubmit = (event) => {
+  const clickSubmit = (event) => ***REMOVED***
     event.preventDefault();
-    setValues({ ...values, error: '', loading: true });
+    setValues(***REMOVED*** ...values, error: '', loading: true });
 
-    createProduct(user._id, token, formData).then((data) => {
-      if (data.error) {
-        setValues({ ...values, error: data.error });
-      } else {
-        setValues({
+    createProduct(user._id, token, formData).then((data) => ***REMOVED***
+      if (data.error) ***REMOVED***
+        setValues(***REMOVED*** ...values, error: data.error });
+      ***REMOVED***else ***REMOVED***
+        setValues(***REMOVED***
           ...values,
           name: '',
           description: '',
@@ -87,12 +87,12 @@ const AddProduct = () => {
   };
 
   const newPostForm = () => (
-    <form className='mb-3' onSubmit={clickSubmit}>
+    <form className='mb-3' onSubmit=***REMOVED***clickSubmit}>
       <h4>Post Photo</h4>
       <div className='form-group'>
         <label className='btn btn-secondary'>
           <input
-            onChange={handleChange('photo')}
+            onChange=***REMOVED***handleChange('photo')}
             type='file'
             name='photo'
             accept='image/*'
@@ -103,40 +103,40 @@ const AddProduct = () => {
       <div className='form-group'>
         <label className='text-muted'>Name</label>
         <input
-          onChange={handleChange('name')}
+          onChange=***REMOVED***handleChange('name')}
           type='text'
           className='form-control'
-          value={name}
+          value=***REMOVED***name}
         />
       </div>
 
       <div className='form-group'>
         <label className='text-muted'>Description</label>
         <textarea
-          onChange={handleChange('description')}
+          onChange=***REMOVED***handleChange('description')}
           className='form-control'
-          value={description}
+          value=***REMOVED***description}
         />
       </div>
 
       <div className='form-group'>
         <label className='text-muted'>Price</label>
         <input
-          onChange={handleChange('price')}
+          onChange=***REMOVED***handleChange('price')}
           type='number'
           className='form-control'
-          value={price}
+          value=***REMOVED***price}
         />
       </div>
 
       <div className='form-group'>
         <label className='text-muted'>Category</label>
-        <select onChange={handleChange('category')} className='form-control'>
+        <select onChange=***REMOVED***handleChange('category')***REMOVED***className='form-control'>
           <option>Please select</option>
-          {categories &&
+          ***REMOVED***categories &&
             categories.map((c, i) => (
-              <option key={i} value={c._id}>
-                {c.name}
+              <option key=***REMOVED***i***REMOVED***value=***REMOVED***c._id}>
+                ***REMOVED***c.name}
               </option>
             ))}
         </select>
@@ -144,7 +144,7 @@ const AddProduct = () => {
 
       <div className='form-group'>
         <label className='text-muted'>Shipping</label>
-        <select onChange={handleChange('shipping')} className='form-control'>
+        <select onChange=***REMOVED***handleChange('shipping')***REMOVED***className='form-control'>
           <option>Please select</option>
           <option value='0'>No</option>
           <option value='1'>Yes</option>
@@ -154,10 +154,10 @@ const AddProduct = () => {
       <div className='form-group'>
         <label className='text-muted'>Quantity</label>
         <input
-          onChange={handleChange('quantity')}
+          onChange=***REMOVED***handleChange('quantity')}
           type='number'
           className='form-control'
-          value={quantity}
+          value=***REMOVED***quantity}
         />
       </div>
 
@@ -168,18 +168,18 @@ const AddProduct = () => {
   const showError = () => (
     <div
       className='alert alert-danger'
-      style={{ display: error ? '' : 'none' }}
+      style=***REMOVED******REMOVED*** display: error ? '' : 'none' }}
     >
-      {error}
+      ***REMOVED***error}
     </div>
   );
 
   const showSuccess = () => (
     <div
       className='alert alert-info'
-      style={{ display: createdProduct ? '' : 'none' }}
+      style=***REMOVED******REMOVED*** display: createdProduct ? '' : 'none' }}
     >
-      <h2>{`${createdProduct}`} is created!</h2>
+      <h2>***REMOVED***`$***REMOVED***createdProduct}`***REMOVED***is created!</h2>
     </div>
   );
 
@@ -193,14 +193,14 @@ const AddProduct = () => {
   return (
     <Layout
       title='Add a new product'
-      description={`Hey ${user.name}, ready to add a new product?`}
+      description=***REMOVED***`Hey $***REMOVED***user.name}, ready to add a new product?`}
     >
       <div className='row'>
         <div className='col-md-8 offset-md-2'>
-          {showLoading()}
-          {showSuccess()}
-          {showError()}
-          {newPostForm()}
+          ***REMOVED***showLoading()}
+          ***REMOVED***showSuccess()}
+          ***REMOVED***showError()}
+          ***REMOVED***newPostForm()}
         </div>
       </div>
     </Layout>

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const {
+const ***REMOVED***
   create,
   productById,
   read,
@@ -13,9 +13,9 @@ const {
   listBySearch,
   photo,
   listSearch
-} = require('../controllers/product');
-const { userById } = require('../controllers/user');
-const { requireSignin, isAuth, isAdmin } = require('../controllers/auth');
+***REMOVED***= require('../controllers/product');
+const ***REMOVED*** userById ***REMOVED***= require('../controllers/user');
+const ***REMOVED*** requireSignin, isAuth, isAdmin ***REMOVED***= require('../controllers/auth');
 
 router.post('/product/create/:userId', requireSignin, isAuth, isAdmin, create);
 router.get('/product/:productId', read);

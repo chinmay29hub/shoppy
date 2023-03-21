@@ -1,16 +1,16 @@
 const express = require('express');
 const router = express.Router();
 
-const { userById, addOrderToUserHistory } = require('../controllers/user');
-const { requireSignin, isAuth, isAdmin } = require('../controllers/auth');
-const {
+const ***REMOVED*** userById, addOrderToUserHistory ***REMOVED***= require('../controllers/user');
+const ***REMOVED*** requireSignin, isAuth, isAdmin ***REMOVED***= require('../controllers/auth');
+const ***REMOVED***
   create,
   listOrders,
   getStatusValues,
   orderById,
   updateOrderStatus,
-} = require('../controllers/order');
-const { decreaseQuantity } = require('../controllers/product');
+***REMOVED***= require('../controllers/order');
+const ***REMOVED*** decreaseQuantity ***REMOVED***= require('../controllers/product');
 
 router.get('/order/list/:userId', requireSignin, isAuth, isAdmin, listOrders);
 

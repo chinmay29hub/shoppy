@@ -1,11 +1,11 @@
 const User = require('../models/user');
-const { Order } = require('../models/order');
-const { errorHandler } = require('../helpers/dbErrorHandler');
+const ***REMOVED*** Order ***REMOVED***= require('../models/order');
+const ***REMOVED*** errorHandler ***REMOVED***= require('../helpers/dbErrorHandler');
 
-exports.userById = (req, res, next, id) => {
-  User.findById(id).exec((err, user) => {
-    if (err || !user) {
-      return res.status(400).json({
+exports.userById = (req, res, next, id) => ***REMOVED***
+  User.findById(id).exec((err, user) => ***REMOVED***
+    if (err || !user) ***REMOVED***
+      return res.status(400).json(***REMOVED***
         error: 'User not found',
       });
     }
@@ -14,20 +14,20 @@ exports.userById = (req, res, next, id) => {
   });
 };
 
-exports.read = (req, res) => {
+exports.read = (req, res) => ***REMOVED***
   req.profile.hashed_password = undefined;
   req.profile.salt = undefined;
   return res.json(req.profile);
 };
 
-exports.update = (req, res) => {
+exports.update = (req, res) => ***REMOVED***
   User.findOneAndUpdate(
-    { _id: req.profile._id },
-    { $set: req.body },
-    { new: true },
-    (err, user) => {
-      if (err) {
-        return res.status(400).json({
+    ***REMOVED*** _id: req.profile._id },
+    ***REMOVED*** $set: req.body },
+    ***REMOVED*** new: true },
+    (err, user) => ***REMOVED***
+      if (err) ***REMOVED***
+        return res.status(400).json(***REMOVED***
           error: 'You are not authorized to perform this action',
         });
       }
@@ -38,11 +38,11 @@ exports.update = (req, res) => {
   );
 };
 
-exports.addOrderToUserHistory = (req, res, next) => {
+exports.addOrderToUserHistory = (req, res, next) => ***REMOVED***
   let history = [];
 
-  req.body.order.products.forEach((item) => {
-    history.push({
+  req.body.order.products.forEach((item) => ***REMOVED***
+    history.push(***REMOVED***
       _id: item._id,
       name: item.name,
       description: item.description,
@@ -54,12 +54,12 @@ exports.addOrderToUserHistory = (req, res, next) => {
   });
 
   User.findOneAndUpdate(
-    { _id: req.profile._id },
-    { $push: { history: history } },
-    { new: true },
-    (error, data) => {
-      if (error) {
-        return res.status(400).json({
+    ***REMOVED*** _id: req.profile._id },
+    ***REMOVED*** $push: ***REMOVED*** history: history ***REMOVED***},
+    ***REMOVED*** new: true },
+    (error, data) => ***REMOVED***
+      if (error) ***REMOVED***
+        return res.status(400).json(***REMOVED***
           error: 'Could not update user purchase history',
         });
       }
@@ -68,13 +68,13 @@ exports.addOrderToUserHistory = (req, res, next) => {
   );
 };
 
-exports.purchaseHistory = (req, res) => {
-  Order.find({ user: req.profile._id })
+exports.purchaseHistory = (req, res) => ***REMOVED***
+  Order.find(***REMOVED*** user: req.profile._id })
     .populate('user', '_id name')
     .sort('-created')
-    .exec((err, orders) => {
-      if (err) {
-        return res.status(400).json({
+    .exec((err, orders) => ***REMOVED***
+      if (err) ***REMOVED***
+        return res.status(400).json(***REMOVED***
           error: errorHandler(err),
         });
       }

@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const { generateToken, processPayment } = require('../controllers/braintree');
-const { userById } = require('../controllers/user');
-const { requireSignin, isAuth } = require('../controllers/auth');
+const ***REMOVED*** generateToken, processPayment ***REMOVED***= require('../controllers/braintree');
+const ***REMOVED*** userById ***REMOVED***= require('../controllers/user');
+const ***REMOVED*** requireSignin, isAuth ***REMOVED***= require('../controllers/auth');
 
 router.post(
   '/braintree/payment/:userId',

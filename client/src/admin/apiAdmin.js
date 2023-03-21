@@ -1,89 +1,89 @@
-import { API } from '../config';
+import ***REMOVED*** API ***REMOVED***from '../config';
 
-export const createCategory = (userId, token, category) => {
-  return fetch(`${API}/category/create/${userId}`, {
+export const createCategory = (userId, token, category) => ***REMOVED***
+  return fetch(`$***REMOVED***API}/category/create/$***REMOVED***userId}`, ***REMOVED***
     method: 'POST',
-    headers: {
+    headers: ***REMOVED***
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer $***REMOVED***token}`,
     },
     body: JSON.stringify(category),
   })
-    .then((response) => {
+    .then((response) => ***REMOVED***
       return response.json();
     })
-    .catch((err) => {
+    .catch((err) => ***REMOVED***
       console.log(err);
     });
 };
 
-export const createProduct = (userId, token, product) => {
-  return fetch(`${API}/product/create/${userId}`, {
+export const createProduct = (userId, token, product) => ***REMOVED***
+  return fetch(`$***REMOVED***API}/product/create/$***REMOVED***userId}`, ***REMOVED***
     method: 'POST',
-    headers: {
+    headers: ***REMOVED***
       Accept: 'application/json',
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer $***REMOVED***token}`,
     },
     body: product,
   })
-    .then((response) => {
+    .then((response) => ***REMOVED***
       return response.json();
     })
-    .catch((err) => {
+    .catch((err) => ***REMOVED***
       console.log(err);
     });
 };
 
-export const getCategories = () => {
-  return fetch(`${API}/categories`, {
+export const getCategories = () => ***REMOVED***
+  return fetch(`$***REMOVED***API}/categories`, ***REMOVED***
     method: 'GET',
   })
-    .then((response) => {
+    .then((response) => ***REMOVED***
       return response.json();
     })
     .catch((err) => console.log(err));
 };
 
-export const listOrders = (userId, token) => {
-  return fetch(`${API}/order/list/${userId}`, {
+export const listOrders = (userId, token) => ***REMOVED***
+  return fetch(`$***REMOVED***API}/order/list/$***REMOVED***userId}`, ***REMOVED***
     method: 'GET',
-    headers: {
+    headers: ***REMOVED***
       Accept: 'application/json',
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer $***REMOVED***token}`,
     },
   })
-    .then((response) => {
+    .then((response) => ***REMOVED***
       return response.json();
     })
     .catch((err) => console.log(err));
 };
 
-export const getStatusValues = (userId, token) => {
-  return fetch(`${API}/order/status-values/${userId}`, {
+export const getStatusValues = (userId, token) => ***REMOVED***
+  return fetch(`$***REMOVED***API}/order/status-values/$***REMOVED***userId}`, ***REMOVED***
     method: 'GET',
-    headers: {
+    headers: ***REMOVED***
       Accept: 'application/json',
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer $***REMOVED***token}`,
     },
   })
-    .then((response) => {
+    .then((response) => ***REMOVED***
       return response.json();
     })
     .catch((err) => console.log(err));
 };
 
-export const updateOrderStatus = (userId, token, orderId, status) => {
-  return fetch(`${API}/order/${orderId}/status/${userId}`, {
+export const updateOrderStatus = (userId, token, orderId, status) => ***REMOVED***
+  return fetch(`$***REMOVED***API}/order/$***REMOVED***orderId}/status/$***REMOVED***userId}`, ***REMOVED***
     method: 'PUT',
-    headers: {
+    headers: ***REMOVED***
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer $***REMOVED***token}`,
     },
-    body: JSON.stringify({ status, orderId }),
+    body: JSON.stringify(***REMOVED*** status, orderId }),
   })
-    .then((response) => {
+    .then((response) => ***REMOVED***
       return response.json();
     })
     .catch((err) => console.log(err));
@@ -97,51 +97,51 @@ export const updateOrderStatus = (userId, token, orderId, status) => {
  * delete single product
  */
 
-export const getProducts = () => {
-  return fetch(`${API}/products?limit=undefined`, {
+export const getProducts = () => ***REMOVED***
+  return fetch(`$***REMOVED***API}/products?limit=undefined`, ***REMOVED***
     method: 'GET',
   })
-    .then((response) => {
+    .then((response) => ***REMOVED***
       return response.json();
     })
     .catch((err) => console.log(err));
 };
 
-export const deleteProduct = (productId, userId, token) => {
-  return fetch(`${API}/product/${productId}/${userId}`, {
+export const deleteProduct = (productId, userId, token) => ***REMOVED***
+  return fetch(`$***REMOVED***API}/product/$***REMOVED***productId}/$***REMOVED***userId}`, ***REMOVED***
     method: 'DELETE',
-    headers: {
+    headers: ***REMOVED***
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer $***REMOVED***token}`,
     },
   })
-    .then((response) => {
+    .then((response) => ***REMOVED***
       return response.json();
     })
     .catch((err) => console.log(err));
 };
 
-export const getProduct = (productId) => {
-  return fetch(`${API}/product/${productId}`, {
+export const getProduct = (productId) => ***REMOVED***
+  return fetch(`$***REMOVED***API}/product/$***REMOVED***productId}`, ***REMOVED***
     method: 'GET',
   })
-    .then((response) => {
+    .then((response) => ***REMOVED***
       return response.json();
     })
     .catch((err) => console.log(err));
 };
 
-export const updateProduct = (productId, userId, token, product) => {
-  return fetch(`${API}/product/${productId}/${userId}`, {
+export const updateProduct = (productId, userId, token, product) => ***REMOVED***
+  return fetch(`$***REMOVED***API}/product/$***REMOVED***productId}/$***REMOVED***userId}`, ***REMOVED***
     method: 'PUT',
-    headers: {
+    headers: ***REMOVED***
       Accept: 'application/json',
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer $***REMOVED***token}`,
     },
     body: product,
   })
-    .then((response) => {
+    .then((response) => ***REMOVED***
       return response.json();
     })
     .catch((err) => console.log(err));

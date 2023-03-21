@@ -1,21 +1,21 @@
 const express = require('express');
 const router = express.Router();
 
-const { requireSignin, isAuth, isAdmin } = require('../controllers/auth');
+const ***REMOVED*** requireSignin, isAuth, isAdmin ***REMOVED***= require('../controllers/auth');
 
-const {
+const ***REMOVED***
   userById,
   read,
   update,
   purchaseHistory,
-} = require('../controllers/user');
+***REMOVED***= require('../controllers/user');
 
 router.get('/user/:userId', requireSignin, isAuth, read);
 router.get('/orders/by/user/:userId', requireSignin, isAuth, purchaseHistory);
 router.put('/user/:userId', requireSignin, isAuth, update);
 
-router.get('/secret/:userId', requireSignin, isAuth, isAdmin, (req, res) => {
-  res.json({
+router.get('/secret/:userId', requireSignin, isAuth, isAdmin, (req, res) => ***REMOVED***
+  res.json(***REMOVED***
     user: req.profile,
   });
 });

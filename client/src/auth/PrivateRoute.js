@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import { Route, Redirect } from 'react-router-dom';
-import { isAuthenticated } from './index';
+import React, ***REMOVED*** Component ***REMOVED***from 'react';
+import ***REMOVED*** Route, Redirect ***REMOVED***from 'react-router-dom';
+import ***REMOVED*** isAuthenticated ***REMOVED***from './index';
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
+const PrivateRoute = (***REMOVED*** component: Component, ...rest }) => (
   <Route
-    {...rest}
-    render={(props) =>
+    ***REMOVED***...rest}
+    render=***REMOVED***(props) =>
       isAuthenticated() ? (
-        <Component {...props} />
+        <Component ***REMOVED***...props***REMOVED***/>
       ) : (
         <Redirect
-          to={{
+          to=***REMOVED******REMOVED***
             pathname: '/signin',
-            state: { from: props.location },
+            state: ***REMOVED*** from: props.location },
           }}
         />
       )

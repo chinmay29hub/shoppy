@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const categorySchema = new mongoose.Schema(
-  {
-    name: {
+  ***REMOVED***
+    name: ***REMOVED***
       type: String,
       trim: true,
       required: true,
@@ -10,7 +10,7 @@ const categorySchema = new mongoose.Schema(
       unique: true,
     },
   },
-  { timestamps: true }
+  ***REMOVED*** timestamps: true }
 );
 
 module.exports = mongoose.model('Category', categorySchema);

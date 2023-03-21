@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import { Route, Redirect } from 'react-router-dom';
-import { isAuthenticated } from './index';
+import React, ***REMOVED*** Component ***REMOVED***from 'react';
+import ***REMOVED*** Route, Redirect ***REMOVED***from 'react-router-dom';
+import ***REMOVED*** isAuthenticated ***REMOVED***from './index';
 
-const AdminRoute = ({ component: Component, ...rest }) => (
+const AdminRoute = (***REMOVED*** component: Component, ...rest }) => (
   <Route
-    {...rest}
-    render={(props) =>
+    ***REMOVED***...rest}
+    render=***REMOVED***(props) =>
       isAuthenticated() && isAuthenticated().user.role === 1 ? (
-        <Component {...props} />
+        <Component ***REMOVED***...props***REMOVED***/>
       ) : (
         <Redirect
-          to={{
+          to=***REMOVED******REMOVED***
             pathname: '/signin',
-            state: { from: props.location },
+            state: ***REMOVED*** from: props.location },
           }}
         />
       )

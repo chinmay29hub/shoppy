@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, ***REMOVED*** useState, useEffect ***REMOVED***from 'react';
 import Layout from './Layout';
-import { read, listRelated } from './apiCore';
+import ***REMOVED*** read, listRelated ***REMOVED***from './apiCore';
 import Card from './Card';
 
-const Product = (props) => {
-  const [product, setProduct] = useState({});
+const Product = (props) => ***REMOVED***
+  const [product, setProduct] = useState(***REMOVED***});
   const [relatedProduct, setRelatedProduct] = useState([]);
   const [error, setError] = useState(false);
 
-  const loadSingleProduct = (productId) => {
-    read(productId).then((data) => {
-      if (data.error) {
+  const loadSingleProduct = (productId) => ***REMOVED***
+    read(productId).then((data) => ***REMOVED***
+      if (data.error) ***REMOVED***
         setError(data.error);
-      } else {
+      ***REMOVED***else ***REMOVED***
         setProduct(data);
         // fetch related products
-        listRelated(data._id).then((data) => {
-          if (data.error) {
+        listRelated(data._id).then((data) => ***REMOVED***
+          if (data.error) ***REMOVED***
             setError(data.error);
-          } else {
+          ***REMOVED***else ***REMOVED***
             setRelatedProduct(data);
           }
         });
@@ -26,15 +26,15 @@ const Product = (props) => {
     });
   };
 
-  useEffect(() => {
+  useEffect(() => ***REMOVED***
     const productId = props.match.params.productId;
     loadSingleProduct(productId);
   }, [props]);
 
   return (
     <Layout
-      title={product && product.name}
-      description={
+      title=***REMOVED***product && product.name}
+      description=***REMOVED***
         product && product.description && product.description.substring(0, 100)
       }
       className='container-fluid'
@@ -43,16 +43,16 @@ const Product = (props) => {
         <div className='col-md-2'></div>
         <div className='col-md-4 col-sm-12'>
           <h4>Product Details</h4>
-          {product && product.description && (
-            <Card product={product} showViewProductButton={false} />
+          ***REMOVED***product && product.description && (
+            <Card product=***REMOVED***product***REMOVED***showViewProductButton=***REMOVED***false***REMOVED***/>
           )}
         </div>
 
         <div className='col-md-4'>
           <h4>Related products</h4>
-          {relatedProduct.map((p, i) => (
-            <div className='mb-3' key={i}>
-              <Card product={p} />
+          ***REMOVED***relatedProduct.map((p, i) => (
+            <div className='mb-3' key=***REMOVED***i}>
+              <Card product=***REMOVED***p***REMOVED***/>
             </div>
           ))}
         </div>

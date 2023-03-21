@@ -1,122 +1,122 @@
-import { API } from '../config';
+import ***REMOVED*** API ***REMOVED***from '../config';
 import queryString from 'query-string';
 
-export const getProducts = (sortBy) => {
-  return fetch(`${API}/products?sortBy=${sortBy}&order=desc&limit=6`, {
+export const getProducts = (sortBy) => ***REMOVED***
+  return fetch(`$***REMOVED***API}/products?sortBy=$***REMOVED***sortBy}&order=desc&limit=6`, ***REMOVED***
     method: 'GET',
   })
-    .then((response) => {
+    .then((response) => ***REMOVED***
       return response.json();
     })
     .catch((err) => console.log(err));
 };
 
-export const getCategories = () => {
-  return fetch(`${API}/categories`, {
+export const getCategories = () => ***REMOVED***
+  return fetch(`$***REMOVED***API}/categories`, ***REMOVED***
     method: 'GET',
   })
-    .then((response) => {
+    .then((response) => ***REMOVED***
       return response.json();
     })
     .catch((err) => console.log(err));
 };
 
-export const getFilteredProducts = (skip, limit, filters = {}) => {
-  const data = {
+export const getFilteredProducts = (skip, limit, filters = ***REMOVED***}) => ***REMOVED***
+  const data = ***REMOVED***
     limit,
     skip,
     filters,
   };
-  return fetch(`${API}/products/by/search`, {
+  return fetch(`$***REMOVED***API}/products/by/search`, ***REMOVED***
     method: 'POST',
-    headers: {
+    headers: ***REMOVED***
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(data),
   })
-    .then((response) => {
+    .then((response) => ***REMOVED***
       return response.json();
     })
-    .catch((err) => {
+    .catch((err) => ***REMOVED***
       console.log(err);
     });
 };
 
-export const list = (params) => {
+export const list = (params) => ***REMOVED***
   const query = queryString.stringify(params);
   console.log('query', query);
-  return fetch(`${API}/products/search?${query}`, {
+  return fetch(`$***REMOVED***API}/products/search?$***REMOVED***query}`, ***REMOVED***
     method: 'GET',
   })
-    .then((response) => {
+    .then((response) => ***REMOVED***
       return response.json();
     })
     .catch((err) => console.log(err));
 };
 
-export const read = (productId) => {
-  return fetch(`${API}/product/${productId}`, {
+export const read = (productId) => ***REMOVED***
+  return fetch(`$***REMOVED***API}/product/$***REMOVED***productId}`, ***REMOVED***
     method: 'GET',
   })
-    .then((response) => {
+    .then((response) => ***REMOVED***
       return response.json();
     })
     .catch((err) => console.log(err));
 };
 
-export const listRelated = (productId) => {
-  return fetch(`${API}/products/related/${productId}`, {
+export const listRelated = (productId) => ***REMOVED***
+  return fetch(`$***REMOVED***API}/products/related/$***REMOVED***productId}`, ***REMOVED***
     method: 'GET',
   })
-    .then((response) => {
+    .then((response) => ***REMOVED***
       return response.json();
     })
     .catch((err) => console.log(err));
 };
 
-export const getBraintreeClientToken = (userId, token) => {
-  return fetch(`${API}/braintree/getToken/${userId}`, {
+export const getBraintreeClientToken = (userId, token) => ***REMOVED***
+  return fetch(`$***REMOVED***API}/braintree/getToken/$***REMOVED***userId}`, ***REMOVED***
     method: 'GET',
-    headers: {
+    headers: ***REMOVED***
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer $***REMOVED***token}`,
     },
   })
-    .then((response) => {
+    .then((response) => ***REMOVED***
       return response.json();
     })
     .catch((err) => console.log(err));
 };
 
-export const processPayment = (userId, token, paymentData) => {
-  return fetch(`${API}/braintree/payment/${userId}`, {
+export const processPayment = (userId, token, paymentData) => ***REMOVED***
+  return fetch(`$***REMOVED***API}/braintree/payment/$***REMOVED***userId}`, ***REMOVED***
     method: 'POST',
-    headers: {
+    headers: ***REMOVED***
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer $***REMOVED***token}`,
     },
     body: JSON.stringify(paymentData),
   })
-    .then((response) => {
+    .then((response) => ***REMOVED***
       return response.json();
     })
     .catch((err) => console.log(err));
 };
 
-export const createOrder = (userId, token, createOrderData) => {
-  return fetch(`${API}/order/create/${userId}`, {
+export const createOrder = (userId, token, createOrderData) => ***REMOVED***
+  return fetch(`$***REMOVED***API}/order/create/$***REMOVED***userId}`, ***REMOVED***
     method: 'POST',
-    headers: {
+    headers: ***REMOVED***
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer $***REMOVED***token}`,
     },
-    body: JSON.stringify({ order: createOrderData }),
+    body: JSON.stringify(***REMOVED*** order: createOrderData }),
   })
-    .then((response) => {
+    .then((response) => ***REMOVED***
       return response.json();
     })
     .catch((err) => console.log(err));

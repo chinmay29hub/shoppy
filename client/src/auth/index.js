@@ -1,69 +1,69 @@
-import { API } from '../config';
+import ***REMOVED*** API ***REMOVED***from '../config';
 
-export const signup = (user) => {
+export const signup = (user) => ***REMOVED***
   // console.log(name, email, password);
-  return fetch(`${API}/signup`, {
+  return fetch(`$***REMOVED***API}/signup`, ***REMOVED***
     method: 'POST',
-    headers: {
+    headers: ***REMOVED***
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(user),
   })
-    .then((response) => {
+    .then((response) => ***REMOVED***
       return response.json();
     })
-    .catch((err) => {
+    .catch((err) => ***REMOVED***
       console.log(err);
     });
 };
 
-export const signin = (user) => {
+export const signin = (user) => ***REMOVED***
   // console.log(name, email, password);
-  return fetch(`${API}/signin`, {
+  return fetch(`$***REMOVED***API}/signin`, ***REMOVED***
     method: 'POST',
-    headers: {
+    headers: ***REMOVED***
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(user),
   })
-    .then((response) => {
+    .then((response) => ***REMOVED***
       return response.json();
     })
-    .catch((err) => {
+    .catch((err) => ***REMOVED***
       console.log(err);
     });
 };
 
-export const authenticate = (data, next) => {
-  if (typeof window !== 'undefined') {
+export const authenticate = (data, next) => ***REMOVED***
+  if (typeof window !== 'undefined') ***REMOVED***
     localStorage.setItem('jwt', JSON.stringify(data));
     next();
   }
 };
 
-export const signout = (next) => {
-  if (typeof window !== 'undefined') {
+export const signout = (next) => ***REMOVED***
+  if (typeof window !== 'undefined') ***REMOVED***
     localStorage.removeItem('jwt');
     next();
-    return fetch(`${API}/signout`, {
+    return fetch(`$***REMOVED***API}/signout`, ***REMOVED***
       method: 'GET',
     })
-      .then((response) => {
+      .then((response) => ***REMOVED***
         console.log('signout', response);
       })
       .catch((err) => console.log(err));
   }
 };
 
-export const isAuthenticated = () => {
-  if (typeof window === 'undefined') {
+export const isAuthenticated = () => ***REMOVED***
+  if (typeof window === 'undefined') ***REMOVED***
     return false;
   }
-  if (localStorage.getItem('jwt')) {
+  if (localStorage.getItem('jwt')) ***REMOVED***
     return JSON.parse(localStorage.getItem('jwt'));
-  } else {
+  ***REMOVED***else ***REMOVED***
     return false;
   }
 };

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import React, ***REMOVED*** useState ***REMOVED***from 'react';
+import ***REMOVED*** Redirect, Link ***REMOVED***from 'react-router-dom';
 import Layout from '../core/Layout';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -11,33 +11,33 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import ***REMOVED*** makeStyles ***REMOVED***from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-import { signin, authenticate, isAuthenticated } from '../auth';
+import ***REMOVED*** signin, authenticate, isAuthenticated ***REMOVED***from '../auth';
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
+const useStyles = makeStyles((theme) => (***REMOVED***
+  paper: ***REMOVED***
     marginTop: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
   },
-  avatar: {
+  avatar: ***REMOVED***
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
   },
-  form: {
+  form: ***REMOVED***
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
-  submit: {
+  submit: ***REMOVED***
     margin: theme.spacing(3, 0, 2),
   },
 }));
 
-export default function Signin() {
-  const [values, setValues] = useState({
+export default function Signin() ***REMOVED***
+  const [values, setValues] = useState(***REMOVED***
     email: '',
     password: '',
     error: '',
@@ -45,22 +45,22 @@ export default function Signin() {
     redirectToReferrer: false,
   });
 
-  const { email, password, loading, error, redirectToReferrer } = values;
-  const { user } = isAuthenticated();
+  const ***REMOVED*** email, password, loading, error, redirectToReferrer ***REMOVED***= values;
+  const ***REMOVED*** user ***REMOVED***= isAuthenticated();
 
-  const handleChange = (name) => (event) => {
-    setValues({ ...values, error: false, [name]: event.target.value });
+  const handleChange = (name) => (event) => ***REMOVED***
+    setValues(***REMOVED*** ...values, error: false, [name]: event.target.value });
   };
 
-  const clickSubmit = (event) => {
+  const clickSubmit = (event) => ***REMOVED***
     event.preventDefault(); // so that browser does not reload
-    setValues({ ...values, error: false, loading: true });
-    signin({ email, password }).then((data) => {
-      if (data.error) {
-        setValues({ ...values, error: data.error, loading: false });
-      } else {
-        authenticate(data, () => {
-          setValues({
+    setValues(***REMOVED*** ...values, error: false, loading: true });
+    signin(***REMOVED*** email, password }).then((data) => ***REMOVED***
+      if (data.error) ***REMOVED***
+        setValues(***REMOVED*** ...values, error: data.error, loading: false });
+      ***REMOVED***else ***REMOVED***
+        authenticate(data, () => ***REMOVED***
+          setValues(***REMOVED***
             ...values,
             redirectToReferrer: true,
           });
@@ -72,9 +72,9 @@ export default function Signin() {
   const showError = () => (
     <div
       className='alert alert-danger'
-      style={{ display: error ? '' : 'none' }}
+      style=***REMOVED******REMOVED*** display: error ? '' : 'none' }}
     >
-      {error}
+      ***REMOVED***error}
     </div>
   );
 
@@ -85,15 +85,15 @@ export default function Signin() {
       </div>
     );
 
-  const redirectUser = () => {
-    if (redirectToReferrer) {
-      if (user && user.role === 1) {
+  const redirectUser = () => ***REMOVED***
+    if (redirectToReferrer) ***REMOVED***
+      if (user && user.role === 1) ***REMOVED***
         return <Redirect to='/admin/dashboard' />;
-      } else {
+      ***REMOVED***else ***REMOVED***
         return <Redirect to='/user/dashboard' />;
       }
     }
-    if (isAuthenticated()) {
+    if (isAuthenticated()) ***REMOVED***
       return <Redirect to='/' />;
     }
   };
@@ -102,18 +102,18 @@ export default function Signin() {
 
   const signInForm = () => (
     <Container component='main' maxWidth='xs'>
-      {showError()}
-      {showLoading()}
-      {redirectUser()}
+      ***REMOVED***showError()}
+      ***REMOVED***showLoading()}
+      ***REMOVED***redirectUser()}
       <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
+      <div className=***REMOVED***classes.paper}>
+        <Avatar className=***REMOVED***classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
         <Typography component='h1' variant='h5'>
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className=***REMOVED***classes.form***REMOVED***noValidate>
           <TextField
             variant='outlined'
             margin='normal'
@@ -123,9 +123,9 @@ export default function Signin() {
             label='Email Address'
             name='email'
             autoComplete='email'
-            onChange={handleChange('email')}
+            onChange=***REMOVED***handleChange('email')}
             type='email'
-            value={email}
+            value=***REMOVED***email}
             autoFocus
           />
           <TextField
@@ -137,22 +137,22 @@ export default function Signin() {
             label='Password'
             type='password'
             id='password'
-            onChange={handleChange('password')}
+            onChange=***REMOVED***handleChange('password')}
             type='password'
-            value={password}
+            value=***REMOVED***password}
             autoComplete='current-password'
           />
           <FormControlLabel
-            control={<Checkbox value='remember' color='primary' />}
+            control=***REMOVED***<Checkbox value='remember' color='primary' />}
             label='Remember me'
           />
           <Button
-            onClick={clickSubmit}
+            onClick=***REMOVED***clickSubmit}
             type='submit'
             fullWidth
             variant='contained'
             color='primary'
-            className={classes.submit}
+            className=***REMOVED***classes.submit}
           >
             Sign In
           </Button>
@@ -164,7 +164,7 @@ export default function Signin() {
             </Grid>
             <Grid item>
               <Link to='/signup' variant='body2'>
-                {"Don't have an account? Sign Up"}
+                ***REMOVED***"Don't have an account? Sign Up"}
               </Link>
             </Grid>
           </Grid>
@@ -179,7 +179,7 @@ export default function Signin() {
       description='Signin to MERN E-commerce App'
       className='container col-md-8 offset-md-2'
     >
-      {signInForm()}
+      ***REMOVED***signInForm()}
     </Layout>
   );
 }

@@ -102,4 +102,4 @@ dist
 
 # TernJS port file
 .tern-port
-detection/backend/serviceAccountKey.json
+serviceAccountKey.json

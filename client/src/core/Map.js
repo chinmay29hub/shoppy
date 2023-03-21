@@ -1,28 +1,28 @@
-// import React, { useEffect } from "react";
-// import { Loader } from "@googlemaps/js-api-loader";
+// import React, ***REMOVED*** useEffect ***REMOVED***from "react";
+// import ***REMOVED*** Loader ***REMOVED***from "@googlemaps/js-api-loader";
 
-// const Map = () => {
-//   useEffect(() => {
-//     const loader = new Loader({
+// const Map = () => ***REMOVED***
+//   useEffect(() => ***REMOVED***
+//     const loader = new Loader(***REMOVED***
 //       apiKey: "AIzaSyBpxUbDaS2cUssQ8JdQYW8vIRlHV4erlns",
 //       version: "weekly",
 //     });
 
-//     loader.load().then(() => {
-//       const map = new google.maps.Map(document.getElementById("map"), {
-//         center: { lat: 40.712776, lng: -74.005974 },
+//     loader.load().then(() => ***REMOVED***
+//       const map = new google.maps.Map(document.getElementById("map"), ***REMOVED***
+//         center: ***REMOVED*** lat: 40.712776, lng: -74.005974 },
 //         zoom: 8,
 //       });
 
-//       const marker = new google.maps.Marker({
-//         position: { lat: 40.712776, lng: -74.005974 },
+//       const marker = new google.maps.Marker(***REMOVED***
+//         position: ***REMOVED*** lat: 40.712776, lng: -74.005974 },
 //         map: map,
 //         title: "New York City",
 //       });
 //     });
 //   }, []);
 
-//   return <div id="map" style={{ height: "400px" }}></div>;
+//   return <div id="map" style=***REMOVED******REMOVED*** height: "400px" }}></div>;
 // };
 
 // export default Map;

@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, ***REMOVED*** useState, useEffect ***REMOVED***from 'react';
 import Layout from '../core/Layout';
-import { isAuthenticated } from '../auth';
-import { Link, Redirect } from 'react-router-dom';
-import { read, update, updateUser } from './apiUser';
+import ***REMOVED*** isAuthenticated ***REMOVED***from '../auth';
+import ***REMOVED*** Link, Redirect ***REMOVED***from 'react-router-dom';
+import ***REMOVED*** read, update, updateUser ***REMOVED***from './apiUser';
 
-const Profile = ({ match }) => {
-  const [values, setValues] = useState({
+const Profile = (***REMOVED*** match }) => ***REMOVED***
+  const [values, setValues] = useState(***REMOVED***
     name: '',
     email: '',
     password: '',
@@ -13,38 +13,38 @@ const Profile = ({ match }) => {
     success: false,
   });
 
-  const { token } = isAuthenticated();
-  const { name, email, password, error, success } = values;
+  const ***REMOVED*** token ***REMOVED***= isAuthenticated();
+  const ***REMOVED*** name, email, password, error, success ***REMOVED***= values;
 
-  const init = (userId) => {
+  const init = (userId) => ***REMOVED***
     // console.log(userId);
-    read(userId, token).then((data) => {
-      if (data.error) {
-        setValues({ ...values, error: true });
-      } else {
-        setValues({ ...values, name: data.name, email: data.email });
+    read(userId, token).then((data) => ***REMOVED***
+      if (data.error) ***REMOVED***
+        setValues(***REMOVED*** ...values, error: true });
+      ***REMOVED***else ***REMOVED***
+        setValues(***REMOVED*** ...values, name: data.name, email: data.email });
       }
     });
   };
 
-  useEffect(() => {
+  useEffect(() => ***REMOVED***
     init(match.params.userId);
   }, []);
 
-  const handleChange = (name) => (e) => {
-    setValues({ ...values, error: false, [name]: e.target.value });
+  const handleChange = (name) => (e) => ***REMOVED***
+    setValues(***REMOVED*** ...values, error: false, [name]: e.target.value });
   };
 
-  const clickSubmit = (e) => {
+  const clickSubmit = (e) => ***REMOVED***
     e.preventDefault();
-    update(match.params.userId, token, { name, email, password }).then(
-      (data) => {
-        if (data.error) {
+    update(match.params.userId, token, ***REMOVED*** name, email, password }).then(
+      (data) => ***REMOVED***
+        if (data.error) ***REMOVED***
           // console.log(data.error);
           alert(data.error);
-        } else {
-          updateUser(data, () => {
-            setValues({
+        ***REMOVED***else ***REMOVED***
+          updateUser(data, () => ***REMOVED***
+            setValues(***REMOVED***
               ...values,
               name: data.name,
               email: data.email,
@@ -56,8 +56,8 @@ const Profile = ({ match }) => {
     );
   };
 
-  const redirectUser = (success) => {
-    if (success) {
+  const redirectUser = (success) => ***REMOVED***
+    if (success) ***REMOVED***
       return <Redirect to='/user/dashboard' />;
     }
   };
@@ -68,31 +68,31 @@ const Profile = ({ match }) => {
         <label className='text-muted'>Name</label>
         <input
           type='text'
-          onChange={handleChange('name')}
+          onChange=***REMOVED***handleChange('name')}
           className='form-control'
-          value={name}
+          value=***REMOVED***name}
         />
       </div>
       <div className='form-group'>
         <label className='text-muted'>Email</label>
         <input
           type='email'
-          onChange={handleChange('email')}
+          onChange=***REMOVED***handleChange('email')}
           className='form-control'
-          value={email}
+          value=***REMOVED***email}
         />
       </div>
       <div className='form-group'>
         <label className='text-muted'>Password</label>
         <input
           type='password'
-          onChange={handleChange('password')}
+          onChange=***REMOVED***handleChange('password')}
           className='form-control'
-          value={password}
+          value=***REMOVED***password}
         />
       </div>
 
-      <button onClick={clickSubmit} className='btn btn-primary'>
+      <button onClick=***REMOVED***clickSubmit***REMOVED***className='btn btn-primary'>
         Submit
       </button>
     </form>
@@ -105,8 +105,8 @@ const Profile = ({ match }) => {
       className='container-fluid'
     >
       <h2 className='mb-4'>Profile update</h2>
-      {profileUpdate(name, email, password)}
-      {redirectUser(success)}
+      ***REMOVED***profileUpdate(name, email, password)}
+      ***REMOVED***redirectUser(success)}
     </Layout>
   );
 };

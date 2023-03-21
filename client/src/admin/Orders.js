@@ -1,46 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import React, ***REMOVED*** useState, useEffect ***REMOVED***from 'react';
 import Layout from '../core/Layout';
-import { isAuthenticated } from '../auth';
-import { Link } from 'react-router-dom';
-import { listOrders, getStatusValues, updateOrderStatus } from './apiAdmin';
+import ***REMOVED*** isAuthenticated ***REMOVED***from '../auth';
+import ***REMOVED*** Link ***REMOVED***from 'react-router-dom';
+import ***REMOVED*** listOrders, getStatusValues, updateOrderStatus ***REMOVED***from './apiAdmin';
 import moment from 'moment';
 
-const Orders = () => {
+const Orders = () => ***REMOVED***
   const [orders, setOrders] = useState([]);
   const [statusValues, setStatusValues] = useState([]);
-  const { user, token } = isAuthenticated();
+  const ***REMOVED*** user, token ***REMOVED***= isAuthenticated();
 
-  const loadOrders = () => {
-    listOrders(user._id, token).then((data) => {
-      if (data.error) {
+  const loadOrders = () => ***REMOVED***
+    listOrders(user._id, token).then((data) => ***REMOVED***
+      if (data.error) ***REMOVED***
         console.log(data.error);
-      } else {
+      ***REMOVED***else ***REMOVED***
         setOrders(data);
       }
     });
   };
 
-  const loadStatusValues = () => {
-    getStatusValues(user._id, token).then((data) => {
-      if (data.error) {
+  const loadStatusValues = () => ***REMOVED***
+    getStatusValues(user._id, token).then((data) => ***REMOVED***
+      if (data.error) ***REMOVED***
         console.log(data.error);
-      } else {
+      ***REMOVED***else ***REMOVED***
         setStatusValues(data);
       }
     });
   };
 
-  useEffect(() => {
+  useEffect(() => ***REMOVED***
     loadOrders();
     loadStatusValues();
   }, []);
 
-  const showOrdersLength = () => {
-    if (orders.length > 0) {
+  const showOrdersLength = () => ***REMOVED***
+    if (orders.length > 0) ***REMOVED***
       return (
-        <h1 className='text-danger display-2'>Total orders: {orders.length}</h1>
+        <h1 className='text-danger display-2'>Total orders: ***REMOVED***orders.length}</h1>
       );
-    } else {
+    ***REMOVED***else ***REMOVED***
       return <h1 className='text-danger'>No orders</h1>;
     }
   };
@@ -48,17 +48,17 @@ const Orders = () => {
   const showInput = (key, value) => (
     <div className='input-group mb-2 mr-sm-2'>
       <div className='input-group-prepend'>
-        <div className='input-group-text'>{key}</div>
+        <div className='input-group-text'>***REMOVED***key}</div>
       </div>
-      <input type='text' value={value} className='form-control' readOnly />
+      <input type='text' value=***REMOVED***value***REMOVED***className='form-control' readOnly />
     </div>
   );
 
-  const handleStatusChange = (e, orderId) => {
-    updateOrderStatus(user._id, token, orderId, e.target.value).then((data) => {
-      if (data.error) {
+  const handleStatusChange = (e, orderId) => ***REMOVED***
+    updateOrderStatus(user._id, token, orderId, e.target.value).then((data) => ***REMOVED***
+      if (data.error) ***REMOVED***
         console.log('Status update failed');
-      } else {
+      ***REMOVED***else ***REMOVED***
         loadOrders();
       }
     });
@@ -67,15 +67,15 @@ const Orders = () => {
 
   const showStatus = (o) => (
     <div className='form-group'>
-      <h3 className='mark mb-4'>Status: {o.status}</h3>
+      <h3 className='mark mb-4'>Status: ***REMOVED***o.status}</h3>
       <select
         className='form-control'
-        onChange={(e) => handleStatusChange(e, o._id)}
+        onChange=***REMOVED***(e) => handleStatusChange(e, o._id)}
       >
         <option>Update Status</option>
-        {statusValues.map((status, index) => (
-          <option key={index} value={status}>
-            {status}
+        ***REMOVED***statusValues.map((status, index) => (
+          <option key=***REMOVED***index***REMOVED***value=***REMOVED***status}>
+            ***REMOVED***status}
           </option>
         ))}
       </select>
@@ -85,52 +85,52 @@ const Orders = () => {
   return (
     <Layout
       title='Orders'
-      description={`Hey ${user.name}, you can manage all the ordes here`}
+      description=***REMOVED***`Hey $***REMOVED***user.name}, you can manage all the ordes here`}
     >
       <div className='row'>
         <div className='col-md-8 offset-md-2'>
-          {showOrdersLength()}
+          ***REMOVED***showOrdersLength()}
 
-          {orders.map((o, oIndex) => {
+          ***REMOVED***orders.map((o, oIndex) => ***REMOVED***
             return (
               <div
                 className='mt-5'
-                key={oIndex}
-                style={{ borderBottom: '5px solid indigo' }}
+                key=***REMOVED***oIndex}
+                style=***REMOVED******REMOVED*** borderBottom: '5px solid indigo' }}
               >
                 <h2 className='mb-5'>
-                  <span className='bg-primary'>Order ID: {o._id}</span>
+                  <span className='bg-primary'>Order ID: ***REMOVED***o._id}</span>
                 </h2>
 
                 <ul className='list-group mb-2'>
-                  <li className='list-group-item'>{showStatus(o)}</li>
+                  <li className='list-group-item'>***REMOVED***showStatus(o)}</li>
                   <li className='list-group-item'>
-                    Transaction ID: {o.transaction_id}
+                    Transaction ID: ***REMOVED***o.transaction_id}
                   </li>
-                  <li className='list-group-item'>Amount: ${o.amount}</li>
-                  <li className='list-group-item'>Ordered by: {o.user.name}</li>
+                  <li className='list-group-item'>Amount: $***REMOVED***o.amount}</li>
+                  <li className='list-group-item'>Ordered by: ***REMOVED***o.user.name}</li>
                   <li className='list-group-item'>
-                    Ordered on: {moment(o.createdAt).fromNow()}
+                    Ordered on: ***REMOVED***moment(o.createdAt).fromNow()}
                   </li>
                   <li className='list-group-item'>
-                    Delivery address: {o.address}
+                    Delivery address: ***REMOVED***o.address}
                   </li>
                 </ul>
 
                 <h3 className='mt-4 mb-4 font-italic'>
-                  Total products in the order: {o.products.length}
+                  Total products in the order: ***REMOVED***o.products.length}
                 </h3>
 
-                {o.products.map((p, pIndex) => (
+                ***REMOVED***o.products.map((p, pIndex) => (
                   <div
                     className='mb-4'
-                    key={pIndex}
-                    style={{ padding: '20px', border: '1px solid indigo' }}
+                    key=***REMOVED***pIndex}
+                    style=***REMOVED******REMOVED*** padding: '20px', border: '1px solid indigo' }}
                   >
-                    {showInput('Product name', p.name)}
-                    {showInput('Product price', p.price)}
-                    {showInput('Product total', p.count)}
-                    {showInput('Product Id', p._id)}
+                    ***REMOVED***showInput('Product name', p.name)}
+                    ***REMOVED***showInput('Product price', p.price)}
+                    ***REMOVED***showInput('Product total', p.count)}
+                    ***REMOVED***showInput('Product Id', p._id)}
                   </div>
                 ))}
               </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import Menu from './Menu';
 import '../styles.css';
 
-const Layout = ({
+const Layout = (***REMOVED***
   title = 'Title',
   description = 'Description',
   className,
@@ -11,10 +11,10 @@ const Layout = ({
   <div>
     <Menu />
     <div className='jumbotron mt-5'>
-      <h2>{title}</h2>
-      <p className='lead'>{description}</p>
+      <h2>***REMOVED***title}</h2>
+      <p className='lead'>***REMOVED***description}</p>
     </div>
-    <div className={className}>{children}</div>
+    <div className=***REMOVED***className}>***REMOVED***children}</div>
   </div>
 );
 

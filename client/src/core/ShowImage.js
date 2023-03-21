@@ -1,13 +1,13 @@
 import React from 'react';
-import { API } from '../config';
+import ***REMOVED*** API ***REMOVED***from '../config';
 
-const ShowImage = ({ item, url }) => (
-  <div className='product-img' style={{ height: '250px' }}>
+const ShowImage = (***REMOVED*** item, url }) => (
+  <div className='product-img' style=***REMOVED******REMOVED*** height: '250px' }}>
     <img
-      src={`${API}/${url}/photo/${item._id}`}
-      alt={item.name}
+      src=***REMOVED***`$***REMOVED***API}/$***REMOVED***url}/photo/$***REMOVED***item._id}`}
+      alt=***REMOVED***item.name}
       className='mb-3'
-      style={{
+      style=***REMOVED******REMOVED***
         objectFit: 'contain',
         height: '100%',
         display: 'flex',

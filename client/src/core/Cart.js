@@ -1,33 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, ***REMOVED*** useState, useEffect ***REMOVED***from 'react';
+import ***REMOVED*** Link ***REMOVED***from 'react-router-dom';
 import Layout from './Layout';
-import { getCart } from './cartHelpers';
+import ***REMOVED*** getCart ***REMOVED***from './cartHelpers';
 import Card from './Card';
 import Checkout from './Checkout';
 
 
-const Cart = () => {
+const Cart = () => ***REMOVED***
   const [items, setItems] = useState([]);
   const [run, setRun] = useState(false);
 
-  useEffect(() => {
+  useEffect(() => ***REMOVED***
     setItems(getCart());
   }, [run]);
 
-  const showItems = (items) => {
+  const showItems = (items) => ***REMOVED***
     return (
       <div>
-        <h2>Your cart has {`${items.length}`} items</h2>
+        <h2>Your cart has ***REMOVED***`$***REMOVED***items.length}`***REMOVED***items</h2>
         <hr />
-        {items.map((product, i) => (
+        ***REMOVED***items.map((product, i) => (
           <Card
-            key={i}
-            product={product}
-            showAddToCartButton={false}
-            cartUpdate={true}
-            showRemoveProductButton={true}
-            setRun={setRun}
-            run={run}
+            key=***REMOVED***i}
+            product=***REMOVED***product}
+            showAddToCartButton=***REMOVED***false}
+            cartUpdate=***REMOVED***true}
+            showRemoveProductButton=***REMOVED***true}
+            setRun=***REMOVED***setRun}
+            run=***REMOVED***run}
           />
         ))}
       </div>
@@ -49,12 +49,12 @@ const Cart = () => {
       <div className='row'>
         <div className='col-md-2'></div>
         <div className='col-md-4'>
-          {items.length > 0 ? showItems(items) : noItemsMessage()}
+          ***REMOVED***items.length > 0 ? showItems(items) : noItemsMessage()}
         </div>
         <div className='col-md-4'>
           <h2 className='mb-4'>Your cart summary</h2>
           <hr />
-          <Checkout products={items} setRun={setRun} run={run} />
+          <Checkout products=***REMOVED***items***REMOVED***setRun=***REMOVED***setRun***REMOVED***run=***REMOVED***run***REMOVED***/>
         </div>
         <div className='col-md-2'></div>
       </div>

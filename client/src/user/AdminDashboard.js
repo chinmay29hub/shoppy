@@ -1,14 +1,14 @@
 import React from 'react';
 import Layout from '../core/Layout';
-import { isAuthenticated } from '../auth';
-import { Link } from 'react-router-dom';
+import ***REMOVED*** isAuthenticated ***REMOVED***from '../auth';
+import ***REMOVED*** Link ***REMOVED***from 'react-router-dom';
 
-const AdminDashboard = () => {
-  const {
-    user: { _id, name, email, role },
-  } = isAuthenticated();
+const AdminDashboard = () => ***REMOVED***
+  const ***REMOVED***
+    user: ***REMOVED*** _id, name, email, role },
+  ***REMOVED***= isAuthenticated();
 
-  const adminLinks = () => {
+  const adminLinks = () => ***REMOVED***
     return (
       <div className='card'>
         <h4 className='card-header'>Admin Links</h4>
@@ -38,15 +38,15 @@ const AdminDashboard = () => {
     );
   };
 
-  const adminInfo = () => {
+  const adminInfo = () => ***REMOVED***
     return (
       <div className='card mb-5'>
         <h3 className='card-header'>User information</h3>
         <ul className='list-group'>
-          <li className='list-group-item'>{name}</li>
-          <li className='list-group-item'>{email}</li>
+          <li className='list-group-item'>***REMOVED***name}</li>
+          <li className='list-group-item'>***REMOVED***email}</li>
           <li className='list-group-item'>
-            {role === 1 ? 'Admin' : 'Registered user'}
+            ***REMOVED***role === 1 ? 'Admin' : 'Registered user'}
           </li>
         </ul>
       </div>
@@ -56,12 +56,12 @@ const AdminDashboard = () => {
   return (
     <Layout
       title='Dashboard'
-      description={`${name}`}
+      description=***REMOVED***`$***REMOVED***name}`}
       className='container-fluid'
     >
       <div className='row'>
-        <div className='col-md-3'>{adminLinks()}</div>
-        <div className='col-md-9'>{adminInfo()}</div>
+        <div className='col-md-3'>***REMOVED***adminLinks()}</div>
+        <div className='col-md-9'>***REMOVED***adminInfo()}</div>
       </div>
     </Layout>
   );

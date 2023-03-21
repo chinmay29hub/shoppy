@@ -1,34 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React, ***REMOVED*** useState, useEffect ***REMOVED***from 'react';
 import Layout from '../core/Layout';
-import { isAuthenticated } from '../auth';
-import { Link } from 'react-router-dom';
-import { getPurchaseHistory } from './apiUser';
+import ***REMOVED*** isAuthenticated ***REMOVED***from '../auth';
+import ***REMOVED*** Link ***REMOVED***from 'react-router-dom';
+import ***REMOVED*** getPurchaseHistory ***REMOVED***from './apiUser';
 import moment from 'moment';
 
-const Dashboard = () => {
+const Dashboard = () => ***REMOVED***
   const [history, setHistory] = useState([]);
 
-  const {
-    user: { _id, name, email, role },
-  } = isAuthenticated();
+  const ***REMOVED***
+    user: ***REMOVED*** _id, name, email, role },
+  ***REMOVED***= isAuthenticated();
 
   const token = isAuthenticated().token;
 
-  const init = (userId, token) => {
-    getPurchaseHistory(userId, token).then((data) => {
-      if (data.error) {
+  const init = (userId, token) => ***REMOVED***
+    getPurchaseHistory(userId, token).then((data) => ***REMOVED***
+      if (data.error) ***REMOVED***
         console.log(data.error);
-      } else {
+      ***REMOVED***else ***REMOVED***
         setHistory(data);
       }
     });
   };
 
-  useEffect(() => {
+  useEffect(() => ***REMOVED***
     init(_id, token);
   }, []);
 
-  const userLinks = () => {
+  const userLinks = () => ***REMOVED***
     return (
       <div className='card'>
         <h4 className='card-header'>User links</h4>
@@ -39,7 +39,7 @@ const Dashboard = () => {
             </Link>
           </li>
           <li className='list-group-item'>
-            <Link className='nav-link' to={`/profile/${_id}`}>
+            <Link className='nav-link' to=***REMOVED***`/profile/$***REMOVED***_id}`}>
               Update profile
             </Link>
           </li>
@@ -48,37 +48,37 @@ const Dashboard = () => {
     );
   };
 
-  const userInfo = () => {
+  const userInfo = () => ***REMOVED***
     return (
       <div className='card mb-5'>
         <h3 className='card-header'>User information</h3>
         <ul className='list-group'>
-          <li className='list-group-item'>{name}</li>
-          <li className='list-group-item'>{email}</li>
+          <li className='list-group-item'>***REMOVED***name}</li>
+          <li className='list-group-item'>***REMOVED***email}</li>
           <li className='list-group-item'>
-            {role === 1 ? 'Admin' : 'Registered user'}
+            ***REMOVED***role === 1 ? 'Admin' : 'Registered user'}
           </li>
         </ul>
       </div>
     );
   };
 
-  const purchaseHistory = (history) => {
+  const purchaseHistory = (history) => ***REMOVED***
     return (
       <div className='card mb-5'>
         <h3 className='card-header'>Purchase history</h3>
         <ul className='list-group'>
           <li className='list-group-item'>
-            {history.map((h, i) => {
+            ***REMOVED***history.map((h, i) => ***REMOVED***
               return (
                 <div>
                   <hr />
-                  {h.products.map((p, i) => {
+                  ***REMOVED***h.products.map((p, i) => ***REMOVED***
                     return (
-                      <div key={i}>
-                        <h6>Product name: {p.name}</h6>
-                        <h6>Product price: ${p.price}</h6>
-                        <h6>Purchased date: {moment(p.createdAt).fromNow()}</h6>
+                      <div key=***REMOVED***i}>
+                        <h6>Product name: ***REMOVED***p.name}</h6>
+                        <h6>Product price: $***REMOVED***p.price}</h6>
+                        <h6>Purchased date: ***REMOVED***moment(p.createdAt).fromNow()}</h6>
                       </div>
                     );
                   })}
@@ -94,14 +94,14 @@ const Dashboard = () => {
   return (
     <Layout
       title='Dashboard'
-      description={`${name}`}
+      description=***REMOVED***`$***REMOVED***name}`}
       className='container-fluid'
     >
       <div className='row'>
-        <div className='col-md-3'>{userLinks()}</div>
+        <div className='col-md-3'>***REMOVED***userLinks()}</div>
         <div className='col-md-9'>
-          {userInfo()}
-          {purchaseHistory(history)}
+          ***REMOVED***userInfo()}
+          ***REMOVED***purchaseHistory(history)}
         </div>
       </div>
     </Layout>

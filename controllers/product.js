@@ -2,33 +2,33 @@ const formidable = require('formidable');
 const _ = require('lodash');
 const fs = require('fs');
 const Product = require('../models/product');
-const { errorHandler } = require('../helpers/dbErrorHandler');
+const ***REMOVED*** errorHandler ***REMOVED***= require('../helpers/dbErrorHandler');
 
-exports.read = (req, res) => {
+exports.read = (req, res) => ***REMOVED***
   req.product.photo = undefined;
   return res.json(req.product);
 };
 
-exports.remove = (req, res) => {
+exports.remove = (req, res) => ***REMOVED***
   let product = req.product;
-  product.remove((err, deletedProduct) => {
-    if (err) {
-      return res.status(400).json({
+  product.remove((err, deletedProduct) => ***REMOVED***
+    if (err) ***REMOVED***
+      return res.status(400).json(***REMOVED***
         error: errorHandler(err),
       });
     }
-    res.json({
+    res.json(***REMOVED***
       message: 'Product deleted successfully',
     });
   });
 };
 
-exports.update = (req, res) => {
+exports.update = (req, res) => ***REMOVED***
   let form = new formidable.IncomingForm();
   form.keepExtensions = true;
-  form.parse(req, (err, fields, files) => {
-    if (err) {
-      return res.status(400).json({
+  form.parse(req, (err, fields, files) => ***REMOVED***
+    if (err) ***REMOVED***
+      return res.status(400).json(***REMOVED***
         error: 'Image could not be uploaded',
       });
     }
@@ -37,9 +37,9 @@ exports.update = (req, res) => {
     product = _.extend(product, fields);
 
 
-    if (files.photo) {
-      if (files.photo.size > 1000000) {
-        return res.status(400).json({
+    if (files.photo) ***REMOVED***
+      if (files.photo.size > 1000000) ***REMOVED***
+        return res.status(400).json(***REMOVED***
           error: 'Image should be less than 1mb in size',
         });
       }
@@ -47,9 +47,9 @@ exports.update = (req, res) => {
       product.photo.contentType = files.photo.type;
     }
 
-    product.save((err, result) => {
-      if (err) {
-        return res.status(400).json({
+    product.save((err, result) => ***REMOVED***
+      if (err) ***REMOVED***
+        return res.status(400).json(***REMOVED***
           error: errorHandler(err),
         });
       }
@@ -58,16 +58,16 @@ exports.update = (req, res) => {
   });
 };
 
-exports.create = (req, res) => {
+exports.create = (req, res) => ***REMOVED***
   let form = new formidable.IncomingForm();
   form.keepExtensions = true;
-  form.parse(req, (err, fields, files) => {
-    if (err) {
-      return res.status(400).json({
+  form.parse(req, (err, fields, files) => ***REMOVED***
+    if (err) ***REMOVED***
+      return res.status(400).json(***REMOVED***
         error: 'Image could not be uploaded',
       });
     }
-    const { name, description, price, category, quantity, shipping } = fields;
+    const ***REMOVED*** name, description, price, category, quantity, shipping ***REMOVED***= fields;
 
     if (
       !name ||
@@ -76,17 +76,17 @@ exports.create = (req, res) => {
       !category ||
       !quantity ||
       !shipping
-    ) {
-      return res.status(400).json({
+    ) ***REMOVED***
+      return res.status(400).json(***REMOVED***
         error: 'All fields are required',
       });
     }
 
     let product = new Product(fields);
 
-    if (files.photo) {
-      if (files.photo.size > 1000000) {
-        return res.status(400).json({
+    if (files.photo) ***REMOVED***
+      if (files.photo.size > 1000000) ***REMOVED***
+        return res.status(400).json(***REMOVED***
           error: 'Image should be less than 1mb in size',
         });
       }
@@ -94,10 +94,10 @@ exports.create = (req, res) => {
       product.photo.contentType = files.photo.type;
     }
 
-    product.save((err, result) => {
-      if (err) {
+    product.save((err, result) => ***REMOVED***
+      if (err) ***REMOVED***
         console.log('PRODUCT CREATE ERROR ', err);
-        return res.status(400).json({
+        return res.status(400).json(***REMOVED***
           error: errorHandler(err),
         });
       }
@@ -106,7 +106,7 @@ exports.create = (req, res) => {
   });
 };
 
-exports.list = (req, res) => {
+exports.list = (req, res) => ***REMOVED***
   let order = req.query.order ? req.query.order : 'asc';
   let sortBy = req.query.sortBy ? req.query.sortBy : '_id';
   let limit = req.query.limit ? parseInt(req.query.limit) : 6;
@@ -116,9 +116,9 @@ exports.list = (req, res) => {
     .populate('category')
     .sort([[sortBy, order]])
     .limit(limit)
-    .exec((err, products) => {
-      if (err) {
-        return res.status(400).json({
+    .exec((err, products) => ***REMOVED***
+      if (err) ***REMOVED***
+        return res.status(400).json(***REMOVED***
           error: 'Products not found',
         });
       }
@@ -126,15 +126,15 @@ exports.list = (req, res) => {
     });
 };
 
-exports.listRelated = (req, res) => {
+exports.listRelated = (req, res) => ***REMOVED***
   let limit = req.query.limit ? parseInt(req.query.limit) : 6;
 
-  Product.find({ _id: { $ne: req.product }, category: req.product.category })
+  Product.find(***REMOVED*** _id: ***REMOVED*** $ne: req.product }, category: req.product.category })
     .limit(limit)
     .populate('category', '_id name')
-    .exec((err, products) => {
-      if (err) {
-        return res.status(400).json({
+    .exec((err, products) => ***REMOVED***
+      if (err) ***REMOVED***
+        return res.status(400).json(***REMOVED***
           error: 'Products not found',
         });
       }
@@ -142,10 +142,10 @@ exports.listRelated = (req, res) => {
     });
 };
 
-exports.listCategories = (req, res) => {
-  Product.distinct('category', {}, (err, categories) => {
-    if (err) {
-      return res.status(400).json({
+exports.listCategories = (req, res) => ***REMOVED***
+  Product.distinct('category', ***REMOVED***}, (err, categories) => ***REMOVED***
+    if (err) ***REMOVED***
+      return res.status(400).json(***REMOVED***
         error: 'Categories not found',
       });
     }
@@ -153,21 +153,21 @@ exports.listCategories = (req, res) => {
   });
 };
 
-exports.listBySearch = (req, res) => {
+exports.listBySearch = (req, res) => ***REMOVED***
   let order = req.body.order ? req.body.order : 'desc';
   let sortBy = req.body.sortBy ? req.body.sortBy : '_id';
   let limit = req.body.limit ? parseInt(req.body.limit) : 100;
   let skip = parseInt(req.body.skip);
-  let findArgs = {};
+  let findArgs = ***REMOVED***};
 
-  for (let key in req.body.filters) {
-    if (req.body.filters[key].length > 0) {
-      if (key === 'price') {
-        findArgs[key] = {
+  for (let key in req.body.filters) ***REMOVED***
+    if (req.body.filters[key].length > 0) ***REMOVED***
+      if (key === 'price') ***REMOVED***
+        findArgs[key] = ***REMOVED***
           $gte: req.body.filters[key][0],
           $lte: req.body.filters[key][1],
         };
-      } else {
+      ***REMOVED***else ***REMOVED***
         findArgs[key] = req.body.filters[key];
       }
     }
@@ -179,32 +179,32 @@ exports.listBySearch = (req, res) => {
     .sort([[sortBy, order]])
     .skip(skip)
     .limit(limit)
-    .exec((err, data) => {
-      if (err) {
-        return res.status(400).json({
+    .exec((err, data) => ***REMOVED***
+      if (err) ***REMOVED***
+        return res.status(400).json(***REMOVED***
           error: 'Products not found',
         });
       }
-      res.json({
+      res.json(***REMOVED***
         size: data.length,
         data,
       });
     });
 };
 
-exports.decreaseQuantity = (req, res, next) => {
-  let bulkOps = req.body.order.products.map((item) => {
-    return {
-      updateOne: {
-        filter: { _id: item._id },
-        update: { $inc: { quantity: -item.count, sold: +item.count } },
+exports.decreaseQuantity = (req, res, next) => ***REMOVED***
+  let bulkOps = req.body.order.products.map((item) => ***REMOVED***
+    return ***REMOVED***
+      updateOne: ***REMOVED***
+        filter: ***REMOVED*** _id: item._id },
+        update: ***REMOVED*** $inc: ***REMOVED*** quantity: -item.count, sold: +item.count ***REMOVED***},
       },
     };
   });
 
-  Product.bulkWrite(bulkOps, {}, (error, products) => {
-    if (error) {
-      return res.status(400).json({
+  Product.bulkWrite(bulkOps, ***REMOVED***}, (error, products) => ***REMOVED***
+    if (error) ***REMOVED***
+      return res.status(400).json(***REMOVED***
         error: 'Could not update product',
       });
     }
@@ -212,24 +212,24 @@ exports.decreaseQuantity = (req, res, next) => {
   });
 };
 
-exports.photo = (req, res, next) => {
-  if (req.product.photo.data) {
+exports.photo = (req, res, next) => ***REMOVED***
+  if (req.product.photo.data) ***REMOVED***
     res.set('Content-Type', req.product.photo.contentType);
     return res.send(req.product.photo.data);
   }
   next();
 };
 
-exports.listSearch = (req, res) => {
-  const query = {};
-  if (req.query.search) {
-    query.name = { $regex: req.query.search, $options: 'i' };
-    if (req.query.category && req.query.category != 'All') {
+exports.listSearch = (req, res) => ***REMOVED***
+  const query = ***REMOVED***};
+  if (req.query.search) ***REMOVED***
+    query.name = ***REMOVED*** $regex: req.query.search, $options: 'i' };
+    if (req.query.category && req.query.category != 'All') ***REMOVED***
       query.category = req.query.category;
     }
-    Product.find(query, (err, products) => {
-      if (err) {
-        return res.status(400).json({
+    Product.find(query, (err, products) => ***REMOVED***
+      if (err) ***REMOVED***
+        return res.status(400).json(***REMOVED***
           error: errorHandler(err),
         });
       }
@@ -238,12 +238,12 @@ exports.listSearch = (req, res) => {
   }
 };
 
-exports.productById = (req, res, next, id) => {
+exports.productById = (req, res, next, id) => ***REMOVED***
   Product.findById(id)
     .populate('category')
-    .exec((err, product) => {
-      if (err || !product) {
-        return res.status(400).json({
+    .exec((err, product) => ***REMOVED***
+      if (err || !product) ***REMOVED***
+        return res.status(400).json(***REMOVED***
           error: 'Product not found',
         });
       }
