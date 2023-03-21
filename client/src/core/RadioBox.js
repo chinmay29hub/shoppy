@@ -1,24 +1,24 @@
-import React, ***REMOVED*** useState ***REMOVED***from 'react';
+import React, { useState } from 'react';
 import Radio from '@material-ui/core/Radio';
 
-const RadioBox = (***REMOVED*** prices, handleFilters }) => ***REMOVED***
+const RadioBox = ({ prices, handleFilters }) => {
   const [value, setValue] = useState(0);
 
-  const handleChange = (event) => ***REMOVED***
+  const handleChange = (event) => {
     handleFilters(event.target.value);
     setValue(event.target.value);
   };
 
   return prices.map((p, i) => (
-    <div className='ml-5' key=***REMOVED***i}>
+    <div className='ml-5' key={i}>
       <Radio
-        checked=***REMOVED***value === `$***REMOVED***p._id}`}
-        onChange=***REMOVED***handleChange}
-        value=***REMOVED***`$***REMOVED***p._id}`}
-        name=***REMOVED***p}
-        inputProps=***REMOVED******REMOVED*** 'aria-label': 'A' }}
+        checked={value === `${p._id}`}
+        onChange={handleChange}
+        value={`${p._id}`}
+        name={p}
+        inputProps={{ 'aria-label': 'A' }}
       />
-      <label className='form-check-label'>***REMOVED***p.name}</label>
+      <label className='form-check-label'>{p.name}</label>
     </div>
   ));
 };

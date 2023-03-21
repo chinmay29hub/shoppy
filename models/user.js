@@ -1,65 +1,65 @@
 const mongoose = require('mongoose');
 const crypto = require('crypto');
-const ***REMOVED*** v1: uuidv1 ***REMOVED***= require('uuid');
+const { v1: uuidv1 } = require('uuid');
 
 const userSchema = new mongoose.Schema(
-  ***REMOVED***
-    name: ***REMOVED***
+  {
+    name: {
       type: String,
       trim: true,
       required: true,
       maxlength: 32,
     },
-    email: ***REMOVED***
+    email: {
       type: String,
       trim: true,
       required: true,
       unique: true,
     },
-    hashed_password: ***REMOVED***
+    hashed_password: {
       type: String,
       required: true,
     },
-    about: ***REMOVED***
+    about: {
       type: String,
       trim: true,
     },
     salt: String,
-    role: ***REMOVED***
+    role: {
       type: Number,
       default: 0,
     },
-    history: ***REMOVED***
+    history: {
       type: Array,
       default: [],
     },
   },
-  ***REMOVED*** timestamps: true }
+  { timestamps: true }
 );
 
 userSchema
   .virtual('password')
-  .set(function (password) ***REMOVED***
+  .set(function (password) {
     this._password = password;
     this.salt = uuidv1();
     this.hashed_password = this.encryptPassword(password);
   })
-  .get(function () ***REMOVED***
+  .get(function () {
     return this._password;
   });
 
-userSchema.methods = ***REMOVED***
-  authenticate: function(plainText) ***REMOVED***
+userSchema.methods = {
+  authenticate: function(plainText) {
     return this.encryptPassword(plainText) === this.hashed_password;
   },
-  encryptPassword: function (password) ***REMOVED***
+  encryptPassword: function (password) {
     if (!password) return '';
-    try ***REMOVED***
+    try {
       return crypto
         .createHmac('sha1', this.salt)
         .update(password)
         .digest('hex');
-    ***REMOVED***catch (err) ***REMOVED***
+    } catch (err) {
       return '';
     }
   },

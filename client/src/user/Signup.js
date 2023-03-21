@@ -1,5 +1,5 @@
-import React, ***REMOVED*** useState ***REMOVED***from 'react';
-import ***REMOVED*** Link ***REMOVED***from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -11,34 +11,34 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import ***REMOVED*** makeStyles ***REMOVED***from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 import Layout from '../core/Layout';
-import ***REMOVED*** signup ***REMOVED***from '../auth';
+import { signup } from '../auth';
 
-const useStyles = makeStyles((theme) => (***REMOVED***
-  paper: ***REMOVED***
+const useStyles = makeStyles((theme) => ({
+  paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
   },
-  avatar: ***REMOVED***
+  avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
   },
-  form: ***REMOVED***
+  form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
-  submit: ***REMOVED***
+  submit: {
     margin: theme.spacing(3, 0, 2),
   },
 }));
 
-export default function Signup() ***REMOVED***
-  const [values, setValues] = useState(***REMOVED***
+export default function Signup() {
+  const [values, setValues] = useState({
     name: '',
     email: '',
     password: '',
@@ -46,20 +46,20 @@ export default function Signup() ***REMOVED***
     success: false,
   });
 
-  const ***REMOVED*** name, email, password, success, error ***REMOVED***= values;
+  const { name, email, password, success, error } = values;
 
-  const handleChange = (name) => (event) => ***REMOVED***
-    setValues(***REMOVED*** ...values, error: false, [name]: event.target.value });
+  const handleChange = (name) => (event) => {
+    setValues({ ...values, error: false, [name]: event.target.value });
   };
 
-  const clickSubmit = (event) => ***REMOVED***
+  const clickSubmit = (event) => {
     event.preventDefault(); // so that browser does not reload
-    setValues(***REMOVED*** ...values, error: false });
-    signup(***REMOVED*** name, email, password }).then((data) => ***REMOVED***
-      if (data.error) ***REMOVED***
-        setValues(***REMOVED*** ...values, error: data.error, success: false });
-      ***REMOVED***else ***REMOVED***
-        setValues(***REMOVED***
+    setValues({ ...values, error: false });
+    signup({ name, email, password }).then((data) => {
+      if (data.error) {
+        setValues({ ...values, error: data.error, success: false });
+      } else {
+        setValues({
           ...values,
           name: '',
           email: '',
@@ -74,16 +74,16 @@ export default function Signup() ***REMOVED***
   const showError = () => (
     <div
       className='alert alert-danger'
-      style=***REMOVED******REMOVED*** display: error ? '' : 'none' }}
+      style={{ display: error ? '' : 'none' }}
     >
-      ***REMOVED***error}
+      {error}
     </div>
   );
 
   const showSuccess = () => (
     <div
       className='alert alert-info'
-      style=***REMOVED******REMOVED*** display: success ? '' : 'none' }}
+      style={{ display: success ? '' : 'none' }}
     >
       New account is created. Please <Link to='/signin'>Signin</Link>.
     </div>
@@ -93,25 +93,25 @@ export default function Signup() ***REMOVED***
 
   const signUpForm = () => (
     <Container component='main' maxWidth='xs'>
-      ***REMOVED***showSuccess()}
-      ***REMOVED***showError()}
+      {showSuccess()}
+      {showError()}
       <CssBaseline />
-      <div className=***REMOVED***classes.paper}>
-        <Avatar className=***REMOVED***classes.avatar}>
+      <div className={classes.paper}>
+        <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
         <Typography component='h1' variant='h5'>
           Sign up
         </Typography>
-        <form className=***REMOVED***classes.form***REMOVED***noValidate>
-          <Grid container spacing=***REMOVED***2}>
-            <Grid item xs=***REMOVED***12}>
+        <form className={classes.form} noValidate>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
               <TextField
                 autoComplete='off'
-                onChange=***REMOVED***handleChange('name')}
+                onChange={handleChange('name')}
                 type='text'
                 name='name'
-                value=***REMOVED***name}
+                value={name}
                 variant='outlined'
                 required
                 fullWidth
@@ -120,7 +120,7 @@ export default function Signup() ***REMOVED***
                 autoFocus
               />
             </Grid>
-            <Grid item xs=***REMOVED***12}>
+            <Grid item xs={12}>
               <TextField
                 variant='outlined'
                 required
@@ -128,13 +128,13 @@ export default function Signup() ***REMOVED***
                 id='email'
                 label='Email Address'
                 name='email'
-                onChange=***REMOVED***handleChange('email')}
+                onChange={handleChange('email')}
                 type='email'
-                value=***REMOVED***email}
+                value={email}
                 autoComplete='off'
               />
             </Grid>
-            <Grid item xs=***REMOVED***12}>
+            <Grid item xs={12}>
               <TextField
                 variant='outlined'
                 required
@@ -142,9 +142,9 @@ export default function Signup() ***REMOVED***
                 name='password'
                 label='Password'
                 id='password'
-                onChange=***REMOVED***handleChange('password')}
+                onChange={handleChange('password')}
                 type='password'
-                value=***REMOVED***password}
+                value={password}
                 autoComplete='current-password'
               />
             </Grid>
@@ -154,8 +154,8 @@ export default function Signup() ***REMOVED***
             fullWidth
             variant='contained'
             color='primary'
-            className=***REMOVED***classes.submit}
-            onClick=***REMOVED***clickSubmit}
+            className={classes.submit}
+            onClick={clickSubmit}
           >
             Sign Up
           </Button>
@@ -177,7 +177,7 @@ export default function Signup() ***REMOVED***
       description='Signup to MERN E-commerce App'
       className='container col-md-8 offset-md-2'
     >
-      ***REMOVED***signUpForm()}
+      {signUpForm()}
     </Layout>
   );
 }

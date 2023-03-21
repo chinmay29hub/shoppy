@@ -1,26 +1,26 @@
 const Category = require('../models/category');
-const ***REMOVED*** errorHandler ***REMOVED***= require('../helpers/dbErrorHandler');
+const { errorHandler } = require('../helpers/dbErrorHandler');
 
-exports.create = (req, res) => ***REMOVED***
+exports.create = (req, res) => {
   const category = new Category(req.body);
-  category.save((err, data) => ***REMOVED***
-    if (err) ***REMOVED***
-      return res.status(400).json(***REMOVED***
+  category.save((err, data) => {
+    if (err) {
+      return res.status(400).json({
         error: errorHandler(err),
       });
     }
-    res.json(***REMOVED*** data });
+    res.json({ data });
   });
 };
 
-exports.update = (req, res) => ***REMOVED***
+exports.update = (req, res) => {
   // console.log('req.body', req.body);
   // console.log('category update param', req.params.categoryId);
   const category = req.category;
   category.name = req.body.name;
-  category.save((err, data) => ***REMOVED***
-    if (err) ***REMOVED***
-      return res.status(400).json(***REMOVED***
+  category.save((err, data) => {
+    if (err) {
+      return res.status(400).json({
         error: errorHandler(err),
       });
     }
@@ -28,14 +28,14 @@ exports.update = (req, res) => ***REMOVED***
   });
 };
 
-exports.read = (req, res) => ***REMOVED***
+exports.read = (req, res) => {
   return res.json(req.category);
 };
 
-exports.list = (req, res) => ***REMOVED***
-  Category.find().exec((err, data) => ***REMOVED***
-    if (err) ***REMOVED***
-      return res.status(400).json(***REMOVED***
+exports.list = (req, res) => {
+  Category.find().exec((err, data) => {
+    if (err) {
+      return res.status(400).json({
         error: errorHandler(err),
       });
     }
@@ -43,24 +43,24 @@ exports.list = (req, res) => ***REMOVED***
   });
 };
 
-exports.remove = (req, res) => ***REMOVED***
+exports.remove = (req, res) => {
   const category = req.category;
-  category.remove((err, data) => ***REMOVED***
-    if (err) ***REMOVED***
-      return res.status(400).json(***REMOVED***
+  category.remove((err, data) => {
+    if (err) {
+      return res.status(400).json({
         error: errorHandler(err),
       });
     }
-    res.json(***REMOVED***
+    res.json({
       message: 'Category deleted',
     });
   });
 };
 
-exports.categoryById = (req, res, next, id) => ***REMOVED***
-  Category.findById(id).exec((err, category) => ***REMOVED***
-    if (err || !category) ***REMOVED***
-      return res.status(400).json(***REMOVED***
+exports.categoryById = (req, res, next, id) => {
+  Category.findById(id).exec((err, category) => {
+    if (err || !category) {
+      return res.status(400).json({
         error: "Category doesn't exist",
       });
     }

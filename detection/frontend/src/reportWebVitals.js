@@ -1,6 +1,6 @@
-const reportWebVitals = onPerfEntry => ***REMOVED***
-  if (onPerfEntry && onPerfEntry instanceof Function) ***REMOVED***
-    import('web-vitals').then((***REMOVED*** getCLS, getFID, getFCP, getLCP, getTTFB }) => ***REMOVED***
+const reportWebVitals = onPerfEntry => {
+  if (onPerfEntry && onPerfEntry instanceof Function) {
+    import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
       getCLS(onPerfEntry);
       getFID(onPerfEntry);
       getFCP(onPerfEntry);

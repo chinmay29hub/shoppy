@@ -1,10 +1,10 @@
-export const addItem = (item = [], count = 0, next = (f) => f) => ***REMOVED***
+export const addItem = (item = [], count = 0, next = (f) => f) => {
   let cart = [];
-  if (typeof window !== 'undefined') ***REMOVED***
-    if (localStorage.getItem('cart')) ***REMOVED***
+  if (typeof window !== 'undefined') {
+    if (localStorage.getItem('cart')) {
       cart = JSON.parse(localStorage.getItem('cart'));
     }
-    cart.push(***REMOVED***
+    cart.push({
       ...item,
       count: 1,
     });
@@ -18,7 +18,7 @@ export const addItem = (item = [], count = 0, next = (f) => f) => ***REMOVED***
     // ...with the array of ids we got on when first map() was used
     // run map() on it again and return the actual product from the cart
 
-    cart = Array.from(new Set(cart.map((p) => p._id))).map((id) => ***REMOVED***
+    cart = Array.from(new Set(cart.map((p) => p._id))).map((id) => {
       return cart.find((p) => p._id === id);
     });
 
@@ -27,33 +27,33 @@ export const addItem = (item = [], count = 0, next = (f) => f) => ***REMOVED***
   }
 };
 
-export const itemTotal = () => ***REMOVED***
-  if (typeof window !== 'undefined') ***REMOVED***
-    if (localStorage.getItem('cart')) ***REMOVED***
+export const itemTotal = () => {
+  if (typeof window !== 'undefined') {
+    if (localStorage.getItem('cart')) {
       return JSON.parse(localStorage.getItem('cart')).length;
     }
   }
   return 0;
 };
 
-export const getCart = () => ***REMOVED***
-  if (typeof window !== 'undefined') ***REMOVED***
-    if (localStorage.getItem('cart')) ***REMOVED***
+export const getCart = () => {
+  if (typeof window !== 'undefined') {
+    if (localStorage.getItem('cart')) {
       return JSON.parse(localStorage.getItem('cart'));
     }
   }
   return [];
 };
 
-export const updateItem = (productId, count) => ***REMOVED***
+export const updateItem = (productId, count) => {
   let cart = [];
-  if (typeof window !== 'undefined') ***REMOVED***
-    if (localStorage.getItem('cart')) ***REMOVED***
+  if (typeof window !== 'undefined') {
+    if (localStorage.getItem('cart')) {
       cart = JSON.parse(localStorage.getItem('cart'));
     }
 
-    cart.map((product, i) => ***REMOVED***
-      if (product._id === productId) ***REMOVED***
+    cart.map((product, i) => {
+      if (product._id === productId) {
         cart[i].count = count;
       }
     });
@@ -62,15 +62,15 @@ export const updateItem = (productId, count) => ***REMOVED***
   }
 };
 
-export const removeItem = (productId) => ***REMOVED***
+export const removeItem = (productId) => {
   let cart = [];
-  if (typeof window !== 'undefined') ***REMOVED***
-    if (localStorage.getItem('cart')) ***REMOVED***
+  if (typeof window !== 'undefined') {
+    if (localStorage.getItem('cart')) {
       cart = JSON.parse(localStorage.getItem('cart'));
     }
 
-    cart.map((product, i) => ***REMOVED***
-      if (product._id === productId) ***REMOVED***
+    cart.map((product, i) => {
+      if (product._id === productId) {
         cart.splice(i, 1);
       }
     });
@@ -80,8 +80,8 @@ export const removeItem = (productId) => ***REMOVED***
   return cart;
 };
 
-export const emptyCart = (next) => ***REMOVED***
-  if (typeof window !== 'undefined') ***REMOVED***
+export const emptyCart = (next) => {
+  if (typeof window !== 'undefined') {
     localStorage.removeItem('cart');
     next();
   }

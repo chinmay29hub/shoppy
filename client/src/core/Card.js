@@ -1,5 +1,5 @@
-import React, ***REMOVED*** useState ***REMOVED***from 'react';
-import ***REMOVED*** Redirect ***REMOVED***from 'react-router-dom';
+import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import ShowImage from './ShowImage';
 import moment from 'moment';
 import Row from 'react-bootstrap/Row'
@@ -16,28 +16,28 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import ***REMOVED*** makeStyles ***REMOVED***from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 
-import ***REMOVED*** addItem, updateItem, removeItem ***REMOVED***from './cartHelpers';
+import { addItem, updateItem, removeItem } from './cartHelpers';
 
-const useStyles = makeStyles((theme) => (***REMOVED***
-  icon: ***REMOVED***
+const useStyles = makeStyles((theme) => ({
+  icon: {
     marginRight: theme.spacing(2),
   },
-  heroContent: ***REMOVED***
+  heroContent: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(8, 0, 6),
   },
-  heroButtons: ***REMOVED***
+  heroButtons: {
     marginTop: theme.spacing(4),
   },
-  cardGrid: ***REMOVED***
+  cardGrid: {
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
   },
-  card: ***REMOVED***
+  card: {
     borderRadius: "1rem",
     boxShadow: "none",
     border: "0.05rem solid lightgray",
@@ -45,23 +45,23 @@ const useStyles = makeStyles((theme) => (***REMOVED***
     display: 'flex',
     flexDirection: 'column',
   },
-  cardMedia: ***REMOVED***
+  cardMedia: {
     paddingTop: '56.25%', // 16:9
   },
-  cardContent: ***REMOVED***
+  cardContent: {
     flexGrow: 1,
   },
-  productDescription: ***REMOVED***
+  productDescription: {
     height: 'max-content',
     margin: "0.6rem 0rem 1rem 0rem"
   },
-  footer: ***REMOVED***
+  footer: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
 }));
 
-const Card = (***REMOVED***
+const Card = ({
   product,
   showViewProductButton = true,
   showAddToCartButton = true,
@@ -69,17 +69,17 @@ const Card = (***REMOVED***
   showRemoveProductButton = false,
   setRun = (f) => f, // default value of function
   run = undefined, // default value of undefined
-}) => ***REMOVED***
+}) => {
   const [redirect, setRedirect] = useState(false);
   const [count, setCount] = useState(product.count);
 
-  const showViewButton = (showViewProductButton) => ***REMOVED***
+  const showViewButton = (showViewProductButton) => {
     return (
       showViewProductButton && (
-        <Link href=***REMOVED***`/product/$***REMOVED***product._id}`***REMOVED***className='mr-2' style=***REMOVED******REMOVED***
+        <Link href={`/product/${product._id}`} className='mr-2' style={{
           textDecoration: 'none',
         }}>
-          <Button style=***REMOVED******REMOVED***
+          <Button style={{
             backgroundColor: "#3579bd",
             color: "white",
             borderRadius: "0.5rem",
@@ -95,21 +95,21 @@ const Card = (***REMOVED***
     );
   };
 
-  const addToCart = () => ***REMOVED***
+  const addToCart = () => {
     // console.log('added');
     addItem(product, setRedirect(true));
   };
 
-  const shouldRedirect = (redirect) => ***REMOVED***
-    if (redirect) ***REMOVED***
+  const shouldRedirect = (redirect) => {
+    if (redirect) {
       return <Redirect to='/cart' />;
     }
   };
 
-  const showAddToCartBtn = (showAddToCartButton) => ***REMOVED***
+  const showAddToCartBtn = (showAddToCartButton) => {
     return (
       showAddToCartButton && (
-        <Button onClick=***REMOVED***addToCart***REMOVED***style=***REMOVED******REMOVED***
+        <Button onClick={addToCart} style={{
           position: "absolute",
           right: "0",
           border: "0.1rem solid #3579bd",
@@ -127,9 +127,9 @@ const Card = (***REMOVED***
     );
   };
 
-  const showStock = (quantity) => ***REMOVED***
+  const showStock = (quantity) => {
     return quantity > 0 ? (
-      <Button style=***REMOVED******REMOVED***
+      <Button style={{
         position: "absolute",
         right: "0",
         backgroundColor: "#b6eee7",
@@ -144,7 +144,7 @@ const Card = (***REMOVED***
         hover: "none"
       }}>In Stock </Button>
     ) : (
-      <Button style=***REMOVED******REMOVED***
+      <Button style={{
         position: "absolute",
         right: "0",
         backgroundColor: "#ffb5b5",
@@ -160,33 +160,33 @@ const Card = (***REMOVED***
       }}>Out of Stock </Button>);
   };
 
-  const handleChange = (productId) => (event) => ***REMOVED***
+  const handleChange = (productId) => (event) => {
     setRun(!run); // run useEffect in parent Cart
     setCount(event.target.value < 1 ? 1 : event.target.value);
-    if (event.target.value >= 1) ***REMOVED***
+    if (event.target.value >= 1) {
       updateItem(productId, event.target.value);
     }
   };
 
-  const showCartUpdateOptions = (cartUpdate) => ***REMOVED***
+  const showCartUpdateOptions = (cartUpdate) => {
     return (
       cartUpdate && (
         <div className='mt-2'>
           <div className='input-group mb-3'>
-            <div className='input-group-prepend' style=***REMOVED******REMOVED***
+            <div className='input-group-prepend' style={{
               margin: "0.5rem 0rem 0rem 0rem",
               borderRight: "none"
             }}>
-              <span className='input-group-text' style=***REMOVED******REMOVED***
+              <span className='input-group-text' style={{
                 borderRadius: "0.4rem 0rem 0rem 0.4rem ",
               }}>Adjust Quantity</span>
             </div>
             <input
               type='number'
               className='form-control'
-              value=***REMOVED***count}
-              onChange=***REMOVED***handleChange(product._id)}
-              style=***REMOVED******REMOVED***
+              value={count}
+              onChange={handleChange(product._id)}
+              style={{
                 borderLeft: "none",
                 borderRadius: "0rem 0.4rem 0.4rem 0rem ",
                 margin: "0.5rem 0rem 0rem 0rem"
@@ -198,19 +198,19 @@ const Card = (***REMOVED***
     );
   };
 
-  const showRemoveButton = (showRemoveProductButton) => ***REMOVED***
+  const showRemoveButton = (showRemoveProductButton) => {
     return (
       showRemoveProductButton && (
         <Button
-          onClick=***REMOVED***() => ***REMOVED***
+          onClick={() => {
             removeItem(product._id);
             setRun(!run); // run useEffect in parent Cart
           }}
           variant='contained'
           color='secondary'
-          className=***REMOVED***classes.button}
-          startIcon=***REMOVED***<DeleteIcon />}
-          style=***REMOVED******REMOVED***
+          className={classes.button}
+          startIcon={<DeleteIcon />}
+          style={{
             position: "absolute",
             right: "0",
             marginRight: "3.5rem",
@@ -233,113 +233,113 @@ const Card = (***REMOVED***
 
   return (
     // <div className='card'>
-    //   <div className='card-header name'>***REMOVED***product.name}</div>
+    //   <div className='card-header name'>{product.name}</div>
     //   <div className='card-body'>
-    //     ***REMOVED***shouldRedirect(redirect)}
-    //     <ShowImage item=***REMOVED***product***REMOVED***url='product' />
-    //     <p className='lead mt-2'>***REMOVED***product.description.substring(0, 100)}</p>
-    //     <p className='black-10'>$***REMOVED***product.price}</p>
+    //     {shouldRedirect(redirect)}
+    //     <ShowImage item={product} url='product' />
+    //     <p className='lead mt-2'>{product.description.substring(0, 100)}</p>
+    //     <p className='black-10'>${product.price}</p>
     //     <p className='black-9'>
-    //       Category: ***REMOVED***product.category && product.category.name}
+    //       Category: {product.category && product.category.name}
     //     </p>
     //     <p className='black-8'>
-    //       Added on ***REMOVED***moment(product.createdAt).fromNow()}
+    //       Added on {moment(product.createdAt).fromNow()}
     //     </p>
 
-    //     ***REMOVED***showStock(product.quantity)}
+    //     {showStock(product.quantity)}
     //     <br></br>
 
-    //     ***REMOVED***showViewButton(showViewProductButton)}
+    //     {showViewButton(showViewProductButton)}
 
-    //     ***REMOVED***showAddToCartBtn(showAddToCartButton)}
+    //     {showAddToCartBtn(showAddToCartButton)}
 
-    //     ***REMOVED***showRemoveButton(showRemoveProductButton)}
+    //     {showRemoveButton(showRemoveProductButton)}
 
-    //     ***REMOVED***showCartUpdateOptions(cartUpdate)}
+    //     {showCartUpdateOptions(cartUpdate)}
     //   </div>
     // </div>
 
-    <Container className=***REMOVED***classes.cardGrid***REMOVED***maxWidth='md'>
+    <Container className={classes.cardGrid} maxWidth='md'>
       <CssBaseline />
-      <Grid container spacing=***REMOVED***2}>
-        <Grid item xs=***REMOVED***12***REMOVED***sm=***REMOVED***12***REMOVED***md=***REMOVED***12}>
-          <CardM className=***REMOVED***classes.card}>
-            ***REMOVED***shouldRedirect(redirect)}
-            <ShowImage item=***REMOVED***product***REMOVED***url='product' />
-            <CardContent className=***REMOVED***classes.cardContent}>
-              <div style=***REMOVED******REMOVED***
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={12} md={12}>
+          <CardM className={classes.card}>
+            {shouldRedirect(redirect)}
+            <ShowImage item={product} url='product' />
+            <CardContent className={classes.cardContent}>
+              <div style={{
                 display: "flex",
                 padding: 0
               }}>
-                <Row style=***REMOVED******REMOVED***
+                <Row style={{
                   width: "100%",
                   margin: 0,
                   display: "flex",
                   alignItems: "center"
                 }}>
-                  <Col style=***REMOVED******REMOVED***
+                  <Col style={{
                     flex: 1
                   }}>
-                    <Typography gutterBottom variant='h5' component='h2' style=***REMOVED******REMOVED***
+                    <Typography gutterBottom variant='h5' component='h2' style={{
                       fontFamily: "Qanelas-Medium",
                       fontWeight: "700",
                       margin: "0.6rem 0rem 0.6rem -.75rem",
                     }}>
-                      ***REMOVED***product.name}
+                      {product.name}
                     </Typography>
                   </Col>
-                  <Col className="col-3" style=***REMOVED******REMOVED***
+                  <Col className="col-3" style={{
                     display: "flex",
                     alignItems: "flex-end",
                     justifyContent: "flex-end",
                     width: "auto",
                   }}>
-                    <p style=***REMOVED******REMOVED***
+                    <p style={{
                       justifyContent: "flex-end",
                       width: "max-content",
                       fontFamily: "Qanelas-Black",
                       fontSize: "1.6rem",
                       margin: "0",
                       padding: "0",
-                    }}>₹***REMOVED***product.price}</p>
+                    }}>₹{product.price}</p>
                   </Col>
                 </Row>
 
-                ***REMOVED***/* <Row style=***REMOVED******REMOVED***
+                {/* <Row style={{
                   backgroundColor: "red",
                   width: "100%",
                   margin: 0
                 }}>
-                  <Col style=***REMOVED******REMOVED***
+                  <Col style={{
                     backgroundColor: "green",
                     width: "100%"
                   }}>
-                    <Typography gutterBottom variant='h5' component='h2' style=***REMOVED******REMOVED***
+                    <Typography gutterBottom variant='h5' component='h2' style={{
                       fontFamily: "Qanelas-Medium",
                       fontWeight: "700",
                       width: "100%",
                       margin: "0.25rem 0rem 0.3rem 0rem",
                     }}>
-                      ***REMOVED***product.name}
+                      {product.name}
                     </Typography>
                   </Col>
-                  <Col style=***REMOVED******REMOVED***
+                  <Col style={{
                     width: "max-content",
                     backgroundColor: "yellow"
                   }}>
-                    <p style=***REMOVED******REMOVED***
+                    <p style={{
                       width: "max-content",
                       fontFamily: "Qanelas-Black",
                       fontSize: "1.8rem",
                       margin: "0"
-                    }}>₹***REMOVED***product.price}</p>
+                    }}>₹{product.price}</p>
                   </Col>
                 </Row> */}
               </div>
-              <div style=***REMOVED******REMOVED***
+              <div style={{
                 display: "flex"
               }}>
-                <Button className='prod-categ' style=***REMOVED******REMOVED***
+                <Button className='prod-categ' style={{
                   backgroundColor: "#b5d5ff",
                   marginBottom: "0.5rem",
                   textTransform: "none",
@@ -351,25 +351,25 @@ const Card = (***REMOVED***
                   outline: "none",
                   hover: "none"
                 }}>
-                  ***REMOVED***product.category && product.category.name}***REMOVED***' '}
+                  {product.category && product.category.name}{' '}
                 </Button>
-                ***REMOVED***showStock(product.quantity)}
+                {showStock(product.quantity)}
               </div>
-              <Typography className=***REMOVED***classes.productDescription}>***REMOVED***product.description.substring(0, 100)}</Typography>
+              <Typography className={classes.productDescription}>{product.description.substring(0, 100)}</Typography>
 
-              <p style=***REMOVED******REMOVED***
+              <p style={{
                 fontSize: "1rem",
                 margin: "0rem 0rem -0.2rem 0rem"
               }}>
-                Added ***REMOVED***moment(product.createdAt).fromNow()}***REMOVED***'.'}
+                Added {moment(product.createdAt).fromNow()}{'.'}
               </p>
               <br></br>
               <span>
-                ***REMOVED***showViewButton(showViewProductButton)}
-                ***REMOVED***showAddToCartBtn(showAddToCartButton)}
-                ***REMOVED***showRemoveButton(showRemoveProductButton)}
+                {showViewButton(showViewProductButton)}
+                {showAddToCartBtn(showAddToCartButton)}
+                {showRemoveButton(showRemoveProductButton)}
               </span>
-              ***REMOVED***showCartUpdateOptions(cartUpdate)}
+              {showCartUpdateOptions(cartUpdate)}
             </CardContent>
           </CardM>
         </Grid>
@@ -377,33 +377,33 @@ const Card = (***REMOVED***
     </Container>
 
 
-    // <Container className=***REMOVED***classes.cardGrid***REMOVED***maxWidth='md'>
+    // <Container className={classes.cardGrid} maxWidth='md'>
     //   <CssBaseline />
-    //   <Grid container spacing=***REMOVED***2}>
-    //     <Grid item xs=***REMOVED***12***REMOVED***sm=***REMOVED***12***REMOVED***md=***REMOVED***12}>
-    //       <CardM className=***REMOVED***classes.card}>
-    //         ***REMOVED***shouldRedirect(redirect)}
-    //         <ShowImage item=***REMOVED***product***REMOVED***url='product' />
-    //         <CardContent className=***REMOVED***classes.cardContent}>
+    //   <Grid container spacing={2}>
+    //     <Grid item xs={12} sm={12} md={12}>
+    //       <CardM className={classes.card}>
+    //         {shouldRedirect(redirect)}
+    //         <ShowImage item={product} url='product' />
+    //         <CardContent className={classes.cardContent}>
     //           <Typography gutterBottom variant='h5' component='h2'>
-    //             ***REMOVED***product.name}
+    //             {product.name}
     //           </Typography>
-    //           <Typography className=***REMOVED***classes.productDescription}>***REMOVED***product.description.substring(0, 100)}</Typography>
-    //           <p className='black-10'>Price: $***REMOVED***product.price}</p>
+    //           <Typography className={classes.productDescription}>{product.description.substring(0, 100)}</Typography>
+    //           <p className='black-10'>Price: ${product.price}</p>
     //           <p className='black-9'>
-    //             Category: ***REMOVED***product.category && product.category.name}***REMOVED***' '}
-    //           </p>***REMOVED***' '}
+    //             Category: {product.category && product.category.name}{' '}
+    //           </p>{' '}
     //           <p className='black-8'>
-    //             Added on ***REMOVED***moment(product.createdAt).fromNow()}***REMOVED***' '}
+    //             Added on {moment(product.createdAt).fromNow()}{' '}
     //           </p>
-    //           ***REMOVED***showStock(product.quantity)}
+    //           {showStock(product.quantity)}
     //           <br></br>
     //           <span>
-    //             ***REMOVED***showViewButton(showViewProductButton)}
-    //             ***REMOVED***showAddToCartBtn(showAddToCartButton)}
-    //             ***REMOVED***showRemoveButton(showRemoveProductButton)}
+    //             {showViewButton(showViewProductButton)}
+    //             {showAddToCartBtn(showAddToCartButton)}
+    //             {showRemoveButton(showRemoveProductButton)}
     //           </span>
-    //           ***REMOVED***showCartUpdateOptions(cartUpdate)}
+    //           {showCartUpdateOptions(cartUpdate)}
     //         </CardContent>
     //       </CardM>
     //     </Grid>

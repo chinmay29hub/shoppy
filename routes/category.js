@@ -1,16 +1,16 @@
 const express = require('express');
 const router = express.Router();
 
-const ***REMOVED***
+const {
   create,
   categoryById,
   read,
   update,
   remove,
   list
-***REMOVED***= require('../controllers/category');
-const ***REMOVED*** userById ***REMOVED***= require('../controllers/user');
-const ***REMOVED*** requireSignin, isAuth, isAdmin ***REMOVED***= require('../controllers/auth');
+} = require('../controllers/category');
+const { userById } = require('../controllers/user');
+const { requireSignin, isAuth, isAdmin } = require('../controllers/auth');
 
 router.post('/category/create/:userId', requireSignin, isAuth, isAdmin, create);
 router.get('/category/:categoryId', read);

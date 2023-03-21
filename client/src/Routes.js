@@ -1,5 +1,5 @@
 import React from 'react';
-import ***REMOVED*** BrowserRouter, Switch, Route ***REMOVED***from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Signup from './user/Signup';
 import Signin from './user/Signin';
 import Home from './core/Home';
@@ -21,32 +21,32 @@ import Chatbot from './core/Chatbot';
 import Map from './core/Map';
 import Camera from './core/Camera';
 
-const Routes = () => ***REMOVED***
+const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path='/' component=***REMOVED***Home***REMOVED***exact />
-        <Route path='/shop' component=***REMOVED***Shop***REMOVED***exact />
-        <Route path='/signin' component=***REMOVED***Signin***REMOVED***exact />
-        <Route path='/signup' component=***REMOVED***Signup***REMOVED***exact />
-        <Route path='/chat' component=***REMOVED***Chatbot***REMOVED***exact />
-        <Route path='/map' component=***REMOVED***Map***REMOVED***exact />
-        <Route path='/camera' component=***REMOVED***Camera***REMOVED***exact />
-        <PrivateRoute path='/user/dashboard' component=***REMOVED***Dashboard***REMOVED***exact />
-        <AdminRoute path='/admin/dashboard' component=***REMOVED***AdminDashboard***REMOVED***exact />
-        <AdminRoute path='/create/category' component=***REMOVED***AddCategory***REMOVED***exact />
-        <AdminRoute path='/create/product' component=***REMOVED***AddProduct***REMOVED***exact />
-        <Route path='/product/:productId' component=***REMOVED***Product***REMOVED***exact />
-        <Route path='/cart' component=***REMOVED***Cart***REMOVED***exact />
-        <AdminRoute path='/admin/orders' component=***REMOVED***Orders***REMOVED***exact />
-        <PrivateRoute path='/profile/:userId' component=***REMOVED***Profile***REMOVED***exact />
-        <AdminRoute path='/admin/products' component=***REMOVED***ManageProducts***REMOVED***exact />
+        <Route path='/' component={Home} exact />
+        <Route path='/shop' component={Shop} exact />
+        <Route path='/signin' component={Signin} exact />
+        <Route path='/signup' component={Signup} exact />
+        <Route path='/chat' component={Chatbot} exact />
+        <Route path='/map' component={Map} exact />
+        <Route path='/camera' component={Camera} exact />
+        <PrivateRoute path='/user/dashboard' component={Dashboard} exact />
+        <AdminRoute path='/admin/dashboard' component={AdminDashboard} exact />
+        <AdminRoute path='/create/category' component={AddCategory} exact />
+        <AdminRoute path='/create/product' component={AddProduct} exact />
+        <Route path='/product/:productId' component={Product} exact />
+        <Route path='/cart' component={Cart} exact />
+        <AdminRoute path='/admin/orders' component={Orders} exact />
+        <PrivateRoute path='/profile/:userId' component={Profile} exact />
+        <AdminRoute path='/admin/products' component={ManageProducts} exact />
         <AdminRoute
           path='/admin/product/update/:productId'
-          component=***REMOVED***UpdateProduct}
+          component={UpdateProduct}
           exact
         />
-        <Route component=***REMOVED***NotFound***REMOVED***/>
+        <Route component={NotFound} />
       </Switch>
     </BrowserRouter>
   );

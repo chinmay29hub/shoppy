@@ -1,21 +1,21 @@
-import React, ***REMOVED*** useState, useEffect ***REMOVED***from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from './Layout';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Card from './Card';
-import ***REMOVED*** getCategories, getFilteredProducts ***REMOVED***from './apiCore';
+import { getCategories, getFilteredProducts } from './apiCore';
 import Checkbox from './Checkbox';
 import RadioBox from './RadioBox';
-import ***REMOVED*** makeStyles ***REMOVED***from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 import Search from './Search';
-import ***REMOVED*** prices ***REMOVED***from './fixedPrices';
+import { prices } from './fixedPrices';
 
-const Shop = () => ***REMOVED***
-  const [myFilters, setMyFilters] = useState(***REMOVED***
-    filters: ***REMOVED*** category: [], price: [] },
+const Shop = () => {
+  const [myFilters, setMyFilters] = useState({
+    filters: { category: [], price: [] },
   });
 
   const [categories, setCategories] = useState([]);
@@ -25,22 +25,22 @@ const Shop = () => ***REMOVED***
   const [size, setSize] = useState(0);
   const [filteredResults, setFilteredResults] = useState([]);
 
-  const init = () => ***REMOVED***
-    getCategories().then((data) => ***REMOVED***
-      if (data.error) ***REMOVED***
+  const init = () => {
+    getCategories().then((data) => {
+      if (data.error) {
         setError(data.error);
-      ***REMOVED***else ***REMOVED***
+      } else {
         setCategories(data);
       }
     });
   };
 
-  const loadFilteredResults = (newFilters) => ***REMOVED***
+  const loadFilteredResults = (newFilters) => {
     // console.log(newFilters);
-    getFilteredProducts(skip, limit, newFilters).then((data) => ***REMOVED***
-      if (data.error) ***REMOVED***
+    getFilteredProducts(skip, limit, newFilters).then((data) => {
+      if (data.error) {
         setError(data.error);
-      ***REMOVED***else ***REMOVED***
+      } else {
         setFilteredResults(data.data);
         setSize(data.size);
         setSkip(0);
@@ -48,13 +48,13 @@ const Shop = () => ***REMOVED***
     });
   };
 
-  const loadMore = () => ***REMOVED***
+  const loadMore = () => {
     let toSkip = skip + limit;
     // console.log(newFilters);
-    getFilteredProducts(toSkip, limit, myFilters.filters).then((data) => ***REMOVED***
-      if (data.error) ***REMOVED***
+    getFilteredProducts(toSkip, limit, myFilters.filters).then((data) => {
+      if (data.error) {
         setError(data.error);
-      ***REMOVED***else ***REMOVED***
+      } else {
         setFilteredResults([...filteredResults, ...data.data]);
         setSize(data.size);
         setSkip(toSkip);
@@ -62,8 +62,8 @@ const Shop = () => ***REMOVED***
     });
   };
 
-  const useStyles = makeStyles((theme) => (***REMOVED***
-    btn: ***REMOVED***
+  const useStyles = makeStyles((theme) => ({
+    btn: {
       background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
       borderRadius: 3,
       border: 0,
@@ -76,31 +76,31 @@ const Shop = () => ***REMOVED***
 
   const classes = useStyles();
 
-  const loadMoreButton = () => ***REMOVED***
+  const loadMoreButton = () => {
     return (
       size > 0 &&
       size >= limit && (
-        // <button onClick=***REMOVED***loadMore***REMOVED***className='btn btn-warning mb-5'>
+        // <button onClick={loadMore} className='btn btn-warning mb-5'>
         //   Load more
         // </button>
-        <Button onClick=***REMOVED***loadMore***REMOVED***variant='contained' className=***REMOVED***classes.btn}>
+        <Button onClick={loadMore} variant='contained' className={classes.btn}>
           Load more
         </Button>
       )
     );
   };
 
-  useEffect(() => ***REMOVED***
+  useEffect(() => {
     init();
     loadFilteredResults(skip, limit, myFilters.filters);
   }, []);
 
-  const handleFilters = (filters, filterBy) => ***REMOVED***
+  const handleFilters = (filters, filterBy) => {
     // console.log("SHOP", filters, filterBy);
-    const newFilters = ***REMOVED*** ...myFilters };
+    const newFilters = { ...myFilters };
     newFilters.filters[filterBy] = filters;
 
-    if (filterBy === 'price') ***REMOVED***
+    if (filterBy === 'price') {
       let priceValues = handlePrice(filters);
       newFilters.filters[filterBy] = priceValues;
     }
@@ -108,12 +108,12 @@ const Shop = () => ***REMOVED***
     setMyFilters(newFilters);
   };
 
-  const handlePrice = (value) => ***REMOVED***
+  const handlePrice = (value) => {
     const data = prices;
     let array = [];
 
-    for (let key in data) ***REMOVED***
-      if (data[key]._id === parseInt(value)) ***REMOVED***
+    for (let key in data) {
+      if (data[key]._id === parseInt(value)) {
         array = data[key].array;
       }
     }
@@ -127,11 +127,11 @@ const Shop = () => ***REMOVED***
       className='container-fluid'
     >
       <Search />
-      <div style=***REMOVED******REMOVED***}}>
+      <div style={{}}>
         <h2 className='mb-2'>Products</h2>
       </div>
       <div className='row'>
-        <div className='col-md-3' style=***REMOVED******REMOVED***
+        <div className='col-md-3' style={{
           backgroundColor: "white",
           margin: "2rem",
           height: "fit-content",
@@ -139,62 +139,62 @@ const Shop = () => ***REMOVED***
           borderRadius: "1rem",
           border: "0.01rem solid lightgray"
         }}>
-          <p style=***REMOVED******REMOVED***
+          <p style={{
             color: "#4A5263",
             fontSize: "1.2rem",
             marginBottom: "0.7rem"
           }}>Filter by categories</p>
-          <p style=***REMOVED******REMOVED***
+          <p style={{
             marginBottom: "0.6rem",
             padding: 0,
             backgroundColor: "lightgray",
             height: "0.01rem",
             border: "0.01rem"
-          }***REMOVED***/>
-          <ul style=***REMOVED******REMOVED***
+          }} />
+          <ul style={{
             margin: "0rem 0rem 0rem -0.65rem",
             padding: "0rem 0rem 0rem 0rem"
           }}>
             <Checkbox
-              categories=***REMOVED***categories}
-              handleFilters=***REMOVED***(filters) => handleFilters(filters, 'category')}
+              categories={categories}
+              handleFilters={(filters) => handleFilters(filters, 'category')}
             />
           </ul>
-          <p style=***REMOVED******REMOVED***
+          <p style={{
             margin: "0.6rem 0rem 0.8rem 0rem",
             padding: 0,
             backgroundColor: "lightgray",
             height: "0.01rem",
             border: "0.01rem"
-          }***REMOVED***/>
+          }} />
 
-          <p style=***REMOVED******REMOVED***
+          <p style={{
             color: "#4A5263",
             fontSize: "1.2rem",
             marginBottom: "0.7rem"
           }}>Filter by Price Range</p>
 
-          <div style=***REMOVED******REMOVED***
+          <div style={{
             margin: "0rem 0rem 0rem -3.7rem"
           }}>
-            <RadioBox style=***REMOVED******REMOVED***
+            <RadioBox style={{
               marginLeft: "15rem"
             }}
-              prices=***REMOVED***prices}
-              handleFilters=***REMOVED***(filters) => handleFilters(filters, 'price')}
+              prices={prices}
+              handleFilters={(filters) => handleFilters(filters, 'price')}
             />
           </div>
         </div>
         <div className='col-md-8'>
           <div className='row'>
-            ***REMOVED***filteredResults.map((product, i) => (
-              <div key=***REMOVED***i***REMOVED***className='col-xl-6 col-lg-8 col-md-12 col-sm-12'>
-                <Card product=***REMOVED***product***REMOVED***/>
+            {filteredResults.map((product, i) => (
+              <div key={i} className='col-xl-6 col-lg-8 col-md-12 col-sm-12'>
+                <Card product={product} />
               </div>
             ))}
           </div>
           <hr />
-          ***REMOVED***loadMoreButton()}
+          {loadMoreButton()}
         </div>
       </div>
     </Layout>

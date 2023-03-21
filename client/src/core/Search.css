@@ -1,4 +1,4 @@
-#dropdown-basic::after ***REMOVED***
+#dropdown-basic::after {
     display: none !important;
     /* color: #4d0909; */
 }

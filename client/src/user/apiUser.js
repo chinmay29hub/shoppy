@@ -1,39 +1,39 @@
-import ***REMOVED*** API ***REMOVED***from '../config';
+import { API } from '../config';
 
-export const read = (userId, token) => ***REMOVED***
-  return fetch(`$***REMOVED***API}/user/$***REMOVED***userId}`, ***REMOVED***
+export const read = (userId, token) => {
+  return fetch(`${API}/user/${userId}`, {
     method: 'GET',
-    headers: ***REMOVED***
+    headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: `Bearer $***REMOVED***token}`,
+      Authorization: `Bearer ${token}`,
     },
   })
-    .then((response) => ***REMOVED***
+    .then((response) => {
       return response.json();
     })
     .catch((err) => console.log(err));
 };
 
-export const update = (userId, token, user) => ***REMOVED***
-  return fetch(`$***REMOVED***API}/user/$***REMOVED***userId}`, ***REMOVED***
+export const update = (userId, token, user) => {
+  return fetch(`${API}/user/${userId}`, {
     method: 'PUT',
-    headers: ***REMOVED***
+    headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: `Bearer $***REMOVED***token}`,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(user),
   })
-    .then((response) => ***REMOVED***
+    .then((response) => {
       return response.json();
     })
     .catch((err) => console.log(err));
 };
 
-export const updateUser = (user, next) => ***REMOVED***
-  if (typeof window !== 'undefined') ***REMOVED***
-    if (localStorage.getItem('jwt')) ***REMOVED***
+export const updateUser = (user, next) => {
+  if (typeof window !== 'undefined') {
+    if (localStorage.getItem('jwt')) {
       let auth = JSON.parse(localStorage.getItem('jwt'));
       auth.user = user;
       localStorage.setItem('jwt', JSON.stringify(auth));
@@ -42,16 +42,16 @@ export const updateUser = (user, next) => ***REMOVED***
   }
 };
 
-export const getPurchaseHistory = (userId, token) => ***REMOVED***
-  return fetch(`$***REMOVED***API}/orders/by/user/$***REMOVED***userId}`, ***REMOVED***
+export const getPurchaseHistory = (userId, token) => {
+  return fetch(`${API}/orders/by/user/${userId}`, {
     method: 'GET',
-    headers: ***REMOVED***
+    headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: `Bearer $***REMOVED***token}`,
+      Authorization: `Bearer ${token}`,
     },
   })
-    .then((response) => ***REMOVED***
+    .then((response) => {
       return response.json();
     })
     .catch((err) => console.log(err));

@@ -1,42 +1,42 @@
-import React, ***REMOVED*** useState, useEffect ***REMOVED***from 'react';
-import ***REMOVED*** makeStyles, responsiveFontSizes ***REMOVED***from '@material-ui/core/styles';
+import React, { useState, useEffect } from 'react';
+import { makeStyles, responsiveFontSizes } from '@material-ui/core/styles';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Dropdown from 'react-bootstrap/Dropdown';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
-import ***REMOVED*** Form, FormLabel ***REMOVED***from 'react-bootstrap'
+import { Form, FormLabel } from 'react-bootstrap'
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
-import ***REMOVED*** getCategories, list ***REMOVED***from './apiCore';
+import { getCategories, list } from './apiCore';
 import Card from './Card';
 import './Search.css'
 
-const useStyles = makeStyles((theme) => (***REMOVED***
-  formControl: ***REMOVED***
+const useStyles = makeStyles((theme) => ({
+  formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
   },
-  selectEmpty: ***REMOVED***
+  selectEmpty: {
     marginTop: theme.spacing(2),
   },
-  tField: ***REMOVED***
+  tField: {
     width: 800,
     marginTop: 2,
   },
-  root: ***REMOVED***
-    '& > *': ***REMOVED***
+  root: {
+    '& > *': {
       margin: theme.spacing(2),
     },
   },
 }));
 
-const Search = () => ***REMOVED***
-  const [data, setData] = useState(***REMOVED***
+const Search = () => {
+  const [data, setData] = useState({
     categories: [],
     category: '',
     search: '',
@@ -44,65 +44,65 @@ const Search = () => ***REMOVED***
     searched: false,
   });
 
-  const ***REMOVED*** categories, category, search, results, searched ***REMOVED***= data;
+  const { categories, category, search, results, searched } = data;
 
-  const loadCategories = () => ***REMOVED***
-    getCategories().then((data) => ***REMOVED***
-      if (data.error) ***REMOVED***
+  const loadCategories = () => {
+    getCategories().then((data) => {
+      if (data.error) {
         console.log(data.error);
-      ***REMOVED***else ***REMOVED***
-        setData(***REMOVED*** ...data, categories: data });
+      } else {
+        setData({ ...data, categories: data });
       }
     });
   };
 
-  useEffect(() => ***REMOVED***
+  useEffect(() => {
     loadCategories();
   }, []);
 
-  const searchData = () => ***REMOVED***
+  const searchData = () => {
     // console.log(search, category);
-    if (search) ***REMOVED***
-      list(***REMOVED*** search: search || undefined, category: category }).then(
-        (response) => ***REMOVED***
-          if (response.error) ***REMOVED***
+    if (search) {
+      list({ search: search || undefined, category: category }).then(
+        (response) => {
+          if (response.error) {
             console.log(response.error);
-          ***REMOVED***else ***REMOVED***
-            setData(***REMOVED*** ...data, results: response, searched: true });
+          } else {
+            setData({ ...data, results: response, searched: true });
           }
         }
       );
     }
   };
 
-  const searchSubmit = (e) => ***REMOVED***
+  const searchSubmit = (e) => {
     e.preventDefault();
     searchData();
   };
 
-  const handleChange = (name) => (event) => ***REMOVED***
-    setData(***REMOVED*** ...data, [name]: event.target.value, searched: false });
+  const handleChange = (name) => (event) => {
+    setData({ ...data, [name]: event.target.value, searched: false });
   };
 
-  const searchMessage = (searched, results) => ***REMOVED***
-    if (searched && results.length > 0) ***REMOVED***
-      return `Found $***REMOVED***results.length***REMOVED***products`;
+  const searchMessage = (searched, results) => {
+    if (searched && results.length > 0) {
+      return `Found ${results.length} products`;
     }
-    if (searched && results.length < 1) ***REMOVED***
+    if (searched && results.length < 1) {
       return `Search: No products found`;
     }
   };
 
-  const searchedProducts = (results = []) => ***REMOVED***
+  const searchedProducts = (results = []) => {
     return (
       <div className='row'>
         <div className='col-md-1'></div>
         <div className='col-md-10'>
-          <h2 className='mt-4 mb-4 text-center'>***REMOVED***searchMessage(searched, results)}</h2>
+          <h2 className='mt-4 mb-4 text-center'>{searchMessage(searched, results)}</h2>
           <div className='row'>
-            ***REMOVED***results.map((product, i) => (
+            {results.map((product, i) => (
               <div className='col-md-8 mb-3'>
-                <Card key=***REMOVED***i***REMOVED***product=***REMOVED***product***REMOVED***/>
+                <Card key={i} product={product} />
               </div>
             ))}
           </div>
@@ -115,57 +115,57 @@ const Search = () => ***REMOVED***
   const classes = useStyles();
 
   const searchForm = () => (
-    <Form onSubmit=***REMOVED***searchSubmit***REMOVED***className=***REMOVED***classes.root***REMOVED***style=***REMOVED******REMOVED***
+    <Form onSubmit={searchSubmit} className={classes.root} style={{
       border: "0.01rem solid lightgray",
       backgroundColor: "white",
       borderRadius: "0.8rem",
       width: "max-content",
     }}>
-      <FormControl className=***REMOVED***classes.formControl***REMOVED***style=***REMOVED******REMOVED***
+      <FormControl className={classes.formControl} style={{
         margin: 0,
         padding: "1rem 1.2rem"
       }}>
-        <Row style=***REMOVED******REMOVED***
+        <Row style={{
           margin: 0,
           padding: 0
         }}>
-          <Dropdown style=***REMOVED******REMOVED***
+          <Dropdown style={{
             width: "max-content",
             margin: "0rem 1rem 0rem 0rem"
           }}>
-            <Dropdown.Toggle id="dropdown-basic" style=***REMOVED******REMOVED***
+            <Dropdown.Toggle id="dropdown-basic" style={{
               backgroundColor: "white",
               color: "#6D7487",
               border: "0.01rem solid lightgray",
               borderRadius: "0.5rem",
               height: "3rem",
             }}>
-              <img src=***REMOVED***require('../assets/filter.png')***REMOVED***style=***REMOVED******REMOVED***
+              <img src={require('../assets/filter.png')} style={{
                 width: "1.5rem"
               }}></img>
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <Dropdown.Item disabled="true">Select Category</Dropdown.Item>
-              ***REMOVED***categories.map((c, i) => ***REMOVED***
+              {categories.map((c, i) => {
                 return (
-                  <Dropdown.Item key=***REMOVED***i***REMOVED***style=***REMOVED******REMOVED***
+                  <Dropdown.Item key={i} style={{
                     height: "max-content",
                     padding: "0.2rem 0rem -1rem 0rem"
                   }}>
-                    <p>***REMOVED***c.name}</p>
+                    <p>{c.name}</p>
                   </Dropdown.Item>)
               })}
             </Dropdown.Menu>
           </Dropdown>
           <input
             type="input"
-            onChange=***REMOVED***handleChange('search')}
+            onChange={handleChange('search')}
             id='outlined-basic'
             variant='outlined'
-            className=***REMOVED***classes.tField}
+            className={classes.tField}
             autoComplete='off'
             placeholder="Search Product"
-            style=***REMOVED******REMOVED***
+            style={{
               border: "0.01rem solid lightgray",
               width: "15rem",
               height: "3rem",
@@ -176,7 +176,7 @@ const Search = () => ***REMOVED***
               margin: "0rem 1rem 0rem 0rem"
             }}
           />
-          <Button ml=***REMOVED***2***REMOVED***variant='contained' color='primary' type='submit' style=***REMOVED******REMOVED***
+          <Button ml={2} variant='contained' color='primary' type='submit' style={{
             backgroundColor: "white",
             color: "#6D7487",
             border: "0.01rem solid lightgray",
@@ -197,8 +197,8 @@ const Search = () => ***REMOVED***
   );
   return (
     <div className='row'>
-      <div className='container mb-3'>***REMOVED***searchForm()}</div>
-      <div className='container-fluid mb-3'>***REMOVED***searchedProducts(results)}</div>
+      <div className='container mb-3'>{searchForm()}</div>
+      <div className='container-fluid mb-3'>{searchedProducts(results)}</div>
     </div>
   );
 };
