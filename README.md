@@ -1,2 +1,2 @@
 # ecommerce-private
-loading
+[Live Here](https://shoppy-frontend.netlify.app/)
