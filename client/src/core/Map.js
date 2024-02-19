@@ -4,7 +4,7 @@
 // const Map = () => {
 //   useEffect(() => {
 //     const loader = new Loader({
-//       apiKey: "AIzaSyBpxUbDaS2cUssQ8JdQYW8vIRlHV4erlns",
+//       apiKey: "",
 //       version: "weekly",
 //     });
 
